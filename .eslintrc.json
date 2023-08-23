@@ -3,7 +3,8 @@
     "next/core-web-vitals",
     "prettier",
     "plugin:@typescript-eslint/recommended",
-    "plugin:tailwindcss/recommended"
+    "plugin:tailwindcss/recommended",
+    "plugin:unicorn/recommended"
   ],
   "rules": {
     "@typescript-eslint/no-unused-vars": [
@@ -11,6 +12,20 @@
       {
         "argsIgnorePattern": "^_",
         "varsIgnorePattern": "^_"
+      }
+    ],
+    "unicorn/filename-case": "off",
+    "unicorn/no-null": "off",
+    "unicorn/no-useless-undefined": "off",
+    "unicorn/prevent-abbreviations": [
+      "error",
+      {
+        "allowList": {
+          "Props": true,
+          "props": true,
+          "Ref": true,
+          "ref": true
+        }
       }
     ]
   }

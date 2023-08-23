@@ -20,7 +20,7 @@ const config: Config = {
         primary: "#95FAFE",
         "background-color-dark": "#0D0E38",
         "background-color-light": "#293868",
-        "font-color-light": "#FFFFFF",
+        "button-color-light": "rgba(47, 64, 107, 0.6)",
       },
     },
   },
@@ -28,3 +28,6 @@ const config: Config = {
 };
 
 export default config;
+
+// Useful tailwind intellisense regex
+// https://github.com/paolotiu/tailwind-intellisense-regex-list

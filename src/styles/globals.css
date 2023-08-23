@@ -2,6 +2,15 @@
 @tailwind components;
 @tailwind utilities;
 
+@layer base {
+  html {
+    font-family: Poppins, system-ui, sans-serif;
+  }
+}
+
+.bg-gradient-radial {
+  background: radial-gradient(circle at 65% 43%, rgba(41, 56, 104, 1) 0%, rgba(13, 14, 56, 1) 87%);
+}
 
 /* body {
   font-family: $font-family, sans-serif;
