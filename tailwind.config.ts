@@ -22,6 +22,9 @@ const config: Config = {
         "background-color-light": "#293868",
         "button-color-light": "rgba(47, 64, 107, 0.6)",
       },
+      letterSpacing: {
+        "3": "3px",
+      },
     },
   },
   plugins: [],

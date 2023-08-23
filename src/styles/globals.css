@@ -8,6 +8,10 @@
   }
 }
 
+body {
+  -webkit-font-smoothing: antialiased;
+}
+
 .bg-gradient-radial {
   background: radial-gradient(circle at 65% 43%, rgba(41, 56, 104, 1) 0%, rgba(13, 14, 56, 1) 87%);
 }
