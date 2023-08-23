@@ -1,12 +1,9 @@
-import Image from "next/image";
-import { Inter } from "next/font/google";
-
-const inter = Inter({ subsets: ["latin"] });
+import { Topbar } from "@/components/topbar/Topbar";
 
 export default function HomePage() {
   return (
-    <div className="sm:flex-row mb-10 flex flex-col items-center justify-between hover:text-primary mobile:flex">
-      Home Page
+    <div className="px-44 py-6">
+      <Topbar />
     </div>
   );
 }
