@@ -1,23 +1,61 @@
+import { useState } from "react";
 import { Text } from "../text/Text";
+import ArrowRightSFillIcon from "remixicon-react/ArrowRightSFillIcon";
+import { Button } from "../button/Button";
+import { cn } from "@/styles/helpers/cn";
 
-export const ProjectColumn = () => {
+type ProjectColumnProps = {
+  Icon: typeof ArrowRightSFillIcon;
+  number: number;
+  name: string;
+  description: string;
+};
+
+export const ProjectColumn = ({ Icon, name, description, number }: ProjectColumnProps) => {
+  const [isHovered, setIsHovered] = useState(false);
+
+  const columnClassName = cn("flex h-full w-[356px] shrink-0 flex-col gap-8 border-l-2 border-primary/40 px-11 py-8", {
+    ["bg-gradient-to-r from-black/30 via-black/10 via-50% to-black/5"]: isHovered,
+  });
+
   return (
-    <div className="flex h-full w-[356px] shrink-0 flex-col gap-12 border-l-2 border-primary/40 px-11 py-14">
-      <Text tag="h4" variant="num-1">
-        01
+    <div className={columnClassName} onMouseOver={() => setIsHovered(true)} onMouseOut={() => setIsHovered(false)}>
+      <Text tag="h4" variant="num-1" className="py-4">
+        {`0${number}`}
       </Text>
-      <div className="h-1 w-[22px] bg-primary" />
-      <div className="my-10 flex h-[126px] w-[126px] items-center justify-center rounded-full border-2 border-primary/30">
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" className="h-16 w-16 fill-primary">
-          <path d="M17.0007 1.20801 18.3195 3.68083 20.7923 4.99968 18.3195 6.31852 17.0007 8.79134 15.6818 6.31852 13.209 4.99968 15.6818 3.68083 17.0007 1.20801ZM8.00065 4.33301 10.6673 9.33301 15.6673 11.9997 10.6673 14.6663 8.00065 19.6663 5.33398 14.6663.333984 11.9997 5.33398 9.33301 8.00065 4.33301ZM19.6673 16.333 18.0007 13.208 16.334 16.333 13.209 17.9997 16.334 19.6663 18.0007 22.7913 19.6673 19.6663 22.7923 17.9997 19.6673 16.333Z"></path>
-        </svg>
+      <div className="mb-7 h-1 w-[22px] bg-primary" />
+      <div className="my-6 flex h-[126px] w-[126px] items-center justify-center rounded-full border-2 border-primary/30">
+        <Icon className="h-16 w-16 fill-primary" />
       </div>
       <Text tag="h2" variant="heading-2">
-        Eventhive
+        {name}
       </Text>
-      <Text tag="p" variant="action-2" className="text-primary">
-        See more
-      </Text>
+      {!isHovered && (
+        <>
+          <Text tag="p" variant="action-2" className="text-primary">
+            See more &#8594;
+          </Text>
+          <ArrowRightSFillIcon className="mb-12 mt-auto fill-white" />
+        </>
+      )}
+      {isHovered && (
+        <>
+          <div className="flex flex-col gap-12">
+            <Text tag="p" variant="caption-1">
+              {description}
+            </Text>
+            <div className="flex flex-col gap-3">
+              <Text tag="p" variant="action-2" className="text-primary">
+                Live demo &#8594;
+              </Text>
+              <Text tag="p" variant="action-2" className="text-primary">
+                Code on github &#8594;
+              </Text>
+            </div>
+          </div>
+          <Button variant="large" text="learn more" className="mb-12 mt-auto" />
+        </>
+      )}
     </div>
   );
 };
