@@ -6,7 +6,7 @@ type LayoutProps = {
 } & PropsWithChildren;
 
 export const Layout = ({ children, className }: LayoutProps) => {
-  const layoutClassName = cn("bg-gradient-radial h-screen w-screen", className);
+  const layoutClassName = cn("bg-gradient-radial h-screen w-screen overflow-hidden", className);
 
   return <div className={layoutClassName}>{children}</div>;
 };

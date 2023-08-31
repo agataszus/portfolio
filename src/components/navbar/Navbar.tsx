@@ -1,17 +1,11 @@
-import { Text } from "../text/Text";
+import { NavLink } from "../navLink/NavLink";
 
 export const Navbar = () => {
   return (
     <div className="flex w-[324px] items-center justify-between">
-      <Text tag="p" variant="action-1">
-        About
-      </Text>
-      <Text tag="p" variant="action-1">
-        Skills
-      </Text>
-      <Text tag="p" variant="action-1">
-        Projects
-      </Text>
+      <NavLink linkTo="/" text="About" />
+      <NavLink linkTo="/" text="Skills" />
+      <NavLink linkTo="/projects" text="Projects" />
     </div>
   );
 };

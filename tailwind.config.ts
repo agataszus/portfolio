@@ -25,6 +25,9 @@ const config: Config = {
       fontFamily: {
         sans: ["var(--font-poppins)"],
       },
+      lineHeight: {
+        tighter: "1.125",
+      },
     },
   },
   plugins: [],

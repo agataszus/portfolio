@@ -18,7 +18,7 @@ export const Text = ({ children, tag, variant, className }: TextProps) => {
       ["text-xs font-semibold text-white uppercase"]: variant === "action-2",
       ["text-base uppercase font-bold"]: variant === "subtitle-1",
       ["text-sm uppercase text-primary font-medium tracking-3"]: variant === "subtitle-2",
-      ["text-5xl font-bold text-white tracking-wide"]: variant === "heading-1",
+      ["text-5xl font-bold text-white leading-tighter"]: variant === "heading-1",
       ["text-3xl font-bold text-white"]: variant === "heading-2",
       ["text-sm font-bold text-white"]: variant === "num-1",
     },
