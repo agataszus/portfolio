@@ -12,9 +12,6 @@ const config: Config = {
       tablet: { max: "1023px" },
       "desktop-small": { max: "1365px" },
     },
-    fontFamily: {
-      main: "Poppins",
-    },
     extend: {
       colors: {
         primary: "#95FAFE",
@@ -24,6 +21,9 @@ const config: Config = {
       },
       letterSpacing: {
         "3": "3px",
+      },
+      fontFamily: {
+        sans: ["var(--font-poppins)"],
       },
     },
   },
