@@ -41,7 +41,7 @@ export const Layout = ({ children, className }: LayoutProps) => {
               transition: { delay: 0.65, duration: 0.65, ease: [0.37, 0.59, 0.68, 0.83] },
             }}
           >
-            <motion.div
+            {/* <motion.div
               className="absolute inset-0 flex -translate-y-1/2 items-center justify-center text-7xl font-extrabold uppercase text-sky-800/70"
               initial={{ y: "-100%" }}
               animate={{
@@ -50,7 +50,7 @@ export const Layout = ({ children, className }: LayoutProps) => {
               }}
             >
               Agata.dev
-            </motion.div>
+            </motion.div> */}
             {/* <div className="fixed inset-0 -translate-y-full">
               <div className="absolute inset-0 flex translate-y-full items-center justify-center text-7xl font-extrabold uppercase text-sky-800/70 ">
                 Agata.dev

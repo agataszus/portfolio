@@ -1,6 +1,7 @@
 import { Button } from "../button/Button";
 import { Text } from "../text/Text";
 import { useRouter } from "next/router";
+import { motion } from "framer-motion";
 
 export const Hero = () => {
   const router = useRouter();
@@ -13,7 +14,12 @@ export const Hero = () => {
       <Text tag="h1" variant="heading-1" className="mb-14">
         Hi! I&apos;m Agata. Frontend Developer & blah blah
       </Text>
-      <Button variant="large" text="My projects" onClick={() => router.push("/projects")} />
+      <motion.div
+        initial={["buttonHidden", "textHidden", "arrowHidden", "arrowContainerHidden"]}
+        animate={["buttonVisible", "textVisible", "arrowVisible", "arrowContainerVisible"]}
+      >
+        <Button variant="large" text="My projects" onClick={() => router.push("/projects")} />
+      </motion.div>
     </div>
   );
 };

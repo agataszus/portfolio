@@ -1,6 +1,7 @@
 import { Button } from "../button/Button";
 import { Navbar } from "../navbar/Navbar";
 import { Text } from "../text/Text";
+import { motion } from "framer-motion";
 
 export const Topbar = () => {
   return (
@@ -14,7 +15,9 @@ export const Topbar = () => {
         </Text>
       </div>
       <Navbar />
-      <Button variant="small" text="contact" />
+      <motion.div initial={["buttonHidden", "textHidden"]} animate={["buttonVisible", "textVisible"]}>
+        <Button variant="small" text="contact" />
+      </motion.div>
     </div>
   );
 };
