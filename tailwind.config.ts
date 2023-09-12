@@ -28,6 +28,10 @@ const config: Config = {
       lineHeight: {
         tighter: "1.125",
       },
+      boxShadow: {
+        "large-right": "36px 0 46px rgb(0,0,0,0.2)",
+        "large-right-invisible": "36px 0 46px rgb(0,0,0,0)",
+      },
     },
   },
   plugins: [],

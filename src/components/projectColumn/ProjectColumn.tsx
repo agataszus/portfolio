@@ -4,12 +4,14 @@ import { Button } from "../button/Button";
 import { cn } from "@/styles/helpers/cn";
 import { motion } from "framer-motion";
 import { IconNames, ProjectIcon } from "../projectIcon/ProjectIcon";
+import { TechnologyIcon } from "../technologyIcon/TechnologyIcon";
 
 type ProjectColumnProps = {
   iconName: IconNames;
   index: number;
   name: string;
   description: string;
+  Icon: typeof ArrowRightSFillIcon | "next" | "javascript";
 };
 
 const draw = {
@@ -70,10 +72,10 @@ export const arrowContainerDraw = {
 };
 
 //--gradient": "none linear-gradient(90deg, rgba(0,0,0,0.3) 0%, rgba(0,0,0,0.1) 50%, rgba(0,0,0,0.05) 100%)
-export const ProjectColumn = ({ iconName, name, description, index }: ProjectColumnProps) => {
+export const ProjectColumn = ({ iconName, name, description, index, Icon }: ProjectColumnProps) => {
   const columnClassName = cn(
     "flex h-full w-[368px] shrink-0 flex-col gap-8 border-l-2 border-primary/40 px-11 py-8 relative",
-    "[--hover-opacity:0%] [--default-opacity:100%] [--translate-x:0] [--hover-path-length:0] [--hover-border-overflow: hidden] [--hover-translate-y:10px] [--underline-with:22px] [--underline-color:rgb(149,250,254,0.6)]"
+    "[--hover-opacity:0%] [--default-opacity:100%] [--translate-x:0] [--hover-path-length:0] [--hover-border-overflow: hidden] [--hover-translate-y:10px] [--underline-width:22px] [--underline-color:rgb(149,250,254,0.6)] [--translate-x-text:70px] [--hover-rotate:-180deg]"
   );
 
   const extraDelay = (index - 1) * 0.1;
@@ -92,8 +94,10 @@ export const ProjectColumn = ({ iconName, name, description, index }: ProjectCol
             "--default-opacity": "0%",
             "--hover-opacity": "100%",
             "--translate-x": "203px",
-            "--underline-with": "38px",
+            "--underline-width": "38px",
             "--underline-color": "rgb(149, 250, 254)",
+            "--translate-x-text": "0",
+            "--hover-rotate": "0deg",
           },
           // eslint-disable-next-line @typescript-eslint/no-explicit-any
         } as any
@@ -105,6 +109,8 @@ export const ProjectColumn = ({ iconName, name, description, index }: ProjectCol
         "--hover-translate-y": { duration: 0.5 },
         "--default-opacity": { duration: 0.5 },
         "--hover-opacity": { duration: 0.5 },
+        "--hover-scale-x": { duration: 0.5 },
+        "--hover-rotate": { duration: 0.5 },
       }}
     >
       <div className="absolute inset-0 z-0 bg-[linear-gradient(90deg,rgba(0,0,0,0.3)0%,rgba(0,0,0,0.1)50%,rgba(0,0,0,0.05)100%)] opacity-[--hover-opacity] " />
@@ -114,23 +120,34 @@ export const ProjectColumn = ({ iconName, name, description, index }: ProjectCol
         animate={{ opacity: [0, 1, 0] }}
         transition={{ delay: extraDelay, duration: 2, ease: "easeOut" }}
       />
-
-      <motion.div
-        className="z-10 py-4"
-        initial={{ opacity: 0 }}
-        animate={{ opacity: [0, 1] }}
-        transition={{ delay: 0.4 + extraDelay, duration: 0.5 }}
-      >
-        <Text tag="h4" variant="num-1">
-          {`0${index}`}
-        </Text>
-      </motion.div>
-      <motion.div
-        className="z-10 mb-7 h-1 w-[var(--underline-with)] bg-[var(--underline-color)]"
-        initial={{ y: -70 }}
-        animate={{ y: [-70, 0] }}
-        transition={{ delay: 0.3 + extraDelay, duration: 0.5 }}
-      />
+      <div className="z-10 flex w-full justify-between">
+        <div>
+          <motion.div
+            className="py-4"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: [0, 1] }}
+            transition={{ delay: 0.4 + extraDelay, duration: 0.5 }}
+          >
+            <Text tag="h4" variant="num-1">
+              {`0${index}`}
+            </Text>
+          </motion.div>
+          <motion.div
+            className="z-10 mb-7 h-1 w-[var(--underline-width)] bg-[var(--underline-color)]"
+            initial={{ y: -70 }}
+            animate={{ y: [-70, 0] }}
+            transition={{ delay: 0.3 + extraDelay, duration: 0.5 }}
+          />
+        </div>
+        <div className="flex flex-col items-end gap-2 overflow-hidden">
+          <Text tag="h4" variant="action-2" className="translate-x-[--translate-x-text] pt-4 opacity-80">
+            Made with
+          </Text>
+          <div className="rotate-[--hover-rotate] opacity-[--hover-opacity]">
+            <TechnologyIcon Icon={Icon} />
+          </div>
+        </div>
+      </div>
       <motion.div
         className="relative z-10 my-6 flex h-[126px] w-[126px] shrink-0 items-center justify-center rounded-full border-2 border-primary/30 [overflow:--hover-border-overflow]"
         initial={{ borderColor: "rgb(149, 250, 254, 0)", y: 90 }}
@@ -175,7 +192,7 @@ export const ProjectColumn = ({ iconName, name, description, index }: ProjectCol
       <div className="relative h-96 w-full">
         <div className="overflow-hidden">
           <motion.div
-            className="opacity-[var(--default-opacity)]"
+            className="opacity-[--default-opacity]"
             initial={{ translateY: 20 }}
             animate={{ translateY: [20, 0] }}
             transition={{ delay: 0.3 + extraDelay, duration: 0.5 }}
@@ -186,7 +203,7 @@ export const ProjectColumn = ({ iconName, name, description, index }: ProjectCol
           </motion.div>
         </div>
 
-        <div className="absolute inset-0 z-10 flex translate-y-[--hover-translate-y] flex-col gap-12 opacity-[var(--hover-opacity)]">
+        <div className="absolute inset-0 z-10 flex translate-y-[--hover-translate-y] flex-col gap-12 opacity-[--hover-opacity]">
           <Text tag="p" variant="caption-1">
             {description}
           </Text>
@@ -202,10 +219,10 @@ export const ProjectColumn = ({ iconName, name, description, index }: ProjectCol
       </div>
 
       {/* button/arrow section */}
-      <div className="relative">
+      <div className="relative mt-auto">
         <motion.div
           key={`column-arrow-${index}`}
-          className="relative z-20 mb-8 mt-auto flex h-[70px] w-[20px] items-center"
+          className="relative z-20 mb-8 flex h-[70px] w-[20px] items-center"
           initial={{ translateY: 48, translateX: "var(--translate-x)" }}
           animate={{ translateY: [48, 0], translateX: "var(--translate-x)" }}
           transition={{ duration: 0.5 }}

@@ -1,6 +1,7 @@
 import ArrowDropRightLineIcon from "remixicon-react/ArrowDropRightLineIcon";
 import ArrowDropLeftLineIcon from "remixicon-react/ArrowDropLeftLineIcon";
 import { motion } from "framer-motion";
+import { cn } from "@/styles/helpers/cn";
 
 const draw = {
   hidden: { pathLength: 0, opacity: 0 },
@@ -14,45 +15,63 @@ const draw = {
   }),
 };
 
-export const ArrowButtons = () => {
+type ArrowButtonsProps = {
+  handleClickRight: () => void;
+  handleClickLeft: () => void;
+  isLeftDisable: boolean;
+  isRightDisable: boolean;
+};
+
+export const ArrowButtons = ({
+  handleClickLeft,
+  handleClickRight,
+  isLeftDisable,
+  isRightDisable,
+}: ArrowButtonsProps) => {
+  const buttonDisableClassName = "scale-75 origin-center opacity-50";
+
   return (
     <div className="mb-28 flex items-center gap-2">
-      <button className="relative flex h-[42px] w-[42px] items-center justify-center rounded-full ">
+      <button
+        className={cn(
+          "relative flex h-[56px] w-[56px] scale-100 items-center justify-center rounded-full opacity-100 transition-opacity transition-transform duration-500",
+          isLeftDisable && buttonDisableClassName
+        )}
+        onClick={handleClickLeft}
+      >
         <motion.svg
-          className="absolute inset-0 rotate-90"
-          width="42"
-          height="42"
-          viewBox="0 0 42 42"
+          className="absolute inset-0 m-auto rotate-90"
+          width="56"
+          height="56"
+          viewBox="0 0 56 56"
           initial="hidden"
           animate="visible"
         >
           <motion.circle
-            cx="21"
-            cy="21"
-            r="20"
+            cx="28"
+            cy="28"
+            r="27"
             stroke="#95FAFE"
             strokeWidth="2"
-            strokeOpacity="50%"
             fill="transparent"
             variants={draw}
             custom={{ delayTime: 0.3, durationTime: 0.3 }}
           />
         </motion.svg>
         <motion.svg
-          className="absolute inset-0 rotate-90 -scale-y-100"
-          width="42"
-          height="42"
-          viewBox="0 0 42 42"
+          className="absolute inset-0 m-auto rotate-90 -scale-y-100"
+          width="56"
+          height="56"
+          viewBox="0 0 56 56"
           initial="hidden"
           animate="visible"
         >
           <motion.circle
-            cx="21"
-            cy="21"
-            r="20"
+            cx="28"
+            cy="28"
+            r="27"
             stroke="#95FAFE"
             strokeWidth="2"
-            strokeOpacity="50%"
             fill="transparent"
             variants={draw}
             custom={{ delayTime: 0.3, durationTime: 0.3 }}
@@ -67,9 +86,15 @@ export const ArrowButtons = () => {
           <ArrowDropLeftLineIcon className="h-[24px] w-auto fill-white" />
         </motion.div>
       </button>
-      <motion.button className="relative flex h-[56px] w-[56px] items-center justify-center rounded-full">
+      <motion.button
+        className={cn(
+          "relative flex h-[56px] w-[56px] scale-100 items-center justify-center rounded-full opacity-100 transition-opacity transition-transform duration-500",
+          isRightDisable && buttonDisableClassName
+        )}
+        onClick={handleClickRight}
+      >
         <motion.svg
-          className="absolute inset-0 rotate-90"
+          className="absolute inset-0 m-auto rotate-90"
           width="56"
           height="56"
           viewBox="0 0 56 56"
@@ -88,7 +113,7 @@ export const ArrowButtons = () => {
           />
         </motion.svg>
         <motion.svg
-          className="absolute inset-0 rotate-90 -scale-y-100"
+          className="absolute inset-0 m-auto rotate-90 -scale-y-100"
           width="56"
           height="56"
           viewBox="0 0 56 56"
