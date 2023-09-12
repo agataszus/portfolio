@@ -8,17 +8,29 @@ export const Hero = () => {
 
   return (
     <div className="flex w-[510px] flex-col pb-[52px]">
-      <Text tag="p" variant="subtitle-2" className="mb-10">
-        Agata Szustkiewicz
-      </Text>
-      <Text tag="h1" variant="heading-1" className="mb-14">
-        Hi! I&apos;m Agata. Frontend Developer & blah blah
-      </Text>
+      <div className="mb-10 w-[250px] overflow-hidden">
+        <motion.div initial={{ x: 250 }} animate={{ x: [250, 0] }} transition={{ duration: 0.8, ease: "easeOut" }}>
+          <Text tag="p" variant="subtitle-2">
+            Agata Szustkiewicz
+          </Text>
+        </motion.div>
+      </div>
+      <div className="mb-14 overflow-hidden">
+        <motion.div
+          initial={{ y: 170 }}
+          animate={{ y: [170, 0] }}
+          transition={{ delay: 0.3, duration: 0.7, ease: "easeOut" }}
+        >
+          <Text tag="h1" variant="heading-1">
+            Hi! I&apos;m Agata. Frontend Developer & blah blah
+          </Text>
+        </motion.div>
+      </div>
       <motion.div
         initial={["buttonHidden", "textHidden", "arrowHidden", "arrowContainerHidden"]}
         animate={["buttonVisible", "textVisible", "arrowVisible", "arrowContainerVisible"]}
       >
-        <Button variant="large" text="My projects" onClick={() => router.push("/projects")} />
+        <Button variant="large" text="My projects" onClick={() => router.push("/projects")} additionalDelay={0.5} />
       </motion.div>
     </div>
   );

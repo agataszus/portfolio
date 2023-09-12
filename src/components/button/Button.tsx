@@ -10,9 +10,10 @@ type ButtonProps = {
   text: string;
   onClick?: () => void;
   className?: string;
+  additionalDelay?: number;
 };
 
-export const Button = ({ variant, text, className, onClick }: ButtonProps) => {
+export const Button = ({ variant, text, className, onClick, additionalDelay }: ButtonProps) => {
   const [isHovered, setIsHovered] = useState(false);
   const [isClicked, setIsClicked] = useState(false);
 
@@ -42,8 +43,8 @@ export const Button = ({ variant, text, className, onClick }: ButtonProps) => {
       className={buttonClassName}
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
-      exit={{ opacity: 0 }}
-      transition={{ duration: 1 }}
+      // exit={{ opacity: 0 }}
+      transition={{ delay: additionalDelay, duration: 1 }}
       onClick={() => {
         onClick?.();
         setIsClicked(true);
@@ -63,6 +64,7 @@ export const Button = ({ variant, text, className, onClick }: ButtonProps) => {
           stroke="#95FAFE"
           fill="transparent"
           variants={buttonDraw}
+          custom={additionalDelay}
         ></motion.rect>
       </motion.svg>
       <motion.svg
@@ -77,6 +79,7 @@ export const Button = ({ variant, text, className, onClick }: ButtonProps) => {
           stroke="#95FAFE"
           fill="transparent"
           variants={buttonDraw}
+          custom={additionalDelay}
         ></motion.rect>
       </motion.svg>
       <div className="relative flex h-full w-full items-center justify-center overflow-hidden">
@@ -98,7 +101,11 @@ export const Button = ({ variant, text, className, onClick }: ButtonProps) => {
           )}
         </AnimatePresence>
         <div className="z-10 h-full overflow-hidden">
-          <motion.div className="flex h-full w-full items-center justify-center" variants={textButtonDraw}>
+          <motion.div
+            className="flex h-full w-full items-center justify-center"
+            variants={textButtonDraw}
+            custom={additionalDelay}
+          >
             <Text tag="span" variant="action-2" className={textClassName}>
               {text}
             </Text>
@@ -107,8 +114,8 @@ export const Button = ({ variant, text, className, onClick }: ButtonProps) => {
       </div>
       {variant === "large" && (
         <div className={"h-full w-[70px] shrink-0 justify-end overflow-hidden"}>
-          <motion.div className={arrowContainerClassName} variants={arrowContainerDraw}>
-            <motion.div className="flex h-full w-full justify-center" variants={arrowDraw}>
+          <motion.div className={arrowContainerClassName} variants={arrowContainerDraw} custom={additionalDelay}>
+            <motion.div className="flex h-full w-full justify-center" variants={arrowDraw} custom={additionalDelay}>
               <ArrowRightSFillIcon className={arrowClassName} />
             </motion.div>
           </motion.div>

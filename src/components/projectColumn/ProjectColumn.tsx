@@ -26,10 +26,10 @@ const draw = {
 
 export const buttonDraw = {
   buttonHidden: { pathLength: 0 },
-  buttonVisible: () => ({
+  buttonVisible: (additionalDelay: number = 0) => ({
     pathLength: [0, 0.82],
     transition: {
-      delay: 0.1,
+      delay: 0.1 + additionalDelay,
       duration: 0.6,
       ease: "easeOut",
     },
@@ -43,30 +43,36 @@ export const textButtonDraw = {
     x: [-160, 0],
     transition: { x: { duration: 0.3, ease: "easeOut" }, opacity: { duration: 0.8 } },
   }),
-  textVisible: () => ({
+  textVisible: (additionalDelay: number = 0) => ({
     opacity: [0, 1],
     x: [-160, 0],
-    transition: { x: { duration: 0.6, ease: "easeOut" }, opacity: { duration: 0.6 } },
+    transition: {
+      x: { delay: additionalDelay, duration: 0.6, ease: "easeOut" },
+      opacity: { delay: additionalDelay, duration: 0.6 },
+    },
   }),
 };
 
 export const arrowDraw = {
   arrowHidden: { opacity: 0 },
-  arrowVisible: () => ({ opacity: [0, 1], transition: { delay: 0.5, duration: 0.3 } }),
+  arrowVisible: (additionalDelay: number = 0) => ({
+    opacity: [0, 1],
+    transition: { delay: 0.5 + additionalDelay, duration: 0.3 },
+  }),
 };
 
 export const arrowContainerDraw = {
   arrowContainerHidden: { x: 70 },
-  arrowContainerVisible: () => ({
+  arrowContainerVisible: (additionalDelay: number = 0) => ({
     x: [70, 0],
-    transition: { delay: 0.3, duration: 0.2 },
+    transition: { delay: 0.3 + additionalDelay, duration: 0.2 },
   }),
 };
 
 //--gradient": "none linear-gradient(90deg, rgba(0,0,0,0.3) 0%, rgba(0,0,0,0.1) 50%, rgba(0,0,0,0.05) 100%)
 export const ProjectColumn = ({ iconName, name, description, index }: ProjectColumnProps) => {
   const columnClassName = cn(
-    "flex h-full w-[356px] shrink-0 flex-col gap-8 border-l-2 border-primary/40 px-11 py-8 relative",
+    "flex h-full w-[368px] shrink-0 flex-col gap-8 border-l-2 border-primary/40 px-11 py-8 relative",
     "[--hover-opacity:0%] [--default-opacity:100%] [--translate-x:0] [--hover-path-length:0] [--hover-border-overflow: hidden] [--hover-translate-y:10px] [--underline-with:22px] [--underline-color:rgb(149,250,254,0.6)]"
   );
 

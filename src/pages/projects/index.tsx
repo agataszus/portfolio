@@ -30,12 +30,18 @@ const PROJECTS = [
       "Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolorem, consequuntur sunt. Nemo soluta omnis, tenetur aperiam nihil, saepe commodi.",
     iconName: IconNames.MUSIC_ICON,
   },
+  {
+    name: "Algorithms",
+    description:
+      "Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolorem, consequuntur sunt. Nemo soluta omnis, tenetur aperiam nihil, saepe commodi possimus.",
+    iconName: IconNames.SORT_ICON,
+  },
 ];
 
 export default function ProjectsPage() {
   return (
     <div className="flex h-full w-full overflow-x-scroll">
-      <div className="flex h-full w-[240px] shrink-0 flex-col items-center justify-start gap-80 pt-12">
+      <div className="flex h-full w-[270px] shrink-0 flex-col items-center justify-start gap-80 pt-12">
         <motion.div
           initial={{ opacity: 0 }}
           animate={{ opacity: [0, 1] }}
@@ -50,9 +56,11 @@ export default function ProjectsPage() {
         </motion.div>
         <ArrowButtons />
       </div>
-      {PROJECTS.map(({ name, description, iconName }, index) => (
-        <ProjectColumn name={name} description={description} iconName={iconName} index={index + 1} key={name} />
-      ))}
+      <div className="flex overflow-x-scroll">
+        {PROJECTS.map(({ name, description, iconName }, index) => (
+          <ProjectColumn name={name} description={description} iconName={iconName} index={index + 1} key={name} />
+        ))}
+      </div>
     </div>
   );
 }
