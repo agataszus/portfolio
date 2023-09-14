@@ -1,9 +1,13 @@
+import { MOBILE, TABLET, useMediaQueries } from "@/hooks/useMediaQueries";
 import { Button } from "../button/Button";
 import { Navbar } from "../navbar/Navbar";
 import { Text } from "../text/Text";
 import { motion } from "framer-motion";
+import { MobileNavbar } from "../mobileNavbar/MobileNavbar";
 
 export const Topbar = () => {
+  const mediaQuery = useMediaQueries();
+
   return (
     <div className="w-full overflow-hidden">
       <motion.div
@@ -23,10 +27,16 @@ export const Topbar = () => {
             Szustkiewicz
           </Text>
         </div>
-        <Navbar />
-        <motion.div initial={["buttonHidden", "textHidden"]} animate={["buttonVisible", "textVisible"]}>
-          <Button variant="small" text="contact" additionalDelay={0.4} />
-        </motion.div>
+        {[MOBILE, TABLET].includes(mediaQuery) ? (
+          <MobileNavbar />
+        ) : (
+          <>
+            <Navbar />
+            <motion.div initial={["buttonHidden", "textHidden"]} animate={["buttonVisible", "textVisible"]}>
+              <Button variant="small" text="contact" additionalDelay={0.4} />
+            </motion.div>
+          </>
+        )}
       </motion.div>
     </div>
   );

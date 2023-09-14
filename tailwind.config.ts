@@ -36,6 +36,9 @@ const config: Config = {
       maxWidth: {
         "8xl": "1440px",
       },
+      zIndex: {
+        60: "60",
+      },
     },
   },
   plugins: [],
