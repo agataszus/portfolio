@@ -31,7 +31,7 @@ export const ArrowButtons = ({
   const buttonDisableClassName = "scale-75 origin-center opacity-50";
 
   return (
-    <div className="mb-28 flex items-center gap-2">
+    <div className="flex items-center gap-2">
       <button
         className={cn(
           "relative flex h-[56px] w-[56px] scale-100 items-center justify-center rounded-full opacity-100 transition-opacity transition-transform duration-500",

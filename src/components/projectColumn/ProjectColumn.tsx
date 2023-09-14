@@ -74,7 +74,7 @@ export const arrowContainerDraw = {
 //--gradient": "none linear-gradient(90deg, rgba(0,0,0,0.3) 0%, rgba(0,0,0,0.1) 50%, rgba(0,0,0,0.05) 100%)
 export const ProjectColumn = ({ iconName, name, description, index, Icon }: ProjectColumnProps) => {
   const columnClassName = cn(
-    "flex h-full w-[368px] shrink-0 flex-col gap-8 border-l-2 border-primary/40 px-11 py-8 relative",
+    "flex h-full desktop-mid:w-[368px] w-[450px] shrink-0 flex-col desktop-mid:gap-8 gap-10 border-l-2 border-primary/40 desktop-mid:px-11 px-14 py-8 relative",
     "[--hover-opacity:0%] [--default-opacity:100%] [--translate-x:0] [--hover-path-length:0] [--hover-border-overflow: hidden] [--hover-translate-y:10px] [--underline-width:22px] [--underline-color:rgb(149,250,254,0.6)] [--translate-x-text:70px] [--hover-rotate:-180deg]"
   );
 
@@ -120,7 +120,7 @@ export const ProjectColumn = ({ iconName, name, description, index, Icon }: Proj
         animate={{ opacity: [0, 1, 0] }}
         transition={{ delay: extraDelay, duration: 2, ease: "easeOut" }}
       />
-      <div className="z-10 flex w-full justify-between">
+      <div className="z-10 mb-20 flex w-full justify-between desktop-mid:mb-0">
         <div>
           <motion.div
             className="py-4"
@@ -176,13 +176,13 @@ export const ProjectColumn = ({ iconName, name, description, index, Icon }: Proj
         </motion.svg>
         <ProjectIcon name={iconName} extraDelay={extraDelay} />
       </motion.div>
-      <div className="z-10 overflow-hidden">
+      <div className="z-10 flex h-10 shrink-0 overflow-hidden">
         <motion.div
           initial={{ translateY: 40 }}
           animate={{ translateY: [40, 0] }}
           transition={{ delay: 0.2 + extraDelay, duration: 0.5 }}
         >
-          <Text tag="h2" variant="heading-2">
+          <Text tag="h2" variant="heading-2" className="h-full">
             {name}
           </Text>
         </motion.div>

@@ -8,6 +8,7 @@ import ReactJsLineIcon from "remixicon-react/ReactjsLineIcon";
 import Html5LineIcon from "remixicon-react/Html5LineIcon";
 import { UIEvent, useLayoutEffect, useRef, useState } from "react";
 import { cn } from "@/styles/helpers/cn";
+import { DESKTOP, useMediaQueries } from "@/hooks/useMediaQueries";
 
 const PROJECTS = [
   {
@@ -48,6 +49,8 @@ const PROJECTS = [
 ] as const;
 
 export default function ProjectsPage() {
+  const mediaQuery = useMediaQueries();
+
   const [isScrolled, setIsScrolled] = useState(false);
   const [isLeftDisable, setIsLeftDisable] = useState(true);
   const [isRightDisable, setIsRightDisable] = useState(false);
@@ -76,7 +79,7 @@ export default function ProjectsPage() {
   const handleArrowClick = (direction: "left" | "right") => {
     const clientWidth = projectsContainerRef.current?.clientWidth;
     const scrollLeft = projectsContainerRef.current?.scrollLeft;
-    const elementWidth = 368;
+    const elementWidth = mediaQuery === DESKTOP ? 450 : 368;
 
     if (clientWidth === undefined || scrollLeft === undefined) return;
 
@@ -104,7 +107,7 @@ export default function ProjectsPage() {
     <div className="flex h-full w-full">
       <div
         className={cn(
-          "flex h-full w-[270px] shrink-0 flex-col items-center justify-start gap-80 pt-12 shadow-large-right-invisible transition-shadow duration-200 ease-in",
+          "flex h-full w-[340px] shrink-0 flex-col items-center justify-start gap-96 pt-12 shadow-large-right-invisible transition-shadow duration-200 ease-in desktop-mid:w-[270px] desktop-mid:gap-72",
           isScrolled && "shadow-large-right"
         )}
       >

@@ -11,6 +11,7 @@ const config: Config = {
       mobile: { max: "767px" },
       tablet: { max: "1023px" },
       "desktop-small": { max: "1365px" },
+      "desktop-mid": { max: "1919px" },
     },
     extend: {
       colors: {
@@ -31,6 +32,9 @@ const config: Config = {
       boxShadow: {
         "large-right": "36px 0 46px rgb(0,0,0,0.2)",
         "large-right-invisible": "36px 0 46px rgb(0,0,0,0)",
+      },
+      maxWidth: {
+        "8xl": "1440px",
       },
     },
   },
