@@ -1,3 +1,4 @@
+import { isServer } from "@/helpers/isServer";
 import { useEffect, useState } from "react";
 
 export const DESKTOP = "desktop";
@@ -7,7 +8,7 @@ export const TABLET = "tablet";
 export const MOBILE = "mobile";
 
 export const useMediaQueries = () => {
-  const [width, setWidth] = useState(0);
+  const [width, setWidth] = useState(isServer() ? 0 : window.innerWidth);
 
   useEffect(() => {
     const handleResize = () => {

@@ -17,7 +17,7 @@ export const NavLink = ({ linkTo, text }: NavLinkProps) => {
   return (
     <div className="flex h-7 flex-col" onMouseOver={() => setIsHovered(true)} onMouseLeave={() => setIsHovered(false)}>
       <Link href={linkTo} className="flex h-6">
-        <Text tag="p" variant="action-1">
+        <Text tag="p" variant="action-2">
           {text}
         </Text>
       </Link>

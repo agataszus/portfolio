@@ -6,6 +6,7 @@ type Tag = "h1" | "h2" | "h3" | "h4" | "h5" | "h6" | "p" | "span" | "div";
 type Variant =
   | "action-1"
   | "action-2"
+  | "action-3"
   | "subtitle-1"
   | "subtitle-2"
   | "heading-1"
@@ -22,8 +23,9 @@ type TextProps = {
 export const Text = ({ children, tag, variant, className }: TextProps) => {
   const extraClass = cn(
     {
-      ["text-sm font-semibold text-white"]: variant === "action-1",
-      ["text-xs font-semibold text-white uppercase"]: variant === "action-2",
+      ["text-base font-medium text-white"]: variant === "action-1",
+      ["text-sm font-semibold text-white"]: variant === "action-2",
+      ["text-xs font-semibold text-white uppercase"]: variant === "action-3",
       ["text-base uppercase font-bold"]: variant === "subtitle-1",
       ["text-sm uppercase text-primary font-medium tracking-3"]: variant === "subtitle-2",
       ["text-5xl font-bold text-white leading-tighter"]: variant === "heading-1",

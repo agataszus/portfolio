@@ -9,6 +9,7 @@ import Html5LineIcon from "remixicon-react/Html5LineIcon";
 import { UIEvent, useLayoutEffect, useRef, useState } from "react";
 import { cn } from "@/styles/helpers/cn";
 import { DESKTOP, useMediaQueries } from "@/hooks/useMediaQueries";
+import { MenuTooltip } from "@/components/menuTooltip/MenuTooltip";
 
 const PROJECTS = [
   {
@@ -107,28 +108,29 @@ export default function ProjectsPage() {
     <div className="flex h-full w-full">
       <div
         className={cn(
-          "flex h-full w-[340px] shrink-0 flex-col items-center justify-start gap-96 pt-12 shadow-large-right-invisible transition-shadow duration-200 ease-in desktop-mid:w-[270px] desktop-mid:gap-72",
+          "flex h-full w-[340px] shrink-0 flex-col items-center justify-start gap-96 pt-12 shadow-large-right-invisible transition-shadow duration-200 ease-in desktop-mid:w-[270px] desktop-mid:gap-68",
           isScrolled && "shadow-large-right"
         )}
       >
-        <motion.div
-          initial={{ opacity: 0 }}
-          animate={{ opacity: [0, 1] }}
-          transition={{ delay: 0.4, duration: 0.5 }}
-          className="ml-8 self-start"
-        >
-          <Link href="/">
-            <Text tag="p" variant="action-2" className=" text-primary/80 duration-150 hover:text-primary">
-              &#8592; back
-            </Text>
-          </Link>
-        </motion.div>
+        <MenuTooltip />
         <ArrowButtons
           handleClickLeft={() => handleArrowClick("left")}
           handleClickRight={() => handleArrowClick("right")}
           isLeftDisable={isLeftDisable}
           isRightDisable={isRightDisable}
         />
+        <motion.div
+          initial={{ opacity: 0 }}
+          animate={{ opacity: [0, 1] }}
+          transition={{ delay: 0.4, duration: 0.5 }}
+          className="mb-10 ml-8 mt-auto self-start"
+        >
+          <Link href="/">
+            <Text tag="p" variant="action-3" className="text-primary/80 duration-150 hover:text-primary">
+              &#8592; Go back
+            </Text>
+          </Link>
+        </motion.div>
       </div>
       <div className="scrollbar-none flex overflow-x-scroll" onScroll={handleScroll} ref={projectsContainerRef}>
         {PROJECTS.map(({ name, description, iconName, TechnologyIcon }, index) => (

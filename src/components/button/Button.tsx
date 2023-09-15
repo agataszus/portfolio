@@ -106,7 +106,7 @@ export const Button = ({ variant, text, className, onClick, additionalDelay }: B
             variants={textButtonDraw}
             custom={additionalDelay}
           >
-            <Text tag="span" variant="action-2" className={textClassName}>
+            <Text tag="span" variant="action-3" className={textClassName}>
               {text}
             </Text>
           </motion.div>

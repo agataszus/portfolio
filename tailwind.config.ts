@@ -39,6 +39,9 @@ const config: Config = {
       zIndex: {
         60: "60",
       },
+      gap: {
+        68: "272px",
+      },
     },
   },
   plugins: [],

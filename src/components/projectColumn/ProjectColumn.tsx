@@ -140,7 +140,7 @@ export const ProjectColumn = ({ iconName, name, description, index, Icon }: Proj
           />
         </div>
         <div className="flex flex-col items-end gap-2 overflow-hidden">
-          <Text tag="h4" variant="action-2" className="translate-x-[--translate-x-text] pt-4 opacity-80">
+          <Text tag="h4" variant="action-3" className="translate-x-[--translate-x-text] pt-4 opacity-80">
             Made with
           </Text>
           <div className="rotate-[--hover-rotate] opacity-[--hover-opacity]">
@@ -197,7 +197,7 @@ export const ProjectColumn = ({ iconName, name, description, index, Icon }: Proj
             animate={{ translateY: [20, 0] }}
             transition={{ delay: 0.3 + extraDelay, duration: 0.5 }}
           >
-            <Text tag="p" variant="action-2" className="text-primary">
+            <Text tag="p" variant="action-3" className="text-primary">
               See more &#8594;
             </Text>
           </motion.div>
@@ -208,10 +208,10 @@ export const ProjectColumn = ({ iconName, name, description, index, Icon }: Proj
             {description}
           </Text>
           <div className="flex flex-col gap-3">
-            <Text tag="p" variant="action-2" className="text-primary">
+            <Text tag="p" variant="action-3" className="text-primary">
               Live demo &#8594;
             </Text>
-            <Text tag="p" variant="action-2" className="text-primary">
+            <Text tag="p" variant="action-3" className="text-primary">
               Code on github &#8594;
             </Text>
           </div>

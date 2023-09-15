@@ -10,7 +10,7 @@ export const MobileNavbar = () => {
   const handleClick = () => setIsMenuOpen(false);
 
   return (
-    <div className="cursor-pointer">
+    <div className="hidden cursor-pointer tablet:block">
       <AnimatePresence mode="wait" initial={false}>
         {isMenuOpen ? (
           <CloseLineIcon className="relative z-60 h-9 w-auto fill-white" onClick={() => setIsMenuOpen(false)} />
