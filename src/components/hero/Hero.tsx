@@ -3,7 +3,7 @@ import { Text } from "../text/Text";
 
 export const Hero = () => {
   return (
-    <div className="flex w-[470px] flex-col">
+    <div className="flex w-[510px] flex-col pb-[52px]">
       <Text tag="p" variant="subtitle-2" className="mb-10">
         Agata Szustkiewicz
       </Text>
