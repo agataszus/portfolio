@@ -4,13 +4,14 @@ import Link from "next/link";
 type NavLinkProps = {
   linkTo: string;
   text: string;
+  onClick: () => void;
 };
 
-export const MobileNavLink = ({ linkTo, text }: NavLinkProps) => {
+export const MobileNavLink = ({ linkTo, text, onClick }: NavLinkProps) => {
   return (
-    <div className="flex h-7 flex-col">
-      <Link href={linkTo} className="flex h-6">
-        <Text tag="p" variant="heading-2" className="transition-colors hover:text-primary">
+    <div className="flex flex-col">
+      <Link href={linkTo} className="flex" onClick={onClick}>
+        <Text tag="p" variant="heading-2" className="h-full transition-colors hover:text-primary">
           {text}
         </Text>
       </Link>
