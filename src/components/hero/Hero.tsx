@@ -3,13 +3,20 @@ import { Text } from "../text/Text";
 import { useRouter } from "next/router";
 import { motion } from "framer-motion";
 
+const SUBHEADING_SLIDE_OFFSET = 250;
+const HEADING_SLIDE_OFFSET = 170;
+
 export const Hero = () => {
   const router = useRouter();
 
   return (
     <div className="flex w-[510px] flex-col pb-[52px]">
       <div className="mb-10 w-[250px] overflow-hidden">
-        <motion.div initial={{ x: 250 }} animate={{ x: [250, 0] }} transition={{ duration: 0.8, ease: "easeOut" }}>
+        <motion.div
+          initial={{ x: SUBHEADING_SLIDE_OFFSET }}
+          animate={{ x: [SUBHEADING_SLIDE_OFFSET, 0] }}
+          transition={{ duration: 0.8, ease: "easeOut" }}
+        >
           <Text tag="p" variant="subtitle-2">
             Agata Szustkiewicz
           </Text>
@@ -17,8 +24,8 @@ export const Hero = () => {
       </div>
       <div className="mb-14 overflow-hidden">
         <motion.div
-          initial={{ y: 170 }}
-          animate={{ y: [170, 0] }}
+          initial={{ y: HEADING_SLIDE_OFFSET }}
+          animate={{ y: [HEADING_SLIDE_OFFSET, 0] }}
           transition={{ delay: 0.3, duration: 0.7, ease: "easeOut" }}
         >
           <Text tag="h1" variant="heading-1">
