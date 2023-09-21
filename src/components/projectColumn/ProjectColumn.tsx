@@ -2,9 +2,11 @@ import { Text } from "../text/Text";
 import ArrowRightSFillIcon from "remixicon-react/ArrowRightSFillIcon";
 import { Button } from "../button/Button";
 import { cn } from "@/styles/helpers/cn";
-import { motion } from "framer-motion";
+import { motion, useInView } from "framer-motion";
 import { IconNames, ProjectIcon } from "../projectIcon/ProjectIcon";
 import { TechnologyIcon } from "../technologyIcon/TechnologyIcon";
+import { DESKTOP, DESKTOP_MID, DESKTOP_SMALL, MOBILE, TABLET, useMediaQueries } from "@/hooks/useMediaQueries";
+import { useRef } from "react";
 
 type ProjectColumnProps = {
   iconName: IconNames;
@@ -71,8 +73,10 @@ export const arrowContainerDraw = {
   }),
 };
 
-//--gradient": "none linear-gradient(90deg, rgba(0,0,0,0.3) 0%, rgba(0,0,0,0.1) 50%, rgba(0,0,0,0.05) 100%)
 export const ProjectColumn = ({ iconName, name, description, index, Icon }: ProjectColumnProps) => {
+  const mediaQuery = useMediaQueries();
+  const columnRef = useRef<HTMLDivElement>(null);
+
   const columnClassName = cn(
     "flex h-full desktop-mid:w-[368px] tablet:h-[450px] tablet:w-full mobile:h-[720px] w-[450px] shrink-0 flex-col tablet:gap-3 desktop-mid:gap-8 gap-10 tablet:border-t-2 tablet:border-l-0 border-l-2 border-primary/40 desktop-mid:px-11 px-14 mobile:px-8 py-8 relative overflow-y-hidden",
     "[--hover-opacity:0%] [--default-opacity:100%] [--translate-x:0] [--hover-path-length:0] [--hover-border-overflow: hidden] [--hover-translate-y:10px] [--underline-width:22px] [--underline-color:rgb(149,250,254,0.6)] [--translate-x-text:70px] [--hover-rotate:-180deg] [--tablet-left-to-left:50%] tablet:[--tablet-translate-x:-50%] [--tablet-translate-x:0] mobile:[--tablet-translate-x:0]"
@@ -80,11 +84,18 @@ export const ProjectColumn = ({ iconName, name, description, index, Icon }: Proj
 
   const extraDelay = (index - 1) * 0.1;
 
+  const isInView = useInView(columnRef, { margin: "-300px 0px" });
+
   return (
     <motion.div
+      ref={columnRef}
       className={columnClassName}
       initial={["hidden", "buttonHidden", "textHidden", "arrowHidden", "arrowContainerHidden"]}
-      whileHover={["visible", "buttonVisible", "textHovered", "arrowVisible", "arrowContainerVisible"]}
+      whileHover={
+        [DESKTOP, DESKTOP_MID, DESKTOP_SMALL].includes(mediaQuery)
+          ? ["visible", "buttonVisible", "textHovered", "arrowVisible", "arrowContainerVisible"]
+          : undefined
+      }
       variants={
         {
           visible: {
@@ -104,7 +115,11 @@ export const ProjectColumn = ({ iconName, name, description, index, Icon }: Proj
           // eslint-disable-next-line @typescript-eslint/no-explicit-any
         } as any
       }
-      animate={{ background: "var(--gradient)" }}
+      animate={
+        isInView && [MOBILE, TABLET].includes(mediaQuery)
+          ? ["visible", "buttonVisible", "textHovered", "arrowVisible", "arrowContainerVisible"]
+          : undefined
+      }
       transition={{
         "--translate-x": { duration: 0.6 },
         "--hover-path-length": { duration: 1 },
