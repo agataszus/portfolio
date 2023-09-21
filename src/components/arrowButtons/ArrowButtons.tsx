@@ -34,7 +34,7 @@ export const ArrowButtons = ({
     <div className="mb-28 flex items-center gap-2">
       <button
         className={cn(
-          "relative flex h-[56px] w-[56px] scale-100 items-center justify-center rounded-full opacity-100 transition-opacity transition-transform duration-500",
+          "relative flex h-14 w-14 scale-100 items-center justify-center rounded-full opacity-100 transition-opacity transition-transform duration-500",
           isLeftDisable && buttonDisableClassName
         )}
         onClick={handleClickLeft}
@@ -78,17 +78,17 @@ export const ArrowButtons = ({
           />
         </motion.svg>
         <motion.div
-          className="flex h-[24px] w-[24px] items-center justify-center"
+          className="flex h-6 w-6 items-center justify-center"
           initial={{ translateX: 15 }}
           animate={{ translateX: 0 }}
           transition={{ delay: 0.3, duration: 0.3, ease: "easeOut" }}
         >
-          <ArrowDropLeftLineIcon className="h-[24px] w-auto fill-white" />
+          <ArrowDropLeftLineIcon className="h-6 w-auto fill-white" />
         </motion.div>
       </button>
       <motion.button
         className={cn(
-          "relative flex h-[56px] w-[56px] scale-100 items-center justify-center rounded-full opacity-100 transition-opacity transition-transform duration-500",
+          "relative flex h-14 w-14 scale-100 items-center justify-center rounded-full opacity-100 transition-opacity transition-transform duration-500",
           isRightDisable && buttonDisableClassName
         )}
         onClick={handleClickRight}
@@ -132,12 +132,12 @@ export const ArrowButtons = ({
           />
         </motion.svg>
         <motion.div
-          className="flex h-[24px] w-[24px] items-center justify-center"
+          className="flex h-6 w-6 items-center justify-center"
           initial={{ translateX: -20 }}
           animate={{ translateX: 0 }}
           transition={{ delay: 0.2, duration: 0.4, ease: "easeOut" }}
         >
-          <ArrowDropRightLineIcon className="h-[24px] w-auto fill-white" />
+          <ArrowDropRightLineIcon className="h-6 w-auto fill-white" />
         </motion.div>
       </motion.button>
     </div>

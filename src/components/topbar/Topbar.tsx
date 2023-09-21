@@ -16,10 +16,10 @@ export const Topbar = () => {
         }}
       >
         <div className="flex flex-col">
-          <Text tag="p" variant="subtitle-1" className="leading-tight tracking-widest text-primary">
+          <Text tag="div" variant="subtitle-1" className="leading-tight tracking-widest text-primary">
             Agata
           </Text>
-          <Text tag="p" variant="subtitle-1" className="leading-tight tracking-widest text-white">
+          <Text tag="div" variant="subtitle-1" className="leading-tight tracking-widest text-white">
             Szustkiewicz
           </Text>
         </div>

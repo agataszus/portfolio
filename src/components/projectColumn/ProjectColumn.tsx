@@ -71,7 +71,6 @@ export const arrowContainerDraw = {
   }),
 };
 
-//--gradient": "none linear-gradient(90deg, rgba(0,0,0,0.3) 0%, rgba(0,0,0,0.1) 50%, rgba(0,0,0,0.05) 100%)
 export const ProjectColumn = ({ iconName, name, description, index, Icon }: ProjectColumnProps) => {
   const columnClassName = cn(
     "flex h-full w-[368px] shrink-0 flex-col gap-8 border-l-2 border-primary/40 px-11 py-8 relative",

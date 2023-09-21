@@ -19,7 +19,7 @@ export const Button = ({ variant, text, className, onClick, additionalDelay }: B
 
   const buttonClassName = cn(
     "cursor-pointer relative",
-    { ["h-[48px] w-[160px] bg-transparent"]: variant === "small", ["h-[70px] w-[248px] flex"]: variant === "large" },
+    { ["h-12 w-40 bg-transparent"]: variant === "small", ["h-[70px] w-[248px] flex"]: variant === "large" },
     className
   );
   const backgroundClassName = cn("absolute inset-0 z-0 bg-button-color-light transition-colors duration-500", {
@@ -34,7 +34,7 @@ export const Button = ({ variant, text, className, onClick, additionalDelay }: B
   const textClassName = cn("z-10 transition-colors duration-500", {
     ["text-background-color-dark"]: isClicked,
   });
-  const arrowClassName = cn("my-auto h-[20px] w-full justify-center fill-white transition-colors duration-500", {
+  const arrowClassName = cn("my-auto h-5 w-full justify-center fill-white transition-colors duration-500", {
     ["fill-background-color-dark"]: isClicked,
   });
 
@@ -43,7 +43,6 @@ export const Button = ({ variant, text, className, onClick, additionalDelay }: B
       className={buttonClassName}
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
-      // exit={{ opacity: 0 }}
       transition={{ delay: additionalDelay, duration: 1 }}
       onClick={() => {
         onClick?.();
