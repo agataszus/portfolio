@@ -10,7 +10,10 @@ type LayoutProps = {
 } & PropsWithChildren;
 
 export const Layout = ({ children, className }: LayoutProps) => {
-  const layoutClassName = cn("bg-gradient-radial h-screen w-screen overflow-hidden", className);
+  const layoutClassName = cn(
+    "bg-gradient-radial h-screen w-screen overflow-hidden tablet:min-h-screen tablet:h-auto",
+    className
+  );
   const { pathname } = useRouter();
   const previousPathname = usePrevious(pathname);
   const [wasPathnameChanged, setWasPathnameChanged] = useState(false);
@@ -25,7 +28,7 @@ export const Layout = ({ children, className }: LayoutProps) => {
         <>
           <motion.div
             key={`overlay-animation-${pathname}-1`}
-            className="fixed inset-0 z-50 bg-primary/20"
+            className="fixed inset-0 z-[1000] bg-primary/20"
             initial={{ y: "100%" }}
             animate={{
               y: ["100%", "0%", "-100%"],
@@ -34,7 +37,7 @@ export const Layout = ({ children, className }: LayoutProps) => {
           />
           <motion.div
             key={`overlay-animation-${pathname}-2`}
-            className="fixed inset-0 z-50 overflow-hidden bg-primary"
+            className="fixed inset-0 z-[1000] overflow-hidden bg-primary"
             initial={{ y: "100%" }}
             animate={{
               y: ["100%", "0%", "-100%"],

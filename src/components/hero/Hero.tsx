@@ -22,7 +22,9 @@ export const Hero = () => {
           transition={{ delay: 0.3, duration: 0.7, ease: "easeOut" }}
         >
           <Text tag="h1" variant="heading-1">
-            Hi! I&apos;m Agata. Frontend Developer & blah blah
+            Hi! I&apos;m Agata.
+            <br /> Frontend Developer
+            <br />& blah blah
           </Text>
         </motion.div>
       </div>

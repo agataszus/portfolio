@@ -6,10 +6,11 @@ import Link from "next/link";
 import { motion } from "framer-motion";
 import ReactJsLineIcon from "remixicon-react/ReactjsLineIcon";
 import Html5LineIcon from "remixicon-react/Html5LineIcon";
-import { UIEvent, useLayoutEffect, useRef, useState } from "react";
+import { UIEvent, useEffect, useLayoutEffect, useRef, useState } from "react";
 import { cn } from "@/styles/helpers/cn";
 import { DESKTOP, useMediaQueries } from "@/hooks/useMediaQueries";
 import { MenuTooltip } from "@/components/menuTooltip/MenuTooltip";
+import { Topbar } from "@/components/topbar/Topbar";
 
 const PROJECTS = [
   {
@@ -51,6 +52,23 @@ const PROJECTS = [
 
 export default function ProjectsPage() {
   const mediaQuery = useMediaQueries();
+
+  const [isScrolledDown, setIsScrolledDown] = useState(false);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      if (window.scrollY !== 0) {
+        setIsScrolledDown(true);
+        return;
+      }
+
+      setIsScrolledDown(false);
+    };
+
+    document.addEventListener("scroll", handleScroll);
+
+    return () => document.removeEventListener("scroll", handleScroll);
+  }, []);
 
   const [isScrolled, setIsScrolled] = useState(false);
   const [isLeftDisable, setIsLeftDisable] = useState(true);
@@ -105,10 +123,13 @@ export default function ProjectsPage() {
   };
 
   return (
-    <div className="flex h-full w-full">
+    <div className="flex h-full w-full [--topbar-tablet-height:88px] tablet:mt-[--topbar-tablet-height] tablet:flex-col">
+      <div className="hidden tablet:block">
+        <Topbar className={cn(isScrolledDown && "shadow-large-down tablet:bg-background-color-dark/60")} />
+      </div>
       <div
         className={cn(
-          "flex h-full w-[340px] shrink-0 flex-col items-center justify-start gap-96 pt-12 shadow-large-right-invisible transition-shadow duration-200 ease-in desktop-mid:w-[270px] desktop-mid:gap-68",
+          "flex h-full w-[340px] shrink-0 flex-col items-center justify-start gap-96 pt-12 shadow-large-right-invisible transition-shadow duration-200 ease-in desktop-mid:w-[270px] desktop-mid:gap-68 tablet:hidden",
           isScrolled && "shadow-large-right"
         )}
       >
@@ -132,7 +153,11 @@ export default function ProjectsPage() {
           </Link>
         </motion.div>
       </div>
-      <div className="scrollbar-none flex overflow-x-scroll" onScroll={handleScroll} ref={projectsContainerRef}>
+      <div
+        className="scrollbar-none flex overflow-x-scroll tablet:flex-col tablet:overflow-visible"
+        onScroll={handleScroll}
+        ref={projectsContainerRef}
+      >
         {PROJECTS.map(({ name, description, iconName, TechnologyIcon }, index) => (
           <ProjectColumn
             name={name}
