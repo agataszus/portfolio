@@ -10,6 +10,28 @@ body {
   background: radial-gradient(circle at 65% 43%, rgba(41, 56, 104, 1) 0%, rgba(13, 14, 56, 1) 87%);
 }
 
+.bg-linear-gradient-black {
+  background: linear-gradient(90deg, rgba(0, 0, 0, 0.3) 0%, rgba(0, 0, 0, 0.1) 50%, rgba(0, 0, 0, 0.05) 100%);
+}
+
+.bg-linear-gradient-white-to-right {
+  background: linear-gradient(
+    0deg,
+    rgba(256, 256, 256, 0.2) 0%,
+    rgba(256, 256, 256, 0.1) 50%,
+    rgba(256, 256, 256, 0.05) 100%
+  );
+}
+
+.bg-linear-gradient-white-tablet-to-bottom {
+  background: linear-gradient(
+    90deg,
+    rgba(256, 256, 256, 0.2) 0%,
+    rgba(256, 256, 256, 0.1) 50%,
+    rgba(256, 256, 256, 0.05) 100%
+  );
+}
+
 .scrollbar-none {
   -ms-overflow-style: none;
   scrollbar-width: none;

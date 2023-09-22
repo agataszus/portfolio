@@ -1,6 +1,6 @@
 import { motion } from "framer-motion";
 import { BUTTON_LARGE_SIZE, BUTTON_SMALL_SIZE } from "../button.constants";
-import { buttonDraw } from "../../projectColumn/constants";
+import { buttonDraw } from "../../projectColumn/projectColumn.constants";
 import { cn } from "@/styles/helpers/cn";
 
 type HalfRectProps = {

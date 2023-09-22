@@ -2,7 +2,7 @@ import { Text } from "../text/Text";
 import { cn } from "@/styles/helpers/cn";
 import { motion } from "framer-motion";
 import { useState } from "react";
-import { textButtonDraw } from "../projectColumn/constants";
+import { textButtonDraw } from "../projectColumn/projectColumn.constants";
 import { FullRect } from "./parts/FullRect";
 import { AnimatedBackground } from "./parts/AnimatedBackground";
 import { Arrow } from "./parts/Arrow";

@@ -1,4 +1,4 @@
-import { arrowContainerDraw, arrowDraw } from "@/components/projectColumn/constants";
+import { arrowContainerDraw, arrowDraw } from "@/components/projectColumn/projectColumn.constants";
 import { cn } from "@/styles/helpers/cn";
 import { motion } from "framer-motion";
 import ArrowRightSFillIcon from "remixicon-react/ArrowRightSFillIcon";

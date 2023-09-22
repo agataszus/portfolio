@@ -1,117 +1,37 @@
 import { ProjectColumn } from "@/components/projectColumn/ProjectColumn";
 import { ArrowButtons } from "@/components/arrowButtons/ArrowButtons";
-import { IconNames } from "@/components/projectIcon/ProjectIcon";
 import { Text } from "@/components/text/Text";
 import Link from "next/link";
 import { motion } from "framer-motion";
-import ReactJsLineIcon from "remixicon-react/ReactjsLineIcon";
-import Html5LineIcon from "remixicon-react/Html5LineIcon";
-import { UIEvent, useEffect, useLayoutEffect, useRef, useState } from "react";
+import { UIEvent, useRef, useState } from "react";
 import { cn } from "@/styles/helpers/cn";
-import { DESKTOP, useMediaQueries } from "@/hooks/useMediaQueries";
 import { MenuTooltip } from "@/components/menuTooltip/MenuTooltip";
 import { Topbar } from "@/components/topbar/Topbar";
+import { GetStaticProps } from "next";
+import { getProjects } from "@/services/content/getProjects";
+import { useScrollDownCheck } from "@/hooks/useScrollDownCheck";
+import { useButtonsDisableCheck } from "@/hooks/useButtonsDisableCheck";
+import { useProjectsOnArrowsClickScroll } from "@/hooks/useProjectsOnArrowsClickScroll";
 
-const PROJECTS = [
-  {
-    name: "EventHive",
-    description:
-      "Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolorem, consequuntur sunt. Nemo soluta omnis, tenetur aperiam nihil, saepe commodi possimus iusto.",
-    iconName: IconNames.SPARKLES_ICON,
-    TechnologyIcon: "next",
-  },
-  {
-    name: "Portfolio",
-    description:
-      "Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolorem, consequuntur sunt. Nemo soluta omnis, tenetur aperiam nihil, saepe commodi.",
-    iconName: IconNames.PORTFOLIO_ICON,
-    TechnologyIcon: ReactJsLineIcon,
-  },
-  {
-    name: "WeatherApp",
-    description:
-      "Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolorem, consequuntur sunt. Nemo soluta omnis, tenetur aperiam nihil, saepe commodi possimus.",
-    iconName: IconNames.WEATHER_ICON,
-    TechnologyIcon: "javascript",
-  },
-  {
-    name: "EFDance",
-    description:
-      "Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolorem, consequuntur sunt. Nemo soluta omnis, tenetur aperiam nihil, saepe commodi.",
-    iconName: IconNames.MUSIC_ICON,
-    TechnologyIcon: Html5LineIcon,
-  },
-  {
-    name: "Algorithms",
-    description:
-      "Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolorem, consequuntur sunt. Nemo soluta omnis, tenetur aperiam nihil, saepe commodi possimus.",
-    iconName: IconNames.SORT_ICON,
-    TechnologyIcon: "next",
-  },
-] as const;
+type ProjectsPageProps = {
+  projects: Awaited<ReturnType<typeof getProjects>>;
+};
 
-export default function ProjectsPage() {
-  const mediaQuery = useMediaQueries();
+export const getStaticProps: GetStaticProps<ProjectsPageProps> = async () => {
+  const projects = await getProjects();
 
-  const [isScrolledDown, setIsScrolledDown] = useState(false);
+  return {
+    props: { projects },
+  };
+};
 
-  useEffect(() => {
-    const handleScroll = () => {
-      if (window.scrollY !== 0) {
-        setIsScrolledDown(true);
-        return;
-      }
-
-      setIsScrolledDown(false);
-    };
-
-    document.addEventListener("scroll", handleScroll);
-
-    return () => document.removeEventListener("scroll", handleScroll);
-  }, []);
+export default function ProjectsPage({ projects }: ProjectsPageProps) {
+  const isScrolledDown = useScrollDownCheck();
+  const projectsContainerRef = useRef<HTMLDivElement>(null);
+  const { isLeftDisable, isRightDisable } = useButtonsDisableCheck(projectsContainerRef);
+  const handleArrowClick = useProjectsOnArrowsClickScroll(projectsContainerRef);
 
   const [isScrolled, setIsScrolled] = useState(false);
-  const [isLeftDisable, setIsLeftDisable] = useState(true);
-  const [isRightDisable, setIsRightDisable] = useState(false);
-  const projectsContainerRef = useRef<HTMLDivElement>(null);
-
-  const getClientWidth = () => projectsContainerRef.current?.clientWidth ?? 0;
-  const getScrollLeft = () => projectsContainerRef.current?.scrollLeft ?? 0;
-  const getScrollWidth = () => projectsContainerRef.current?.scrollWidth ?? 0;
-
-  useLayoutEffect(() => {
-    const checkButtonsDisable = () => {
-      const isLeftDisable = getScrollLeft() === 0;
-      setIsLeftDisable(isLeftDisable);
-
-      const isRightDisable = getScrollLeft() + getClientWidth() === getScrollWidth();
-      setIsRightDisable(isRightDisable);
-    };
-    const projectsContainerRefCurrent = projectsContainerRef.current;
-
-    projectsContainerRefCurrent?.addEventListener("scroll", checkButtonsDisable);
-
-    return () => projectsContainerRefCurrent?.removeEventListener("scroll", checkButtonsDisable);
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [projectsContainerRef.current]);
-
-  const handleArrowClick = (direction: "left" | "right") => {
-    const clientWidth = projectsContainerRef.current?.clientWidth;
-    const scrollLeft = projectsContainerRef.current?.scrollLeft;
-    const elementWidth = mediaQuery === DESKTOP ? 450 : 368;
-
-    if (clientWidth === undefined || scrollLeft === undefined) return;
-
-    const scrollToLeftOffset =
-      direction === "right"
-        ? Math.floor(scrollLeft / elementWidth + 1) * elementWidth
-        : Math.ceil(scrollLeft / elementWidth - 1) * elementWidth;
-
-    projectsContainerRef.current?.scrollTo({
-      behavior: "smooth",
-      left: scrollToLeftOffset,
-    });
-  };
 
   const handleScroll = (event: UIEvent<HTMLDivElement>) => {
     if (event.currentTarget.scrollLeft !== 0) {
@@ -158,7 +78,7 @@ export default function ProjectsPage() {
         onScroll={handleScroll}
         ref={projectsContainerRef}
       >
-        {PROJECTS.map(({ name, description, iconName, TechnologyIcon }, index) => (
+        {projects.map(({ name, description, iconName, TechnologyIcon }, index) => (
           <ProjectColumn
             name={name}
             description={description}

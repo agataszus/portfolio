@@ -1,5 +1,5 @@
 import { MobileNavLink } from "../mobileNavLink/MobileNavLink";
-import { AnimatePresence, motion } from "framer-motion";
+import { AnimatePresence, TargetAndTransition, motion } from "framer-motion";
 import { NAVIGATION_ELEMENTS } from "../navbar/navbar.constants";
 
 const NAV_ELEMENT_SLIDE_OFFSET = 40;
@@ -15,10 +15,8 @@ export const MobileNavbar = ({ handleLinkClick }: MobileNavbarProps) => {
         key="modal-overlay"
         className="fixed inset-0 z-50 flex flex-col bg-background-color-dark/80 backdrop-blur-[var(--backdrop-blur)] [--backdrop-blur:10px]"
         initial={{ opacity: 0 }}
-        // eslint-disable-next-line @typescript-eslint/no-explicit-any
-        animate={{ "--backdrop-blur": "10px", opacity: 1 } as any}
-        // eslint-disable-next-line @typescript-eslint/no-explicit-any
-        exit={{ opacity: 0, transition: { duration: 0.1 } } as any}
+        animate={{ "--backdrop-blur": "10px", opacity: 1 } as TargetAndTransition}
+        exit={{ opacity: 0, transition: { duration: 0.1 } }}
         transition={{ duration: 0.2, ease: "easeInOut" }}
       >
         <div className="my-auto flex h-[320px] w-full flex-col items-center justify-between">

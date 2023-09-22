@@ -11,7 +11,8 @@ type NavLinkProps = {
 
 export const navigationDraw = {
   navHidden: { scaleX: 0, originX: 0 },
-  navActive: () => ({ scaleX: [1], originX: 0, transition: { delay: 0.5, duration: 0.4, ease: "easeOut" } }),
+  navActive: { scaleX: [0.75], originX: 0 },
+  navHovered: { scaleX: [1], originX: 0 },
 };
 
 export const NavLink = ({ linkTo, text }: NavLinkProps) => {
@@ -20,18 +21,21 @@ export const NavLink = ({ linkTo, text }: NavLinkProps) => {
 
   return (
     <motion.div
-      className={cn("flex h-7 flex-col [--nav-active-width:0]", isActive && "[--nav-active-width:20px]")}
+      className={cn("flex h-7 flex-col")}
       initial={["navHidden"]}
-      whileHover={["navActive", "active"]}
-      // eslint-disable-next-line @typescript-eslint/no-explicit-any
-      variants={{ active: { "--nav-active-width": "36px" } } as any}
+      animate={isActive ? ["navActive"] : ["navHidden"]}
+      whileHover={["navHovered", "active"]}
     >
       <Link href={linkTo} className="flex h-6">
         <Text tag="p" variant="action-2">
           {text}
         </Text>
       </Link>
-      <motion.div className="h-0.5 w-[var(--nav-active-width)] bg-primary transition-all" variants={navigationDraw} />
+      <motion.div
+        className="h-0.5 w-9 bg-primary transition-all"
+        variants={navigationDraw}
+        transition={{ duration: 0.2 }}
+      />
     </motion.div>
   );
 };

@@ -1,3 +1,6 @@
+const BUTTON_TEXT_SLIDE_OFFSET = -160;
+const ARROW_CONTAINER_SLIDE_OFFSET = 70;
+
 export const draw = {
   hidden: { pathLength: 0, opacity: 0 },
   visible: () => ({
@@ -23,15 +26,15 @@ export const buttonDraw = {
 };
 
 export const textButtonDraw = {
-  textHidden: { x: -160, opacity: 0 },
+  textHidden: { x: BUTTON_TEXT_SLIDE_OFFSET, opacity: 0 },
   textHovered: () => ({
     opacity: [0, 1],
-    x: [-160, 0],
+    x: [BUTTON_TEXT_SLIDE_OFFSET, 0],
     transition: { x: { duration: 0.3, ease: "easeOut" }, opacity: { duration: 0.8 } },
   }),
   textVisible: (additionalDelay: number = 0) => ({
     opacity: [0, 1],
-    x: [-160, 0],
+    x: [BUTTON_TEXT_SLIDE_OFFSET, 0],
     transition: {
       x: { delay: additionalDelay, duration: 0.6, ease: "easeOut" },
       opacity: { delay: additionalDelay, duration: 0.6 },
@@ -48,9 +51,9 @@ export const arrowDraw = {
 };
 
 export const arrowContainerDraw = {
-  arrowContainerHidden: { x: 70 },
+  arrowContainerHidden: { x: ARROW_CONTAINER_SLIDE_OFFSET },
   arrowContainerVisible: (additionalDelay: number = 0) => ({
-    x: [70, 0],
+    x: [ARROW_CONTAINER_SLIDE_OFFSET, 0],
     transition: { delay: 0.3 + additionalDelay, duration: 0.2 },
   }),
 };
