@@ -7,6 +7,7 @@ import MenuLineIcon from "remixicon-react/MenuLineIcon";
 import CloseLineIcon from "remixicon-react/CloseLineIcon";
 import { useState } from "react";
 import { cn } from "@/styles/helpers/cn";
+import { Hamburger } from "../hamburger/Hamburger";
 
 type TopbarProps = {
   className?: string;
@@ -51,11 +52,7 @@ export const Topbar = ({ className }: TopbarProps) => {
           </div>
 
           <div className="hidden cursor-pointer tablet:block">
-            {isMenuOpen ? (
-              <CloseLineIcon className="relative h-9 w-auto fill-white" onClick={() => setIsMenuOpen(false)} />
-            ) : (
-              <MenuLineIcon className="h-9 w-auto fill-white" onClick={() => setIsMenuOpen(true)} />
-            )}
+            <Hamburger isMenuOpen={isMenuOpen} handleClick={() => setIsMenuOpen(!isMenuOpen)} />
           </div>
           <Navbar />
           <motion.div
