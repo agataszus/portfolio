@@ -41,26 +41,26 @@ export const ProjectIcon = ({ name, extraDelay }: ProjectIconProps) => {
   const pathTransition = { delay: 0.5 + extraDelay, duration: 3, ease: "easeOut" };
   const svgClassName = "h-16 w-16 stroke-primary";
 
-  const COMMON_ICON_PROPS = {
+  const commonIconProps = {
     svgProps: { initial: svgInitial, animate: svgAnimate, transition: svgTransition, className: svgClassName },
     pathProps: { initial: pathInitial, animate: pathAnimate, transition: pathTransition },
   };
 
   switch (name) {
     case IconNames.SPARKLES_ICON: {
-      return <SparklesIcon {...COMMON_ICON_PROPS} />;
+      return <SparklesIcon {...commonIconProps} />;
     }
     case IconNames.PORTFOLIO_ICON: {
-      return <PortfolioIcon {...COMMON_ICON_PROPS} />;
+      return <PortfolioIcon {...commonIconProps} />;
     }
     case IconNames.WEATHER_ICON: {
-      return <WeatherIcon {...COMMON_ICON_PROPS} />;
+      return <WeatherIcon {...commonIconProps} />;
     }
     case IconNames.MUSIC_ICON: {
-      return <MusicIcon {...COMMON_ICON_PROPS} />;
+      return <MusicIcon {...commonIconProps} />;
     }
     case IconNames.SORT_ICON: {
-      return <SortIcon {...COMMON_ICON_PROPS} />;
+      return <SortIcon {...commonIconProps} />;
     }
   }
 };

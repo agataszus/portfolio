@@ -1,8 +1,8 @@
 import { RefObject, useLayoutEffect, useState } from "react";
 
 export const useButtonsDisableCheck = (ref: RefObject<HTMLDivElement>) => {
-  const [isLeftDisable, setIsLeftDisable] = useState(true);
-  const [isRightDisable, setIsRightDisable] = useState(false);
+  const [isLeftDisabled, setIsLeftDisabled] = useState(true);
+  const [isRightDisabled, setIsRightDisabled] = useState(false);
 
   const getClientWidth = () => ref.current?.clientWidth ?? 0;
   const getScrollLeft = () => ref.current?.scrollLeft ?? 0;
@@ -10,11 +10,11 @@ export const useButtonsDisableCheck = (ref: RefObject<HTMLDivElement>) => {
 
   useLayoutEffect(() => {
     const checkButtonsDisable = () => {
-      const isLeftDisable = getScrollLeft() === 0;
-      setIsLeftDisable(isLeftDisable);
+      const isLeftDisabled = getScrollLeft() === 0;
+      setIsLeftDisabled(isLeftDisabled);
 
-      const isRightDisable = getScrollLeft() + getClientWidth() === getScrollWidth();
-      setIsRightDisable(isRightDisable);
+      const isRightDisabled = getScrollLeft() + getClientWidth() === getScrollWidth();
+      setIsRightDisabled(isRightDisabled);
     };
     const refCurrent = ref.current;
 
@@ -24,5 +24,5 @@ export const useButtonsDisableCheck = (ref: RefObject<HTMLDivElement>) => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [ref.current]);
 
-  return { isLeftDisable, isRightDisable };
+  return { isLeftDisabled, isRightDisabled };
 };

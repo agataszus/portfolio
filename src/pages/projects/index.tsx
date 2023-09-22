@@ -28,7 +28,7 @@ export const getStaticProps: GetStaticProps<ProjectsPageProps> = async () => {
 export default function ProjectsPage({ projects }: ProjectsPageProps) {
   const isScrolledDown = useScrollDownCheck();
   const projectsContainerRef = useRef<HTMLDivElement>(null);
-  const { isLeftDisable, isRightDisable } = useButtonsDisableCheck(projectsContainerRef);
+  const { isLeftDisabled, isRightDisabled } = useButtonsDisableCheck(projectsContainerRef);
   const handleArrowClick = useProjectsOnArrowsClickScroll(projectsContainerRef);
 
   const [isScrolled, setIsScrolled] = useState(false);
@@ -57,8 +57,8 @@ export default function ProjectsPage({ projects }: ProjectsPageProps) {
         <ArrowButtons
           handleClickLeft={() => handleArrowClick("left")}
           handleClickRight={() => handleArrowClick("right")}
-          isLeftDisable={isLeftDisable}
-          isRightDisable={isRightDisable}
+          isLeftDisabled={isLeftDisabled}
+          isRightDisabled={isRightDisabled}
         />
         <motion.div
           initial={{ opacity: 0 }}

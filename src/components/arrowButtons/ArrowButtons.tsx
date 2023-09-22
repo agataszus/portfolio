@@ -5,20 +5,20 @@ import { ArrowButton } from "./parts/ArrowButton";
 type ArrowButtonsProps = {
   handleClickRight: () => void;
   handleClickLeft: () => void;
-  isLeftDisable: boolean;
-  isRightDisable: boolean;
+  isLeftDisabled: boolean;
+  isRightDisabled: boolean;
 };
 
 export const ArrowButtons = ({
   handleClickLeft,
   handleClickRight,
-  isLeftDisable,
-  isRightDisable,
+  isLeftDisabled,
+  isRightDisabled,
 }: ArrowButtonsProps) => {
   return (
     <div className="flex items-center gap-2">
       <ArrowButton
-        isDisable={isLeftDisable}
+        isDisabled={isLeftDisabled}
         onClick={handleClickLeft}
         initialTranslateX={15}
         delay={0.3}
@@ -26,7 +26,7 @@ export const ArrowButtons = ({
         Icon={ArrowDropLeftLineIcon}
       />
       <ArrowButton
-        isDisable={isRightDisable}
+        isDisabled={isRightDisabled}
         onClick={handleClickRight}
         initialTranslateX={-20}
         delay={0.2}
