@@ -35,13 +35,17 @@ export const Topbar = ({ className }: TopbarProps) => {
         >
           <div className="z-60 flex flex-col">
             <Text
-              tag="p"
+              tag="div"
               variant="subtitle-1"
               className="leading-tight tracking-widest text-primary mobile:leading-tight"
             >
               Agata
             </Text>
-            <Text tag="p" variant="subtitle-1" className="leading-tight tracking-widest text-white mobile:leading-none">
+            <Text
+              tag="div"
+              variant="subtitle-1"
+              className="leading-tight tracking-widest text-white mobile:leading-none"
+            >
               Szustkiewicz
             </Text>
           </div>

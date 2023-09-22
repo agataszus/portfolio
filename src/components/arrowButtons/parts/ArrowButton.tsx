@@ -25,19 +25,19 @@ export const ArrowButton = ({
   return (
     <button
       className={cn(
-        "relative flex h-[56px] w-[56px] scale-100 items-center justify-center rounded-full opacity-100 transition-opacity transition-transform duration-500",
+        "relative flex h-14 w-14 scale-100 items-center justify-center rounded-full opacity-100 transition-opacity transition-transform duration-500",
         isButtonDisable && buttonDisableClassName
       )}
       onClick={handleClick}
     >
       <FullCircle />
       <motion.div
-        className="flex h-[24px] w-[24px] items-center justify-center"
+        className="flex h-6 w-6 items-center justify-center"
         initial={{ translateX: initialTranslateX }}
         animate={{ translateX: 0 }}
         transition={{ delay, duration, ease: "easeOut" }}
       >
-        <Icon className="h-[24px] w-auto fill-white" />
+        <Icon className="h-6 w-auto fill-white" />
       </motion.div>
     </button>
   );

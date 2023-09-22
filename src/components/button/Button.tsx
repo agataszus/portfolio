@@ -21,7 +21,7 @@ export const Button = ({ variant, text, className, onClick, additionalDelay }: B
 
   const buttonClassName = cn(
     "cursor-pointer relative",
-    { ["h-[48px] w-[160px] bg-transparent"]: variant === "small", ["h-[70px] w-[248px] flex"]: variant === "large" },
+    { ["h-12 w-40 bg-transparent"]: variant === "small", ["h-[70px] w-[248px] flex"]: variant === "large" },
     className
   );
   const textClassName = cn("z-10 transition-colors duration-500", {

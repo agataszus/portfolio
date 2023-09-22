@@ -16,7 +16,7 @@ export const Arrow = ({ isActive, additionalDelay }: ArrowProps) => {
     }
   );
 
-  const arrowClassName = cn("my-auto h-[20px] w-full justify-center fill-white transition-colors duration-500", {
+  const arrowClassName = cn("my-auto h-5 w-full justify-center fill-white transition-colors duration-500", {
     ["fill-background-color-dark"]: isActive,
   });
 

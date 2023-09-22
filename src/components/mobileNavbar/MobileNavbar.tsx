@@ -1,5 +1,8 @@
 import { MobileNavLink } from "../mobileNavLink/MobileNavLink";
 import { AnimatePresence, motion } from "framer-motion";
+import { NAVIGATION_ELEMENTS } from "../navbar/navbar.constants";
+
+const NAV_ELEMENT_SLIDE_OFFSET = 40;
 
 type MobileNavbarProps = {
   handleLinkClick: () => void;
@@ -19,56 +22,18 @@ export const MobileNavbar = ({ handleLinkClick }: MobileNavbarProps) => {
         transition={{ duration: 0.2, ease: "easeInOut" }}
       >
         <div className="my-auto flex h-[320px] w-full flex-col items-center justify-between">
-          <div className="relative flex overflow-hidden">
-            <motion.div
-              className="h-full w-full"
-              initial={{ y: 40 }}
-              animate={{ y: [40, 0] }}
-              transition={{ delay: 0.2, duration: 0.5, ease: "easeOut" }}
-            >
-              <MobileNavLink linkTo="/" text="Home" onClick={handleLinkClick} />
-            </motion.div>
-          </div>
-          <div className="relative flex overflow-hidden">
-            <motion.div
-              className="h-full w-full"
-              initial={{ y: 40 }}
-              animate={{ y: [40, 0] }}
-              transition={{ delay: 0.3, duration: 0.5, ease: "easeOut" }}
-            >
-              <MobileNavLink linkTo="/" text="About" onClick={handleLinkClick} />
-            </motion.div>
-          </div>
-          <div className="relative flex overflow-hidden">
-            <motion.div
-              className="h-full w-full"
-              initial={{ y: 40 }}
-              animate={{ y: [40, 0] }}
-              transition={{ delay: 0.4, duration: 0.5, ease: "easeOut" }}
-            >
-              <MobileNavLink linkTo="/" text="Skills" onClick={handleLinkClick} />
-            </motion.div>
-          </div>
-          <div className="relative flex overflow-hidden">
-            <motion.div
-              className="h-full w-full"
-              initial={{ y: 40 }}
-              animate={{ y: [40, 0] }}
-              transition={{ delay: 0.5, duration: 0.5, ease: "easeOut" }}
-            >
-              <MobileNavLink linkTo="/projects" text="Projects" onClick={handleLinkClick} />
-            </motion.div>
-          </div>
-          <div className="relative flex overflow-hidden">
-            <motion.div
-              className="h-full w-full"
-              initial={{ y: 40 }}
-              animate={{ y: [40, 0] }}
-              transition={{ delay: 0.6, duration: 0.5, ease: "easeOut" }}
-            >
-              <MobileNavLink linkTo="/" text="Contact" onClick={handleLinkClick} />
-            </motion.div>
-          </div>
+          {NAVIGATION_ELEMENTS.map(({ linkTo, label }, index) => (
+            <div className="relative flex overflow-hidden" key={`mobile-nav-link-${index}`}>
+              <motion.div
+                className="h-full w-full"
+                initial={{ y: NAV_ELEMENT_SLIDE_OFFSET }}
+                animate={{ y: [NAV_ELEMENT_SLIDE_OFFSET, 0] }}
+                transition={{ delay: 0.2 + index / 10, duration: 0.5, ease: "easeOut" }}
+              >
+                <MobileNavLink linkTo={linkTo} text={label} onClick={handleLinkClick} />
+              </motion.div>
+            </div>
+          ))}
         </div>
       </motion.div>
     </AnimatePresence>
