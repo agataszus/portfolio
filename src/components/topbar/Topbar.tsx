@@ -3,8 +3,6 @@ import { Navbar } from "../navbar/Navbar";
 import { Text } from "../text/Text";
 import { motion } from "framer-motion";
 import { MobileNavbar } from "../mobileNavbar/MobileNavbar";
-import MenuLineIcon from "remixicon-react/MenuLineIcon";
-import CloseLineIcon from "remixicon-react/CloseLineIcon";
 import { useState } from "react";
 import { cn } from "@/styles/helpers/cn";
 import { Hamburger } from "../hamburger/Hamburger";
