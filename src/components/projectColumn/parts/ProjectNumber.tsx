@@ -1,6 +1,8 @@
 import { Text } from "@/components/text/Text";
 import { motion } from "framer-motion";
 
+const UNDERLINE_SLIDE_OFFSET = -70;
+
 type ProjectNumberProps = {
   index: number;
   extraDelay: number;
@@ -21,8 +23,8 @@ export const ProjectNumber = ({ index, extraDelay }: ProjectNumberProps) => {
       </motion.div>
       <motion.div
         className="z-10 mb-7 h-1 w-[var(--underline-width)] bg-[var(--underline-color)]"
-        initial={{ y: -70 }}
-        animate={{ y: [-70, 0] }}
+        initial={{ y: UNDERLINE_SLIDE_OFFSET }}
+        animate={{ y: [UNDERLINE_SLIDE_OFFSET, 0] }}
         transition={{ delay: 0.3 + extraDelay, duration: 0.5 }}
       />
     </div>

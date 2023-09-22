@@ -1,5 +1,4 @@
-import { isServer } from "@/helpers/isServer";
-import { useEffect, useState } from "react";
+import { useViewportSize } from "@mantine/hooks";
 
 export const DESKTOP = "desktop";
 export const DESKTOP_MID = "desktop-mid";
@@ -8,19 +7,7 @@ export const TABLET = "tablet";
 export const MOBILE = "mobile";
 
 export const useMediaQueries = () => {
-  const [width, setWidth] = useState(isServer() ? 0 : window.innerWidth);
-
-  useEffect(() => {
-    const handleResize = () => {
-      if ("innerWidth" in window) {
-        setWidth(window.innerWidth);
-      }
-    };
-
-    window.addEventListener("resize", handleResize);
-
-    return () => window.removeEventListener("resize", handleResize);
-  }, []);
+  const { width } = useViewportSize();
 
   if (width <= 767) {
     return MOBILE;

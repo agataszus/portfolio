@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { Text } from "../text/Text";
+import { Text } from "../../text/Text";
 import { useRouter } from "next/router";
 import { motion } from "framer-motion";
 import { cn } from "@/styles/helpers/cn";
@@ -9,7 +9,7 @@ type NavLinkProps = {
   text: string;
 };
 
-export const navigationDraw = {
+export const underlineDraw = {
   navHidden: { scaleX: 0, originX: 0 },
   navActive: { scaleX: [0.75], originX: 0 },
   navHovered: { scaleX: [1], originX: 0 },
@@ -33,7 +33,7 @@ export const NavLink = ({ linkTo, text }: NavLinkProps) => {
       </Link>
       <motion.div
         className="h-0.5 w-9 bg-primary transition-all"
-        variants={navigationDraw}
+        variants={underlineDraw}
         transition={{ duration: 0.2 }}
       />
     </motion.div>

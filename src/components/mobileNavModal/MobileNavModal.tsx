@@ -1,14 +1,14 @@
-import { MobileNavLink } from "../mobileNavLink/MobileNavLink";
+import { MobileNavModalLink } from "./parts/MobileNavModalLink";
 import { AnimatePresence, TargetAndTransition, motion } from "framer-motion";
-import { NAVIGATION_ELEMENTS } from "../navbar/navbar.constants";
+import { NAVIGATION_ELEMENTS } from "../DesktopHomeNavigation/desktopHomeNavigation.constants";
 
 const NAV_ELEMENT_SLIDE_OFFSET = 40;
 
-type MobileNavbarProps = {
+type MobileNavModalProps = {
   handleLinkClick: () => void;
 };
 
-export const MobileNavbar = ({ handleLinkClick }: MobileNavbarProps) => {
+export const MobileNavModal = ({ handleLinkClick }: MobileNavModalProps) => {
   return (
     <AnimatePresence mode="wait" initial={false}>
       <motion.div
@@ -28,7 +28,7 @@ export const MobileNavbar = ({ handleLinkClick }: MobileNavbarProps) => {
                 animate={{ y: [NAV_ELEMENT_SLIDE_OFFSET, 0] }}
                 transition={{ delay: 0.2 + index / 10, duration: 0.5, ease: "easeOut" }}
               >
-                <MobileNavLink linkTo={linkTo} text={label} onClick={handleLinkClick} />
+                <MobileNavModalLink linkTo={linkTo} text={label} onClick={handleLinkClick} />
               </motion.div>
             </div>
           ))}

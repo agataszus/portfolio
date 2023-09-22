@@ -41,46 +41,26 @@ export const ProjectIcon = ({ name, extraDelay }: ProjectIconProps) => {
   const pathTransition = { delay: 0.5 + extraDelay, duration: 3, ease: "easeOut" };
   const svgClassName = "h-16 w-16 stroke-primary";
 
+  const COMMON_ICON_PROPS = {
+    svgProps: { initial: svgInitial, animate: svgAnimate, transition: svgTransition, className: svgClassName },
+    pathProps: { initial: pathInitial, animate: pathAnimate, transition: pathTransition },
+  };
+
   switch (name) {
     case IconNames.SPARKLES_ICON: {
-      return (
-        <SparklesIcon
-          svgProps={{ initial: svgInitial, animate: svgAnimate, transition: svgTransition, className: svgClassName }}
-          pathProps={{ initial: pathInitial, animate: pathAnimate, transition: pathTransition }}
-        />
-      );
+      return <SparklesIcon {...COMMON_ICON_PROPS} />;
     }
     case IconNames.PORTFOLIO_ICON: {
-      return (
-        <PortfolioIcon
-          svgProps={{ initial: svgInitial, animate: svgAnimate, transition: svgTransition, className: svgClassName }}
-          pathProps={{ initial: pathInitial, animate: pathAnimate, transition: pathTransition }}
-        />
-      );
+      return <PortfolioIcon {...COMMON_ICON_PROPS} />;
     }
     case IconNames.WEATHER_ICON: {
-      return (
-        <WeatherIcon
-          svgProps={{ initial: svgInitial, animate: svgAnimate, transition: svgTransition, className: svgClassName }}
-          pathProps={{ initial: pathInitial, animate: pathAnimate, transition: pathTransition }}
-        />
-      );
+      return <WeatherIcon {...COMMON_ICON_PROPS} />;
     }
     case IconNames.MUSIC_ICON: {
-      return (
-        <MusicIcon
-          svgProps={{ initial: svgInitial, animate: svgAnimate, transition: svgTransition, className: svgClassName }}
-          pathProps={{ initial: pathInitial, animate: pathAnimate, transition: pathTransition }}
-        />
-      );
+      return <MusicIcon {...COMMON_ICON_PROPS} />;
     }
     case IconNames.SORT_ICON: {
-      return (
-        <SortIcon
-          svgProps={{ initial: svgInitial, animate: svgAnimate, transition: svgTransition, className: svgClassName }}
-          pathProps={{ initial: pathInitial, animate: pathAnimate, transition: pathTransition }}
-        />
-      );
+      return <SortIcon {...COMMON_ICON_PROPS} />;
     }
   }
 };

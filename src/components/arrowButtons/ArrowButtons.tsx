@@ -18,16 +18,16 @@ export const ArrowButtons = ({
   return (
     <div className="flex items-center gap-2">
       <ArrowButton
-        isButtonDisable={isLeftDisable}
-        handleClick={handleClickLeft}
+        isDisable={isLeftDisable}
+        onClick={handleClickLeft}
         initialTranslateX={15}
         delay={0.3}
         duration={0.3}
         Icon={ArrowDropLeftLineIcon}
       />
       <ArrowButton
-        isButtonDisable={isRightDisable}
-        handleClick={handleClickRight}
+        isDisable={isRightDisable}
+        onClick={handleClickRight}
         initialTranslateX={-20}
         delay={0.2}
         duration={0.4}

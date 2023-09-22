@@ -5,7 +5,7 @@ import Link from "next/link";
 import { motion } from "framer-motion";
 import { UIEvent, useRef, useState } from "react";
 import { cn } from "@/styles/helpers/cn";
-import { MenuTooltip } from "@/components/menuTooltip/MenuTooltip";
+import { DesktopExpandableMenu } from "@/components/DesktopExpandableMenu/DesktopExpandableMenu";
 import { Topbar } from "@/components/topbar/Topbar";
 import { GetStaticProps } from "next";
 import { getProjects } from "@/services/content/getProjects";
@@ -53,7 +53,7 @@ export default function ProjectsPage({ projects }: ProjectsPageProps) {
           isScrolled && "shadow-large-right"
         )}
       >
-        <MenuTooltip />
+        <DesktopExpandableMenu />
         <ArrowButtons
           handleClickLeft={() => handleArrowClick("left")}
           handleClickRight={() => handleArrowClick("right")}

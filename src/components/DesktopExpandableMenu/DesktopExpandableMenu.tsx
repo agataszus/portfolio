@@ -1,19 +1,19 @@
 import { useState } from "react";
-import { MenuTooltipElement } from "../menuTooltipElement/MenuTooltipElement";
+import { DesktopExpandableMenuLink } from "./parts/DesktopExpandableMenuLink";
 import { AnimatePresence, motion } from "framer-motion";
 import { Hamburger } from "../hamburger/Hamburger";
-import { NAVIGATION_ELEMENTS } from "../navbar/navbar.constants";
+import { NAVIGATION_ELEMENTS } from "../DesktopHomeNavigation/desktopHomeNavigation.constants";
 
 const NAV_ELEMENT_SLIDE_OFFSET = -50;
 
-export const MenuTooltip = () => {
-  const [isMenuOpen, setIsMenuOpen] = useState(false);
+export const DesktopExpandableMenu = () => {
+  const [isOpen, setIsOpen] = useState(false);
 
   return (
     <div className="relative z-50 ml-8 self-start">
-      <Hamburger isMenuOpen={isMenuOpen} handleClick={() => setIsMenuOpen(!isMenuOpen)} />
+      <Hamburger isCloseVisible={isOpen} handleClick={() => setIsOpen(!isOpen)} />
       <AnimatePresence mode="wait">
-        {isMenuOpen && (
+        {isOpen && (
           <div className="absolute -top-3 left-16 flex gap-4 px-4">
             {NAVIGATION_ELEMENTS.map(({ linkTo, label }, index) => (
               <motion.div
@@ -31,7 +31,7 @@ export const MenuTooltip = () => {
                   transition: { delay: (4 - index) / 10, duration: 0.3 },
                 }}
               >
-                <MenuTooltipElement linkTo={linkTo} text={label} onClick={() => setIsMenuOpen(false)} />
+                <DesktopExpandableMenuLink linkTo={linkTo} text={label} onClick={() => setIsOpen(false)} />
               </motion.div>
             ))}
           </div>

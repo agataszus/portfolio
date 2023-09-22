@@ -1,6 +1,8 @@
 import { Text } from "@/components/text/Text";
 import { motion } from "framer-motion";
 
+const LINK_SLIDE_OFFSET = 20;
+
 type ProjectLinksProps = {
   extraDelay: number;
   description: string;
@@ -12,8 +14,8 @@ export const ProjectLinks = ({ extraDelay, description }: ProjectLinksProps) => 
       <div className="overflow-hidden tablet:absolute tablet:left-[--tablet-left-to-left] tablet:top-60 tablet:translate-x-[--tablet-translate-x] mobile:relative mobile:left-0 mobile:top-0">
         <motion.div
           className="flex opacity-[--default-opacity] tablet:justify-center mobile:justify-start"
-          initial={{ translateY: 20 }}
-          animate={{ translateY: [20, 0] }}
+          initial={{ translateY: LINK_SLIDE_OFFSET }}
+          animate={{ translateY: [LINK_SLIDE_OFFSET, 0] }}
           transition={{ delay: 0.3 + extraDelay, duration: 0.5 }}
         >
           <Text tag="p" variant="action-3" className="text-primary">

@@ -1,22 +1,8 @@
-import { useEffect, useState } from "react";
+import { useWindowScroll } from "@mantine/hooks";
 
 export const useScrollDownCheck = () => {
-  const [isScrolledDown, setIsScrolledDown] = useState(false);
-
-  useEffect(() => {
-    const handleScroll = () => {
-      if (window.scrollY !== 0) {
-        setIsScrolledDown(true);
-        return;
-      }
-
-      setIsScrolledDown(false);
-    };
-
-    document.addEventListener("scroll", handleScroll);
-
-    return () => document.removeEventListener("scroll", handleScroll);
-  }, []);
+  const [scroll] = useWindowScroll();
+  const isScrolledDown = scroll.y !== 0;
 
   return isScrolledDown;
 };

@@ -1,11 +1,13 @@
 import { Button } from "../button/Button";
-import { Navbar } from "../navbar/Navbar";
+import { DesktopHomeNavigation } from "../DesktopHomeNavigation/DesktopHomeNavigation";
 import { Text } from "../text/Text";
 import { motion } from "framer-motion";
-import { MobileNavbar } from "../mobileNavbar/MobileNavbar";
+import { MobileNavModal } from "../mobileNavModal/MobileNavModal";
 import { useState } from "react";
 import { cn } from "@/styles/helpers/cn";
 import { Hamburger } from "../hamburger/Hamburger";
+
+const TOPBAR_SLIDE_OFFSET = 50;
 
 type TopbarProps = {
   className?: string;
@@ -25,8 +27,8 @@ export const Topbar = ({ className }: TopbarProps) => {
       >
         <motion.div
           className="z-60 flex h-full w-full items-center justify-between"
-          initial={{ y: 50, opacity: 0 }}
-          animate={{ y: [50, 0], opacity: [0, 1] }}
+          initial={{ y: TOPBAR_SLIDE_OFFSET, opacity: 0 }}
+          animate={{ y: [TOPBAR_SLIDE_OFFSET, 0], opacity: [0, 1] }}
           transition={{
             y: { duration: 0.5, ease: "easeOut" },
             opacity: { duration: 0.7, ease: "easeOut" },
@@ -50,9 +52,9 @@ export const Topbar = ({ className }: TopbarProps) => {
           </div>
 
           <div className="hidden cursor-pointer tablet:block">
-            <Hamburger isMenuOpen={isMenuOpen} handleClick={() => setIsMenuOpen(!isMenuOpen)} />
+            <Hamburger isCloseVisible={isMenuOpen} handleClick={() => setIsMenuOpen(!isMenuOpen)} />
           </div>
-          <Navbar />
+          <DesktopHomeNavigation />
           <motion.div
             className="tablet:hidden"
             initial={["buttonHidden", "textHidden"]}
@@ -62,7 +64,7 @@ export const Topbar = ({ className }: TopbarProps) => {
           </motion.div>
         </motion.div>
       </div>
-      {isMenuOpen && <MobileNavbar handleLinkClick={() => setIsMenuOpen(false)} />}
+      {isMenuOpen && <MobileNavModal handleLinkClick={() => setIsMenuOpen(false)} />}
     </>
   );
 };
