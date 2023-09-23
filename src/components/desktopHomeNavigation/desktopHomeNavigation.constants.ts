@@ -16,7 +16,7 @@ export const NAVIGATION_ELEMENTS = [
     label: "Projects",
   },
   {
-    linkTo: "/",
+    linkTo: "/contact",
     label: "Contact",
   },
 ];

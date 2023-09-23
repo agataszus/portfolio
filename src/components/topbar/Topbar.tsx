@@ -6,6 +6,7 @@ import { MobileNavModal } from "../mobileNavModal/MobileNavModal";
 import { useState } from "react";
 import { cn } from "@/styles/helpers/cn";
 import { Hamburger } from "../hamburger/Hamburger";
+import { useRouter } from "next/router";
 
 const TOPBAR_SLIDE_OFFSET = 50;
 
@@ -15,6 +16,7 @@ type TopbarProps = {
 
 export const Topbar = ({ className }: TopbarProps) => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const router = useRouter();
 
   return (
     <>
@@ -60,7 +62,7 @@ export const Topbar = ({ className }: TopbarProps) => {
             initial={["buttonHidden", "textHidden"]}
             animate={["buttonVisible", "textVisible"]}
           >
-            <Button variant="small" text="contact" additionalDelay={0.4} />
+            <Button variant="small" text="contact" additionalDelay={0.4} onClick={() => router.push("/contact")} />
           </motion.div>
         </motion.div>
       </div>

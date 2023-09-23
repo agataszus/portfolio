@@ -21,7 +21,7 @@ export const AboutMeContent = () => {
           <Button variant="large" text="My projects" onClick={() => router.push("/projects")} additionalDelay={0.5} />
         </motion.div>
         <motion.div {...MOTION_BUTTON_COMMON_PROPS}>
-          <Button variant="large" text="Contact" onClick={() => router.push("/")} additionalDelay={0.7} />
+          <Button variant="large" text="Contact" onClick={() => router.push("/contact")} additionalDelay={0.7} />
         </motion.div>
       </div>
     </div>
