@@ -5,7 +5,7 @@ import Link from "next/link";
 import { motion } from "framer-motion";
 import { UIEvent, useRef, useState } from "react";
 import { cn } from "@/styles/helpers/cn";
-import { DesktopExpandableMenu } from "@/components/DesktopExpandableMenu/DesktopExpandableMenu";
+import { DesktopExpandableMenu } from "@/components/desktopExpandableMenu/DesktopExpandableMenu";
 import { Topbar } from "@/components/topbar/Topbar";
 import { GetStaticProps } from "next";
 import { getProjects } from "@/services/content/getProjects";

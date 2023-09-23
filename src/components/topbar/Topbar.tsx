@@ -1,5 +1,5 @@
 import { Button } from "../button/Button";
-import { DesktopHomeNavigation } from "../DesktopHomeNavigation/DesktopHomeNavigation";
+import { DesktopHomeNavigation } from "../desktopHomeNavigation/DesktopHomeNavigation";
 import { Text } from "../text/Text";
 import { motion } from "framer-motion";
 import { MobileNavModal } from "../mobileNavModal/MobileNavModal";

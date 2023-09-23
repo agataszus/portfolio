@@ -4,7 +4,7 @@ export const NAVIGATION_ELEMENTS = [
     label: "Home",
   },
   {
-    linkTo: "/",
+    linkTo: "/about",
     label: "About",
   },
   {

@@ -2,7 +2,7 @@ import { useState } from "react";
 import { DesktopExpandableMenuLink } from "./parts/DesktopExpandableMenuLink";
 import { AnimatePresence, motion } from "framer-motion";
 import { Hamburger } from "../hamburger/Hamburger";
-import { NAVIGATION_ELEMENTS } from "../DesktopHomeNavigation/desktopHomeNavigation.constants";
+import { NAVIGATION_ELEMENTS } from "../desktopHomeNavigation/desktopHomeNavigation.constants";
 
 const NAV_ELEMENT_SLIDE_OFFSET = -50;
 

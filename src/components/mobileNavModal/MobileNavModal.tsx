@@ -1,6 +1,6 @@
 import { MobileNavModalLink } from "./parts/MobileNavModalLink";
 import { AnimatePresence, TargetAndTransition, motion } from "framer-motion";
-import { NAVIGATION_ELEMENTS } from "../DesktopHomeNavigation/desktopHomeNavigation.constants";
+import { NAVIGATION_ELEMENTS } from "../desktopHomeNavigation/desktopHomeNavigation.constants";
 
 const NAV_ELEMENT_SLIDE_OFFSET = 40;
 

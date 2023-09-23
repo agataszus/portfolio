@@ -16,7 +16,7 @@ export const ProjectName = ({ name, extraDelay }: ProjectNameProps) => {
         animate={{ translateY: [NAME_SLIDE_OFFSET, 0] }}
         transition={{ delay: 0.2 + extraDelay, duration: 0.5 }}
       >
-        <Text tag="h2" variant="heading-2" className="h-full">
+        <Text tag="h2" variant="heading-3" className="h-full">
           {name}
         </Text>
       </motion.div>

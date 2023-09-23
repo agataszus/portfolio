@@ -1,5 +1,5 @@
-import { NavLink } from "./parts/DesktopHomeNavigationLink";
 import { NAVIGATION_ELEMENTS } from "./desktopHomeNavigation.constants";
+import { NavLink } from "./parts/DesktopHomeNavigationLink";
 
 export const DesktopHomeNavigation = () => {
   return (
