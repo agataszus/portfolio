@@ -7,7 +7,7 @@ const HEADING_SLIDE_OFFSET = 52;
 export const AboutMeTitle = () => {
   return (
     <>
-      <div className="w-[250px] overflow-hidden">
+      <div className="flex w-[250px] overflow-hidden mobile:justify-center">
         <motion.div
           initial={{ x: SUBHEADING_SLIDE_OFFSET }}
           animate={{ x: [SUBHEADING_SLIDE_OFFSET, 0] }}
@@ -18,11 +18,11 @@ export const AboutMeTitle = () => {
           </Text>
         </motion.div>
       </div>
-      <div className="overflow-hidden">
+      <div className="overflow-hidden tablet:mb-[600px] mobile:mb-[540px]">
         <motion.div
           initial={{ y: HEADING_SLIDE_OFFSET }}
           animate={{ y: [HEADING_SLIDE_OFFSET, 0] }}
-          transition={{ delay: 0.3, duration: 0.4, ease: "easeOut" }}
+          transition={{ delay: 0.3, duration: 0.3, ease: "easeOut" }}
         >
           <Text tag="h1" variant="heading-2">
             About me

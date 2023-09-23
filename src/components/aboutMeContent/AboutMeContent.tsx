@@ -13,10 +13,10 @@ export const AboutMeContent = () => {
   const router = useRouter();
 
   return (
-    <div className="flex w-full flex-col gap-8">
+    <div className="flex w-full flex-col gap-8 desktop-small:gap-4 tablet:mt-10 mobile:mt-0 mobile:items-center">
       <AboutMeTitle />
       <AboutMeDescription />
-      <div className="mt-auto flex gap-8">
+      <div className="mt-auto flex gap-8 desktop-small:gap-5 tablet:mt-10 tablet:justify-between tablet:gap-8 mobile:flex-col">
         <motion.div {...MOTION_BUTTON_COMMON_PROPS}>
           <Button variant="large" text="My projects" onClick={() => router.push("/projects")} additionalDelay={0.5} />
         </motion.div>

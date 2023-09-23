@@ -30,7 +30,7 @@ export const Text = ({ children, tag, variant, className }: TextProps) => {
       ["text-base mobile:text-sm uppercase font-bold"]: variant === "subtitle-1",
       ["text-sm uppercase text-primary font-medium tracking-3"]: variant === "subtitle-2",
       ["text-5xl mobile:text-4xl font-bold text-white leading-tighter"]: variant === "heading-1",
-      ["text-[42px] font-bold text-white"]: variant === "heading-2",
+      ["text-[42px] mobile:text-4xl font-bold text-white"]: variant === "heading-2",
       ["text-3xl mobile:text-2xl font-bold text-white"]: variant === "heading-3",
       ["text-sm font-bold text-white"]: variant === "num-1",
       ["text-sm font-normal text-white leading-tight"]: variant === "caption-1",
