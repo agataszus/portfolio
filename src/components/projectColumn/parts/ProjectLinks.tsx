@@ -18,7 +18,7 @@ export const ProjectLinks = ({ extraDelay, description }: ProjectLinksProps) => 
           animate={{ translateY: [LINK_SLIDE_OFFSET, 0] }}
           transition={{ delay: 0.3 + extraDelay, duration: 0.5 }}
         >
-          <Text tag="p" variant="action-3" className="text-primary">
+          <Text tag="p" variant="action-4" className="text-primary">
             See more &#8594;
           </Text>
         </motion.div>
@@ -29,10 +29,10 @@ export const ProjectLinks = ({ extraDelay, description }: ProjectLinksProps) => 
           {description}
         </Text>
         <div className="flex flex-col gap-3">
-          <Text tag="p" variant="action-3" className="text-primary">
+          <Text tag="p" variant="action-4" className="text-primary">
             Live demo &#8594;
           </Text>
-          <Text tag="p" variant="action-3" className="text-primary">
+          <Text tag="p" variant="action-4" className="text-primary">
             Code on github &#8594;
           </Text>
         </div>

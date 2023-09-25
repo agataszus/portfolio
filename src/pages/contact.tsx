@@ -1,4 +1,5 @@
 import { ContactContent } from "@/components/contactContent/ContactContent";
+import { ContactForm } from "@/components/contactForm/ContactForm";
 import { Topbar } from "@/components/topbar/Topbar";
 
 export default function ContactPage() {
@@ -7,7 +8,7 @@ export default function ContactPage() {
       <Topbar />
       <div className="my-auto flex h-auto w-full gap-24">
         <ContactContent />
-        <div className="flex h-[500px] w-1/2 shrink-0"></div>
+        <ContactForm />
       </div>
     </div>
   );
