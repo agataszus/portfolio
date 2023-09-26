@@ -16,6 +16,8 @@ export const SocialIcon = ({ Icon, index, linkTo }: SocialIconProps) => {
       animate={{ rotate: ["-110deg", "0deg"], opacity: [0, 1] }}
       transition={{ delay: 0.7 + index / 10, duration: 0.4 }}
       href={linkTo}
+      target="_blank"
+      rel="noreferrer"
     >
       <Icon className={iconClassName} />
     </motion.a>

@@ -6,10 +6,11 @@ import { textButtonDraw } from "../projectColumn/projectColumn.constants";
 import { FullRect } from "./parts/FullRect";
 import { AnimatedBackground } from "./parts/AnimatedBackground";
 import { Arrow } from "./parts/Arrow";
-import { ButtonVariants } from "./button.constants";
+import { ButtonVariant } from "./button.constants";
+import { useTimeout } from "@mantine/hooks";
 
 type ButtonProps = {
-  variant: ButtonVariants;
+  variant: ButtonVariant;
   text: string;
   onClick?: () => void;
   className?: string;
@@ -19,6 +20,7 @@ type ButtonProps = {
 export const Button = ({ variant, text, className, onClick, additionalDelay }: ButtonProps) => {
   const [isHovered, setIsHovered] = useState(false);
   const [isClicked, setIsClicked] = useState(false);
+  const { start: startTimeout } = useTimeout(() => setIsClicked(false), 1000);
 
   const buttonClassName = cn(
     "cursor-pointer relative",
@@ -37,7 +39,7 @@ export const Button = ({ variant, text, className, onClick, additionalDelay }: B
     onClick?.();
     setIsClicked(true);
 
-    setTimeout(() => setIsClicked(false), 1000);
+    startTimeout();
   };
 
   return (

@@ -1,18 +1,24 @@
 import { motion } from "framer-motion";
 import { EMAIL, FormLabel, MESSAGE, NAME } from "./parts/FormLabel";
 import { ButtonSubmit } from "./parts/ButtonSubmit";
-import emailjs from "@emailjs/browser";
-import { FormEvent, useRef, useState } from "react";
+import { FormEvent, useCallback, useRef, useState } from "react";
 import { Text } from "../text/Text";
 import { Loader } from "../loader/Loader";
+import { sendEmail } from "@/services/email/sendEmail";
 
-type Status = "loading" | "success" | "error" | "required" | null;
+type Status = "loading" | "success" | "error" | "touched" | null;
+
+const FORM_FIELDS = [
+  { labelText: "Name", name: NAME, variant: "input" },
+  { labelText: "Email", name: EMAIL, variant: "input" },
+  { labelText: "Message", name: MESSAGE, variant: "textarea" },
+] as const;
 
 export const ContactForm = () => {
   const [status, setStatus] = useState<Status>(null);
   const formRef = useRef<HTMLFormElement>(null);
 
-  const handleSubmit = async (event: FormEvent<HTMLFormElement>) => {
+  const handleSubmit = useCallback(async (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
 
     const contactForm = new FormData(event.target as HTMLFormElement);
@@ -21,7 +27,7 @@ export const ContactForm = () => {
     const messageValue = contactForm.get(MESSAGE) as string;
 
     if (!nameValue || !emailValue || !messageValue) {
-      setStatus("required");
+      setStatus("touched");
       return;
     }
 
@@ -29,16 +35,11 @@ export const ContactForm = () => {
 
     try {
       setStatus("loading");
-      const response = await emailjs.send("service_zc20vne", "template_hplfmwi", contactTarget, "1BeFldZU9HN2RnwBu");
-
-      if (response.status === 200) {
-        setStatus("success");
-        formRef.current?.reset();
-      } else throw new Error("error");
+      sendEmail(contactTarget, () => setStatus("success"), formRef);
     } catch {
       setStatus("error");
     }
-  };
+  }, []);
 
   return (
     <motion.form
@@ -49,11 +50,7 @@ export const ContactForm = () => {
       animate={{ opacity: [0, 1], scale: [0.8, 1] }}
       transition={{ delay: 0.2, duration: 0.5, type: "spring", stiffness: 80 }}
     >
-      {[
-        { labelText: "Name", name: NAME, variant: "input" } as const,
-        { labelText: "Email", name: EMAIL, variant: "input" } as const,
-        { labelText: "Message", name: MESSAGE, variant: "textarea" } as const,
-      ].map(({ labelText, name, variant }, index) => (
+      {FORM_FIELDS.map(({ labelText, name, variant }, index) => (
         <FormLabel
           labelText={labelText}
           name={name}
@@ -63,12 +60,12 @@ export const ContactForm = () => {
         />
       ))}
       <div className="flex h-16 flex-col items-end justify-center gap-2">
-        {status === "required" && (
+        {status === "touched" && (
           <Text tag="p" variant="caption-1" className="text-end text-red-600">
             All inputs are required!
           </Text>
         )}
-        {(!status || status == "required") && <ButtonSubmit />}
+        {(!status || status == "touched") && <ButtonSubmit />}
         {status === "loading" && (
           <div className="flex items-center gap-1">
             <Loader />
@@ -85,7 +82,7 @@ export const ContactForm = () => {
         {status === "error" && (
           <div className="flex flex-col items-end gap-2">
             <Text tag="p" variant="caption-1" className="mt-5 text-end text-red-600">
-              Couldn&apos;t send the message.
+              Couldn&apos;t sent the message.
             </Text>
             <ButtonSubmit label="Try again" />
           </div>

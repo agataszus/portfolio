@@ -1,17 +1,19 @@
 import { Text } from "@/components/text/Text";
-import { motion } from "framer-motion";
+import { useTimeout } from "@mantine/hooks";
+import { AnimatePresence, motion } from "framer-motion";
 import { useState } from "react";
 
 const COPIED_SCALE_OFFSET = 0.9;
 
 export const Email = () => {
   const [isClicked, setIsClicked] = useState(false);
+  const { start: startTimeout } = useTimeout(() => setIsClicked(false), 2000);
 
   const handleClick = () => {
     navigator.clipboard.writeText("agataszus@gmail.com");
     setIsClicked(true);
 
-    setTimeout(() => setIsClicked(false), 2000);
+    startTimeout();
   };
 
   return (
@@ -37,18 +39,21 @@ export const Email = () => {
           </button>
         </motion.div>
       </div>
-      {isClicked && (
-        <motion.div
-          className="absolute -bottom-10 left-40 flex bg-background-color-light px-3 py-2 shadow-sm"
-          initial={{ opacity: 0, scale: COPIED_SCALE_OFFSET }}
-          animate={{ opacity: [0, 1], scale: [COPIED_SCALE_OFFSET, 1] }}
-          transition={{ duration: 0.1, type: "spring", stiffness: 160 }}
-        >
-          <Text tag="h4" variant="caption-1">
-            Copied!
-          </Text>
-        </motion.div>
-      )}
+      <AnimatePresence mode="wait">
+        {isClicked && (
+          <motion.div
+            className="absolute bottom-[-5px] left-48 flex bg-background-color-light px-3 py-2 shadow-sm"
+            initial={{ opacity: 0, scale: COPIED_SCALE_OFFSET }}
+            animate={{ opacity: [0, 1], scale: [COPIED_SCALE_OFFSET, 1] }}
+            exit={{ opacity: [1, 0], scale: [1, COPIED_SCALE_OFFSET] }}
+            transition={{ duration: 0.1, type: "spring", stiffness: 160 }}
+          >
+            <Text tag="h4" variant="caption-1">
+              Copied!
+            </Text>
+          </motion.div>
+        )}
+      </AnimatePresence>
     </div>
   );
 };

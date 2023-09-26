@@ -1,15 +1,15 @@
 import { motion } from "framer-motion";
-import { BUTTON_LARGE_SIZE, BUTTON_MEDIUM_SIZE, BUTTON_SMALL_SIZE, ButtonVariants } from "../button.constants";
+import { BUTTON_LARGE_SIZE, BUTTON_MEDIUM_SIZE, BUTTON_SMALL_SIZE, ButtonVariant } from "../button.constants";
 import { buttonDraw } from "../../projectColumn/projectColumn.constants";
 import { cn } from "@/styles/helpers/cn";
 
 type HalfRectProps = {
-  variant: ButtonVariants;
+  variant: ButtonVariant;
   additionalDelay: number | undefined;
   className?: string;
 };
 
-const getSize = (variant: ButtonVariants) => {
+const getSize = (variant: ButtonVariant) => {
   switch (variant) {
     case "large": {
       return BUTTON_LARGE_SIZE;

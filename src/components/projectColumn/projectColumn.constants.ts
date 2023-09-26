@@ -1,4 +1,4 @@
-import { ButtonVariants } from "../button/button.constants";
+import { ButtonVariant } from "../button/button.constants";
 
 const BUTTON_TEXT_SLIDE_OFFSET = -160;
 const ARROW_CONTAINER_SLIDE_OFFSET = 70;
@@ -17,7 +17,7 @@ export const draw = {
 
 export const buttonDraw = {
   buttonHidden: { pathLength: 0 },
-  buttonVisible: ({ additionalDelay = 0, variant }: { additionalDelay: number; variant: ButtonVariants }) => ({
+  buttonVisible: ({ additionalDelay = 0, variant }: { additionalDelay: number; variant: ButtonVariant }) => ({
     pathLength: [0, variant === "medium" ? 0.78 : 0.82],
     transition: {
       delay: 0.1 + additionalDelay,

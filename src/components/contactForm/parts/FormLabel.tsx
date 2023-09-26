@@ -19,7 +19,7 @@ export const FormLabel = ({ labelText, index, name, variant }: FormLabelProps) =
   const inputClassName = cn(commonClassName, "h-12 mobile:h-9");
   const textareaClassName = cn(commonClassName, "h-32 resize-none mobile:h-24");
 
-  const commonProps = {
+  const commonFieldProps = {
     id: name,
     name: name,
     initial: { opacity: 0 },
@@ -43,9 +43,9 @@ export const FormLabel = ({ labelText, index, name, variant }: FormLabelProps) =
         </motion.div>
       </div>
       {variant === "input" && (
-        <motion.input type={name === EMAIL ? "email" : "text"} className={inputClassName} {...commonProps} />
+        <motion.input type={name === EMAIL ? "email" : "text"} className={inputClassName} {...commonFieldProps} />
       )}
-      {variant === "textarea" && <motion.textarea className={textareaClassName} {...commonProps} />}
+      {variant === "textarea" && <motion.textarea className={textareaClassName} {...commonFieldProps} />}
     </div>
   );
 };
