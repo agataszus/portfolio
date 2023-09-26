@@ -17,9 +17,10 @@ type ProjectColumnProps = {
   name: string;
   description: string;
   Icon: TechnologyIcons;
+  slug: string;
 };
 
-export const ProjectColumn = ({ iconName, name, description, index, Icon }: ProjectColumnProps) => {
+export const ProjectColumn = ({ iconName, name, description, index, Icon, slug }: ProjectColumnProps) => {
   const mediaQuery = useMediaQueries();
   const columnRef = useRef<HTMLDivElement>(null);
 
@@ -93,7 +94,7 @@ export const ProjectColumn = ({ iconName, name, description, index, Icon }: Proj
         <ProjectIconContainer iconName={iconName} extraDelay={extraDelay} />
         <ProjectName name={name} extraDelay={extraDelay} />
         <ProjectLinks extraDelay={extraDelay} description={description} />
-        <ArrowToButton index={index} />
+        <ArrowToButton index={index} slug={slug} />
       </div>
     </motion.div>
   );

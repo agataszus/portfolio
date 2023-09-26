@@ -12,9 +12,10 @@ import { getProjects } from "@/services/content/getProjects";
 import { useScrollDownCheck } from "@/hooks/useScrollDownCheck";
 import { useButtonsDisableCheck } from "@/hooks/useButtonsDisableCheck";
 import { useProjectsOnArrowsClickScroll } from "@/hooks/useProjectsOnArrowsClickScroll";
+import { Projects } from "@/services/content/types";
 
 type ProjectsPageProps = {
-  projects: Awaited<ReturnType<typeof getProjects>>;
+  projects: Projects;
 };
 
 export const getStaticProps: GetStaticProps<ProjectsPageProps> = async () => {
@@ -78,8 +79,9 @@ export default function ProjectsPage({ projects }: ProjectsPageProps) {
         onScroll={handleScroll}
         ref={projectsContainerRef}
       >
-        {projects.map(({ name, description, iconName, TechnologyIcon }, index) => (
+        {projects.map(({ name, description, iconName, TechnologyIcon, slug }, index) => (
           <ProjectColumn
+            slug={slug}
             name={name}
             description={description}
             iconName={iconName}

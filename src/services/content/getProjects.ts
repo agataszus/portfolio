@@ -2,6 +2,7 @@ import { IconNames } from "@/components/projectIcon/ProjectIcon";
 
 const PROJECTS = [
   {
+    slug: "eventhive",
     name: "EventHive",
     description:
       "Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolorem, consequuntur sunt. Nemo soluta omnis, tenetur aperiam nihil, saepe commodi possimus iusto.",
@@ -9,6 +10,7 @@ const PROJECTS = [
     TechnologyIcon: "next",
   },
   {
+    slug: "portfolio",
     name: "Portfolio",
     description:
       "Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolorem, consequuntur sunt. Nemo soluta omnis, tenetur aperiam nihil, saepe commodi.",
@@ -16,6 +18,7 @@ const PROJECTS = [
     TechnologyIcon: "react",
   },
   {
+    slug: "weather-app",
     name: "WeatherApp",
     description:
       "Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolorem, consequuntur sunt. Nemo soluta omnis, tenetur aperiam nihil, saepe commodi possimus.",
@@ -23,6 +26,7 @@ const PROJECTS = [
     TechnologyIcon: "javascript",
   },
   {
+    slug: "efdance",
     name: "EFDance",
     description:
       "Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolorem, consequuntur sunt. Nemo soluta omnis, tenetur aperiam nihil, saepe commodi.",
@@ -30,6 +34,7 @@ const PROJECTS = [
     TechnologyIcon: "html",
   },
   {
+    slug: "algorithms",
     name: "Algorithms",
     description:
       "Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolorem, consequuntur sunt. Nemo soluta omnis, tenetur aperiam nihil, saepe commodi possimus.",
