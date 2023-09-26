@@ -76,13 +76,13 @@ export const ContactForm = () => {
         )}
         {status === "success" && (
           <Text tag="p" variant="caption-1" className="text-end text-green-500">
-            Message send successfully!
+            Message sent successfully!
           </Text>
         )}
         {status === "error" && (
           <div className="flex flex-col items-end gap-2">
             <Text tag="p" variant="caption-1" className="mt-5 text-end text-red-600">
-              Couldn&apos;t sent the message.
+              Couldn&apos;t send the message.
             </Text>
             <ButtonSubmit label="Try again" />
           </div>
