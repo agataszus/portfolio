@@ -67,7 +67,7 @@ export default function ProjectsPage({ projects }: ProjectsPageProps) {
           className="mb-10 ml-8 mt-auto self-start"
         >
           <Link href="/">
-            <Text tag="p" variant="action-3" className="text-primary/80 duration-150 hover:text-primary">
+            <Text tag="p" variant="action-4" className="text-primary/80 duration-150 hover:text-primary">
               &#8592; Go back
             </Text>
           </Link>

@@ -6,9 +6,11 @@ import { textButtonDraw } from "../projectColumn/projectColumn.constants";
 import { FullRect } from "./parts/FullRect";
 import { AnimatedBackground } from "./parts/AnimatedBackground";
 import { Arrow } from "./parts/Arrow";
+import { ButtonVariant } from "./button.constants";
+import { useTimeout } from "@mantine/hooks";
 
 type ButtonProps = {
-  variant: "small" | "large";
+  variant: ButtonVariant;
   text: string;
   onClick?: () => void;
   className?: string;
@@ -18,15 +20,27 @@ type ButtonProps = {
 export const Button = ({ variant, text, className, onClick, additionalDelay }: ButtonProps) => {
   const [isHovered, setIsHovered] = useState(false);
   const [isClicked, setIsClicked] = useState(false);
+  const { start: startTimeout } = useTimeout(() => setIsClicked(false), 1000);
 
   const buttonClassName = cn(
     "cursor-pointer relative",
-    { ["h-12 w-40 bg-transparent"]: variant === "small", ["h-[70px] w-[248px] flex"]: variant === "large" },
+    {
+      ["h-12 w-40 bg-transparent"]: variant === "small",
+      ["h-[70px] w-[180px] bg-transparent"]: variant === "medium",
+      ["h-[70px] w-[248px] flex"]: variant === "large",
+    },
     className
   );
   const textClassName = cn("z-10 transition-colors duration-500", {
     ["text-background-color-dark"]: isClicked,
   });
+
+  const handleClick = () => {
+    onClick?.();
+    setIsClicked(true);
+
+    startTimeout();
+  };
 
   return (
     <motion.button
@@ -34,10 +48,7 @@ export const Button = ({ variant, text, className, onClick, additionalDelay }: B
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       transition={{ delay: additionalDelay, duration: 1 }}
-      onClick={() => {
-        onClick?.();
-        setIsClicked(true);
-      }}
+      onClick={handleClick}
       onMouseOver={() => setIsHovered(true)}
       onMouseOut={() => setIsHovered(false)}
     >
@@ -50,7 +61,7 @@ export const Button = ({ variant, text, className, onClick, additionalDelay }: B
             variants={textButtonDraw}
             custom={additionalDelay}
           >
-            <Text tag="span" variant="action-3" className={textClassName}>
+            <Text tag="span" variant="action-4" className={textClassName}>
               {text}
             </Text>
           </motion.div>
