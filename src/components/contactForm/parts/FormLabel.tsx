@@ -3,8 +3,8 @@ import { cn } from "@/styles/helpers/cn";
 import { motion } from "framer-motion";
 
 const LABEL_SLIDE_OFFSET = 20;
-export const NAME = "name";
-export const EMAIL = "email";
+export const NAME = "from_name";
+export const EMAIL = "from_email";
 export const MESSAGE = "message";
 
 type FormLabelProps = {
@@ -20,7 +20,8 @@ export const FormLabel = ({ labelText, index, name, variant }: FormLabelProps) =
   const textareaClassName = cn(commonClassName, "h-32 resize-none");
 
   const commonProps = {
-    name: { name } as unknown as string,
+    id: name,
+    name: name,
     initial: { opacity: 0 },
     animate: { opacity: [0, 1] },
     transition: { delay: 0.5 + index / 10, duration: 0.5, ease: "easeIn" },
@@ -34,14 +35,16 @@ export const FormLabel = ({ labelText, index, name, variant }: FormLabelProps) =
           animate={{ y: [LABEL_SLIDE_OFFSET, 0] }}
           transition={{ delay: 0.5 + index / 10, duration: 0.3, ease: "easeOut" }}
         >
-          <label>
+          <label htmlFor={name}>
             <Text tag="span" variant="action-2" className="uppercase">
               {labelText}
             </Text>
           </label>
         </motion.div>
       </div>
-      {variant === "input" && <motion.input type="text" className={inputClassName} {...commonProps} />}
+      {variant === "input" && (
+        <motion.input type={name === EMAIL ? "email" : "text"} className={inputClassName} {...commonProps} />
+      )}
       {variant === "textarea" && <motion.textarea className={textareaClassName} {...commonProps} />}
     </div>
   );
