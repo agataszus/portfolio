@@ -44,7 +44,7 @@ export const ContactForm = () => {
     <motion.form
       ref={formRef}
       onSubmit={handleSubmit}
-      className="flex h-[512px] w-[482px] shrink-0 flex-col justify-between bg-background-color-dark/60 p-10 shadow-lg"
+      className="flex h-[512px] w-[482px] shrink-0 flex-col justify-between bg-background-color-dark/60 p-10 shadow-lg desktop-small:w-[462px] mobile:h-[442px] mobile:w-full mobile:max-w-[462px] mobile:p-6"
       initial={{ scale: 0.8, opacity: 0 }}
       animate={{ opacity: [0, 1], scale: [0.8, 1] }}
       transition={{ delay: 0.2, duration: 0.5, type: "spring", stiffness: 80 }}

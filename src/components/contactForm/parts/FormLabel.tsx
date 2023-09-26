@@ -15,9 +15,9 @@ type FormLabelProps = {
 };
 
 export const FormLabel = ({ labelText, index, name, variant }: FormLabelProps) => {
-  const commonClassName = "w-full bg-background-color-light/70 p-2 text-sm font-normal text-white";
-  const inputClassName = cn(commonClassName, "h-12");
-  const textareaClassName = cn(commonClassName, "h-32 resize-none");
+  const commonClassName = "w-full bg-background-color-light/70 p-2 text-sm font-normal text-white mobile-text-xs";
+  const inputClassName = cn(commonClassName, "h-12 mobile:h-9");
+  const textareaClassName = cn(commonClassName, "h-32 resize-none mobile:h-24");
 
   const commonProps = {
     id: name,

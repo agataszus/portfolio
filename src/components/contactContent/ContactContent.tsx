@@ -5,7 +5,7 @@ import { SocialIcons } from "./parts/SocialIcons";
 
 export const ContactContent = () => {
   return (
-    <div className="flex w-full flex-col gap-8 ">
+    <div className="flex w-full flex-col gap-8 tablet:gap-7 mobile:items-center">
       <ContactTitle />
       <ContactDescription />
       <Email />

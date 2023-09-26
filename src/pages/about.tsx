@@ -11,7 +11,7 @@ export default function AboutPage() {
           initial={{ opacity: 0, scale: 0.8, translateX: "var(--translate-x)" }}
           animate={{ opacity: [0, 1], scale: [0.8, 1], translateX: ["var(--translate-x)", "var(--translate-x)"] }}
           transition={{ delay: 0.2, duration: 0.5, type: "spring", stiffness: 80 }}
-          className="flex h-[540px] w-[420px] shrink-0 bg-white desktop-small:h-[480px] desktop-small:w-[340px] tablet:absolute tablet:left-1/2 tablet:top-72 mobile:top-52 mobile:h-[460px] mobile:w-[300px]"
+          className="flex h-[540px] w-[420px] shrink-0 bg-white desktop-small:h-[480px] desktop-small:w-[340px] tablet:absolute tablet:left-1/2 tablet:top-32 mobile:top-24 mobile:h-[460px] mobile:w-[300px]"
         />
         <AboutMeContent />
       </div>

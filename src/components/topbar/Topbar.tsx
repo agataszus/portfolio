@@ -62,7 +62,12 @@ export const Topbar = ({ className }: TopbarProps) => {
             initial={["buttonHidden", "textHidden"]}
             animate={["buttonVisible", "textVisible"]}
           >
-            <Button variant="small" text="contact" additionalDelay={0.4} onClick={() => router.push("/contact")} />
+            <Button
+              variant="small"
+              text="contact"
+              additionalDelay={0.4}
+              onClick={() => router.push(router.pathname === "/contact" ? "mailto:agataszus@gmail.com" : "/contact")}
+            />
           </motion.div>
         </motion.div>
       </div>

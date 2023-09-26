@@ -18,7 +18,7 @@ export const Email = () => {
     <div className="relative">
       <div className="overflow-hidden">
         <motion.div
-          className="flex flex-col items-start gap-1"
+          className="flex flex-col items-start gap-1 mobile:items-center"
           initial={{ scale: 0, originX: 0 }}
           animate={{ scale: [0, 1], originX: 0 }}
           transition={{ delay: 0.5, duration: 0.2, type: "spring", stiffness: 70 }}

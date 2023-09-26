@@ -28,16 +28,20 @@ export const Button = ({ variant, text, className, onClick, additionalDelay }: B
     ["text-background-color-dark"]: isClicked,
   });
 
+  const handleClick = () => {
+    onClick?.();
+    setIsClicked(true);
+
+    setTimeout(() => setIsClicked(false), 1000);
+  };
+
   return (
     <motion.button
       className={buttonClassName}
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       transition={{ delay: additionalDelay, duration: 1 }}
-      onClick={() => {
-        onClick?.();
-        setIsClicked(true);
-      }}
+      onClick={handleClick}
       onMouseOver={() => setIsHovered(true)}
       onMouseOut={() => setIsHovered(false)}
     >

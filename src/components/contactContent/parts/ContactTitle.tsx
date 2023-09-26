@@ -18,7 +18,7 @@ export const ContactTitle = () => {
           </Text>
         </motion.div>
       </div>
-      <div className="overflow-hidden tablet:mb-[600px] mobile:mb-[540px]">
+      <div className="overflow-hidden">
         <motion.div
           initial={{ y: HEADING_SLIDE_OFFSET }}
           animate={{ y: [HEADING_SLIDE_OFFSET, 0] }}

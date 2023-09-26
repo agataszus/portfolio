@@ -13,7 +13,7 @@ export const AboutMeContent = () => {
   const router = useRouter();
 
   return (
-    <div className="flex w-full flex-col gap-8 desktop-small:gap-4 tablet:mt-10 mobile:mt-0 mobile:items-center">
+    <div className="flex w-full flex-col gap-8 desktop-small:gap-4 tablet:mt-[600px] mobile:mt-[510px] mobile:items-center mobile:gap-7">
       <AboutMeTitle />
       <AboutMeDescription />
       <div className="mt-auto flex gap-8 desktop-small:gap-5 tablet:mt-10 tablet:justify-between tablet:gap-8 mobile:flex-col">
