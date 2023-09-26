@@ -7,7 +7,8 @@ const PROJECTS = [
     description:
       "Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolorem, consequuntur sunt. Nemo soluta omnis, tenetur aperiam nihil, saepe commodi possimus iusto.",
     iconName: IconNames.SPARKLES_ICON,
-    TechnologyIcon: "next",
+    TechnologyIcon: "react",
+    subtitle: "Vite + React project",
   },
   {
     slug: "portfolio",
@@ -15,7 +16,8 @@ const PROJECTS = [
     description:
       "Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolorem, consequuntur sunt. Nemo soluta omnis, tenetur aperiam nihil, saepe commodi.",
     iconName: IconNames.PORTFOLIO_ICON,
-    TechnologyIcon: "react",
+    TechnologyIcon: "next",
+    subtitle: "Vite + Next.js project",
   },
   {
     slug: "weather-app",
@@ -24,6 +26,7 @@ const PROJECTS = [
       "Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolorem, consequuntur sunt. Nemo soluta omnis, tenetur aperiam nihil, saepe commodi possimus.",
     iconName: IconNames.WEATHER_ICON,
     TechnologyIcon: "javascript",
+    subtitle: "Javascript project",
   },
   {
     slug: "efdance",
@@ -32,6 +35,7 @@ const PROJECTS = [
       "Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolorem, consequuntur sunt. Nemo soluta omnis, tenetur aperiam nihil, saepe commodi.",
     iconName: IconNames.MUSIC_ICON,
     TechnologyIcon: "html",
+    subtitle: "HTML5 project",
   },
   {
     slug: "algorithms",
@@ -40,6 +44,7 @@ const PROJECTS = [
       "Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolorem, consequuntur sunt. Nemo soluta omnis, tenetur aperiam nihil, saepe commodi possimus.",
     iconName: IconNames.SORT_ICON,
     TechnologyIcon: "next",
+    subtitle: "Vite + Next.js project",
   },
 ] as const;
 
