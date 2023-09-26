@@ -6,9 +6,10 @@ import { textButtonDraw } from "../projectColumn/projectColumn.constants";
 import { FullRect } from "./parts/FullRect";
 import { AnimatedBackground } from "./parts/AnimatedBackground";
 import { Arrow } from "./parts/Arrow";
+import { ButtonVariants } from "./button.constants";
 
 type ButtonProps = {
-  variant: "small" | "large";
+  variant: ButtonVariants;
   text: string;
   onClick?: () => void;
   className?: string;
@@ -21,7 +22,11 @@ export const Button = ({ variant, text, className, onClick, additionalDelay }: B
 
   const buttonClassName = cn(
     "cursor-pointer relative",
-    { ["h-12 w-40 bg-transparent"]: variant === "small", ["h-[70px] w-[248px] flex"]: variant === "large" },
+    {
+      ["h-12 w-40 bg-transparent"]: variant === "small",
+      ["h-[70px] w-[180px] bg-transparent"]: variant === "medium",
+      ["h-[70px] w-[248px] flex"]: variant === "large",
+    },
     className
   );
   const textClassName = cn("z-10 transition-colors duration-500", {

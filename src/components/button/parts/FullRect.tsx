@@ -1,7 +1,8 @@
+import { ButtonVariants } from "../button.constants";
 import { HalfRect } from "./HalfRect";
 
 type FullRectProps = {
-  variant: "large" | "small";
+  variant: ButtonVariants;
   additionalDelay: number | undefined;
 };
 

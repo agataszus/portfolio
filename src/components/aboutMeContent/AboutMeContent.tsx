@@ -16,12 +16,12 @@ export const AboutMeContent = () => {
     <div className="flex w-full flex-col gap-8 desktop-small:gap-4 tablet:mt-[600px] mobile:mt-[510px] mobile:items-center mobile:gap-7">
       <AboutMeTitle />
       <AboutMeDescription />
-      <div className="mt-auto flex gap-8 desktop-small:gap-5 tablet:mt-10 tablet:justify-between tablet:gap-8 mobile:flex-col">
+      <div className="mt-auto flex gap-8 desktop-small:gap-5 tablet:mt-10 tablet:justify-between tablet:gap-8 mobile:flex-col mobile:items-center">
         <motion.div {...MOTION_BUTTON_COMMON_PROPS}>
           <Button variant="large" text="My projects" onClick={() => router.push("/projects")} additionalDelay={0.5} />
         </motion.div>
         <motion.div {...MOTION_BUTTON_COMMON_PROPS}>
-          <Button variant="large" text="Contact" onClick={() => router.push("/contact")} additionalDelay={0.7} />
+          <Button variant="medium" text="Contact" onClick={() => router.push("/contact")} additionalDelay={0.7} />
         </motion.div>
       </div>
     </div>

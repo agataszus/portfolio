@@ -1,5 +1,12 @@
+export type ButtonVariants = "small" | "medium" | "large";
+
 export const BUTTON_LARGE_SIZE = {
   width: 126,
+  height: 72,
+};
+
+export const BUTTON_MEDIUM_SIZE = {
+  width: 90,
   height: 72,
 };
 
