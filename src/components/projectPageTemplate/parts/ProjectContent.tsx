@@ -1,6 +1,6 @@
 import { ReactNode } from "react";
-import { PageTitle } from "../pageTitle/PageTitle";
-import { PageDescription } from "../pageDescription/PageDescription";
+import { PageTitle } from "../../pageTitle/PageTitle";
+import { PageDescription } from "../../pageDescription/PageDescription";
 
 type ProjectContentType = {
   subtitle: string;
