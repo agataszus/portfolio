@@ -5,7 +5,7 @@ const PROJECTS = [
     slug: "eventhive",
     name: "EventHive",
     description:
-      "Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolorem, consequuntur sunt. Nemo soluta omnis, tenetur aperiam nihil, saepe commodi possimus iusto.",
+      "Lorem ipsum dolor sit amet consectetur adipisicing elit. Nemo soluta omnis, tenetur aperiam nihil, saepe commodi possimus iusto.",
     iconName: IconNames.SPARKLES_ICON,
     TechnologyIcon: "react",
     subtitle: "Vite + React project",
@@ -14,22 +14,49 @@ const PROJECTS = [
     demoLink: "https://eventhive-sigma.vercel.app/",
     websiteScreen: "/",
     technologies: [
-      "react",
-      "vite",
-      "typescript",
-      "css-modules",
-      "sass",
-      "tanstack-query",
-      "vercel",
-      "eslint",
-      "prettier",
+      {
+        name: "react",
+        description: "Lorem ipsum dolor sit amet consectetur adipisicing elit",
+      },
+      {
+        name: "vite",
+        description: "Lorem ipsum dolor sit amet consectetur adipisicing elit.",
+      },
+      {
+        name: "typescript",
+        description: "Lorem ipsum dolor sit amet consectetur adipisicing elit.",
+      },
+      {
+        name: "css-modules",
+        description: "Lorem ipsum dolor sit amet consectetur adipisicing elit.",
+      },
+      {
+        name: "sass",
+        description: "Lorem ipsum dolor sit amet consectetur adipisicing elit.",
+      },
+      {
+        name: "tanstack-query",
+        description: "Lorem ipsum dolor sit amet consectetur adipisicing elit.",
+      },
+      {
+        name: "vercel",
+        description: "Lorem ipsum dolor sit amet consectetur adipisicing elit.",
+      },
+      {
+        name: "eslint",
+        description: "Lorem ipsum dolor sit amet consectetur adipisicing elit.",
+      },
+      {
+        name: "prettier",
+        description: "Lorem ipsum dolor sit amet consectetur adipisicing elit.",
+      },
     ],
   },
   {
     slug: "portfolio",
     name: "Portfolio",
     description:
-      "Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolorem, consequuntur sunt. Nemo soluta omnis, tenetur aperiam nihil, saepe commodi.",
+      "Lorem ipsum dolor sit amet consectetur adipisicing elit. Nemo soluta omnis, tenetur aperiam nihil, saepe commodi.",
     iconName: IconNames.PORTFOLIO_ICON,
     TechnologyIcon: "next",
     subtitle: "Vite + Next.js project",
@@ -37,13 +64,46 @@ const PROJECTS = [
     sourceCodeLink: "https://github.com/agataszus/portfolio",
     demoLink: "https://portfolio-agataszus.vercel.app/",
     websiteScreen: "/",
-    technologies: ["next", "typescript", "tailwind", "framer-motion", "eslint", "prettier", "graphql", "datocms"],
+    technologies: [
+      {
+        name: "next",
+        description: "Lorem ipsum dolor sit amet consectetur adipisicing elit.",
+      },
+      {
+        name: "typescript",
+        description: "Lorem ipsum dolor sit amet consectetur adipisicing elit.",
+      },
+      {
+        name: "tailwind",
+        description: "Lorem ipsum dolor sit amet consectetur adipisicing elit.",
+      },
+      {
+        name: "framer-motion",
+        description: "Lorem ipsum dolor sit amet consectetur adipisicing elit.",
+      },
+      {
+        name: "eslint",
+        description: "Lorem ipsum dolor sit amet consectetur adipisicing elit.",
+      },
+      {
+        name: "prettier",
+        description: "Lorem ipsum dolor sit amet consectetur adipisicing elit.",
+      },
+      {
+        name: "graphql",
+        description: "Lorem ipsum dolor sit amet consectetur adipisicing elit.",
+      },
+      {
+        name: "datocms",
+        description: "Lorem ipsum dolor sit amet consectetur adipisicing elit.",
+      },
+    ],
   },
   {
     slug: "weather-app",
     name: "WeatherApp",
     description:
-      "Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolorem, consequuntur sunt. Nemo soluta omnis, tenetur aperiam nihil, saepe commodi possimus.",
+      "Lorem ipsum dolor sit amet consectetur adipisicing elit. Nemo soluta omnis, tenetur aperiam nihil, saepe commodi possimus.",
     iconName: IconNames.WEATHER_ICON,
     TechnologyIcon: "javascript",
     subtitle: "Javascript project",
@@ -51,13 +111,30 @@ const PROJECTS = [
     sourceCodeLink: "https://github.com/agataszus/weather-app",
     demoLink: "https://taupe-stardust-ee5f74.netlify.app/",
     websiteScreen: "/",
-    technologies: ["javascript", "vite", "eslint", "css-modules"],
+    technologies: [
+      {
+        name: "javascript",
+        description: "Lorem ipsum dolor sit amet consectetur adipisicing elit.",
+      },
+      {
+        name: "vite",
+        description: "Lorem ipsum dolor sit amet consectetur adipisicing elit.",
+      },
+      {
+        name: "eslint",
+        description: "Lorem ipsum dolor sit amet consectetur adipisicing elit.",
+      },
+      {
+        name: "css-modules",
+        description: "Lorem ipsum dolor sit amet consectetur adipisicing elit.",
+      },
+    ],
   },
   {
     slug: "efdance",
     name: "EFDance",
     description:
-      "Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolorem, consequuntur sunt. Nemo soluta omnis, tenetur aperiam nihil, saepe commodi.",
+      "Lorem ipsum dolor sit amet consectetur adipisicing elit. Nemo soluta omnis, tenetur aperiam nihil, saepe commodi.",
     iconName: IconNames.MUSIC_ICON,
     TechnologyIcon: "html",
     subtitle: "HTML5 project",
@@ -65,13 +142,26 @@ const PROJECTS = [
     sourceCodeLink: "https://github.com/agataszus/efdance-website",
     demoLink: "https://agataszus.github.io/efdance-website/",
     websiteScreen: "/",
-    technologies: ["css3", "html5", "javascript"],
+    technologies: [
+      {
+        name: "css3",
+        description: "Lorem ipsum dolor sit amet consectetur adipisicing elit.",
+      },
+      {
+        name: "html5",
+        description: "Lorem ipsum dolor sit amet consectetur adipisicing elit.",
+      },
+      {
+        name: "javascript",
+        description: "Lorem ipsum dolor sit amet consectetur adipisicing elit.",
+      },
+    ],
   },
   {
     slug: "algorithms",
     name: "Algorithms",
     description:
-      "Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolorem, consequuntur sunt. Nemo soluta omnis, tenetur aperiam nihil, saepe commodi possimus.",
+      "Lorem ipsum dolor sit amet consectetur adipisicing elit. Nemo soluta omnis, tenetur aperiam nihil, saepe commodi possimus.",
     iconName: IconNames.SORT_ICON,
     TechnologyIcon: "next",
     subtitle: "Vite + Next.js project",
