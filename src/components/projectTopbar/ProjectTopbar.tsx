@@ -7,7 +7,7 @@ const TOPBAR_SLIDE_OFFSET = 50;
 
 export const ProjectTopbar = () => {
   return (
-    <div className="z-60 h-14 w-full items-center overflow-hidden bg-transparent shadow-large-down-invisible transition-shadow duration-200 ease-in tablet:fixed tablet:inset-x-0 tablet:top-0 tablet:block tablet:px-8 tablet:py-6 tablet:backdrop-blur-md">
+    <div className="z-60 h-14 w-full items-center overflow-hidden bg-transparent shadow-large-down-invisible transition-shadow duration-200 ease-in">
       <motion.div
         className="z-60 flex h-full w-full items-center justify-between"
         initial={{ y: TOPBAR_SLIDE_OFFSET, opacity: 0 }}

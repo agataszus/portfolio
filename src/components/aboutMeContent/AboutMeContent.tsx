@@ -13,7 +13,7 @@ export const AboutMeContent = () => {
   const router = useRouter();
 
   return (
-    <div className="flex w-full flex-col gap-8 desktop-small:gap-4 tablet:mt-[600px] mobile:mt-[510px] mobile:items-center mobile:gap-7">
+    <div className="flex w-full flex-col gap-8 desktop-small:gap-4 tablet:mt-[510px] mobile:items-center mobile:gap-7">
       <PageTitle subtitle="Agata Szustkiewicz" title="About me" />
       <PageDescription
         description={

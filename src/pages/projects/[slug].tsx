@@ -4,10 +4,8 @@ import { Project } from "@/services/content/types";
 import { GetStaticPaths, GetStaticProps } from "next";
 import { motion } from "framer-motion";
 import { ProjectPageTemplate } from "@/components/projectPageTemplate/ProjectPageTemplate";
-
-const SVG_SIZE = 1092;
-const CIRCLE_SIZE = 546;
-const CIRCLE_R = 545;
+import { MOBILE, TABLET, useMediaQueries } from "@/hooks/useMediaQueries";
+import { Topbar } from "@/components/topbar/Topbar";
 
 type ProjectPageProps = {
   project: Project;
@@ -37,12 +35,18 @@ export const getStaticProps: GetStaticProps<ProjectPageProps> = async (context) 
 };
 
 export default function ProjectPage({ project }: ProjectPageProps) {
+  const mediaQuery = useMediaQueries();
+
+  const SVG_SIZE = [TABLET, MOBILE].includes(mediaQuery) ? "1300px" : "max(70vw, 100vh)";
+  const CIRCLE_SIZE = `calc(${SVG_SIZE}/2)`;
+  const CIRCLE_R = `calc(${SVG_SIZE}/2 - 2px)`;
+
   return (
-    <div className="relative mx-auto flex h-full max-w-8xl flex-col px-9 py-6 desktop-mid:max-w-7xl tablet:pb-24 mobile:px-8">
-      <ProjectTopbar />
+    <div className="relative mx-auto flex min-h-full max-w-8xl flex-col px-9 py-6 desktop-mid:max-w-7xl tablet:pb-24 mobile:px-8">
+      {[TABLET, MOBILE].includes(mediaQuery) ? <Topbar /> : <ProjectTopbar />}
       <ProjectPageTemplate project={project} />
       <motion.svg
-        className="absolute right-0 top-0 z-0 m-auto translate-x-[45%] translate-y-[-23%] rotate-90"
+        className="absolute right-0 top-0 z-0 m-auto translate-x-[60%] translate-y-[-23%] rotate-90 desktop-mid:translate-x-[45%] desktop-small:translate-x-[30%] desktop-small:translate-y-[-13%] tablet:left-1/2 tablet:top-[-700px] tablet:-translate-x-1/2 tablet:translate-y-0 mobile:top-[-760px]"
         width={SVG_SIZE}
         height={SVG_SIZE}
         viewBox={`0 0 ${SVG_SIZE} ${SVG_SIZE}`}
