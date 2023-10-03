@@ -12,11 +12,6 @@ import { ProjectsContentResponse, getProjects } from "@/services/content/getProj
 import { useScrollDownCheck } from "@/hooks/useScrollDownCheck";
 import { useButtonsDisableCheck } from "@/hooks/useButtonsDisableCheck";
 import { useProjectsOnArrowsClickScroll } from "@/hooks/useProjectsOnArrowsClickScroll";
-import { Projects } from "@/services/content/types";
-
-type ProjectsPageProps = {
-  projects: Projects;
-};
 
 export const getStaticProps: GetStaticProps<ProjectsContentResponse> = async () => {
   const { allProjectContents } = await getProjects();
