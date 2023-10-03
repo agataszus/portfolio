@@ -9,27 +9,19 @@ const MOTION_BUTTON_COMMON_PROPS = {
   animate: ["buttonVisible", "textVisible", "arrowVisible", "arrowContainerVisible"],
 };
 
-export const AboutMeContent = () => {
+type AboutMeContentProps = {
+  description: string;
+  subtitle: string;
+  title: string;
+};
+
+export const AboutMeContent = ({ description, title, subtitle }: AboutMeContentProps) => {
   const router = useRouter();
 
   return (
     <div className="flex w-full flex-col gap-8 desktop-small:gap-4 tablet:mt-[510px] mobile:items-center mobile:gap-7">
-      <PageTitle subtitle="Agata Szustkiewicz" title="About me" />
-      <PageDescription
-        description={
-          <>
-            Lorem ipsum, dolor sit amet consectetur adipisicing elit. Architecto iste sint hic exercitationem, itaque
-            dignissimos illum atque cupiditate voluptate quos harum dolor aliquid quibusdam iure doloribus vitae unde
-            dolorem deserunt. Architecto iste sint hic exercitationem, itaque dignissimos illum atque cupiditate
-            voluptate quos harum dolor aliquid quibusdam iure doloribus vitae unde dolorem deserunt.
-            <br />
-            <br />
-            Lorem ipsum, dolor sit amet consectetur adipisicing elit. Architecto iste sint hic exercitationem, itaque
-            dignissimos illum atque cupiditate voluptate quos harum dolor aliquid quibusdam iure doloribus vitae unde
-            dolorem deserunt.
-          </>
-        }
-      />
+      <PageTitle subtitle={subtitle} title={title} />
+      <PageDescription description={description} />
       <div className="mt-auto flex gap-8 desktop-small:gap-5 tablet:mt-10 tablet:justify-between tablet:gap-8 mobile:flex-col mobile:items-center">
         <motion.div {...MOTION_BUTTON_COMMON_PROPS}>
           <Button variant="large" text="My projects" onClick={() => router.push("/projects")} additionalDelay={0.5} />

@@ -5,7 +5,11 @@ import { useState } from "react";
 
 const COPIED_SCALE_OFFSET = 0.9;
 
-export const Email = () => {
+type EmailProps = {
+  email: string;
+};
+
+export const Email = ({ email }: EmailProps) => {
   const [isClicked, setIsClicked] = useState(false);
   const { start: startTimeout } = useTimeout(() => setIsClicked(false), 2000);
 
@@ -34,7 +38,7 @@ export const Email = () => {
               variant="action-1"
               className="cursor-pointer font-light opacity-75 transition-opacity hover:opacity-100"
             >
-              agataszus@gmail.com
+              {email}
             </Text>
           </button>
         </motion.div>

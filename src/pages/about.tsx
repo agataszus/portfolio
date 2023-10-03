@@ -1,9 +1,21 @@
 import { AboutMeContent } from "@/components/aboutMeContent/AboutMeContent";
 import { Topbar } from "@/components/topbar/Topbar";
+import { AboutContentResponse, getAboutContent } from "@/services/content/getAboutContent";
 import { motion } from "framer-motion";
+import { GetStaticProps } from "next";
 import Image from "next/image";
 
-export default function AboutPage() {
+export const getStaticProps: GetStaticProps<AboutContentResponse> = async () => {
+  const { aboutContent } = await getAboutContent();
+
+  return {
+    props: { aboutContent },
+  };
+};
+
+export default function AboutPage({ aboutContent }: AboutContentResponse) {
+  const { description, title, subtitle } = aboutContent;
+
   return (
     <div className="mx-auto flex h-full max-w-8xl flex-col px-9 py-6 desktop-mid:max-w-7xl tablet:pb-24 mobile:px-8">
       <Topbar />
@@ -16,7 +28,7 @@ export default function AboutPage() {
         >
           <Image width={420} height={540} alt="My picture" src="/my-picture.png" />
         </motion.div>
-        <AboutMeContent />
+        <AboutMeContent description={description} title={title} subtitle={subtitle} />
       </div>
     </div>
   );

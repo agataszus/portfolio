@@ -1,11 +1,10 @@
 import { Text } from "@/components/text/Text";
 import { motion } from "framer-motion";
-import { ReactNode } from "react";
 
 const DESCRIPTION_SLIDE_OFFSET = 24;
 
 type PageDescriptionProps = {
-  description: ReactNode;
+  description: string;
 };
 
 export const PageDescription = ({ description }: PageDescriptionProps) => {
@@ -17,7 +16,7 @@ export const PageDescription = ({ description }: PageDescriptionProps) => {
         transition={{ delay: 0.3, duration: 0.4, ease: "easeOut" }}
       >
         <Text tag="p" variant="action-1" className="font-light mobile:text-center">
-          {description}
+          <span dangerouslySetInnerHTML={{ __html: description }} />
         </Text>
       </motion.div>
     </div>

@@ -1,10 +1,10 @@
+import { ProjectContent as ProjectContentType } from "@/services/content/getProject";
 import { ProjectButtons } from "./parts/ProjectButtons";
 import { ProjectContent } from "./parts/ProjectContent";
-import { Project } from "@/services/content/types";
 import { RightColumn } from "./parts/RightColumn";
 
 type ProjectPageTemplateProps = {
-  project: Project;
+  project: ProjectContentType;
 };
 
 export const ProjectPageTemplate = ({ project }: ProjectPageTemplateProps) => {
@@ -16,7 +16,7 @@ export const ProjectPageTemplate = ({ project }: ProjectPageTemplateProps) => {
         <ProjectContent subtitle={subtitle} name={name} description={description} />
         <ProjectButtons sourceCodeLink={sourceCodeLink} demoLink={demoLink} />
       </div>
-      <RightColumn imageLink={websiteScreen} technologies={technologies} />
+      <RightColumn image={websiteScreen} technologies={technologies} />
     </div>
   );
 };

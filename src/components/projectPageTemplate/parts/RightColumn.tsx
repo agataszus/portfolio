@@ -5,16 +5,17 @@ import { TechnologyName } from "./ProjectTechIcon";
 import { motion } from "framer-motion";
 import { ProjectIconContainer } from "./ProjectIconContainer";
 import { MOBILE, useMediaQueries } from "@/hooks/useMediaQueries";
+import { WebsiteScreen } from "@/services/content/getProject";
 
 const IMAGE_SCALE = 0.8;
 const SUBHEADING_OFFSET = 150;
 
 type RightColumnProps = {
-  imageLink: string;
+  image: WebsiteScreen;
   technologies: readonly { name: TechnologyName; description: string }[];
 };
 
-export const RightColumn = ({ imageLink, technologies }: RightColumnProps) => {
+export const RightColumn = ({ image, technologies }: RightColumnProps) => {
   const mediaQuery = useMediaQueries();
 
   return (
@@ -26,8 +27,8 @@ export const RightColumn = ({ imageLink, technologies }: RightColumnProps) => {
         transition={{ delay: 0.2, duration: 0.5, type: "spring", stiffness: 80 }}
       >
         <Image
-          alt="Project website screen"
-          src={imageLink}
+          alt={image.alt}
+          src={image.url}
           width={mediaQuery === MOBILE ? 280 : 400}
           height={mediaQuery === MOBILE ? 150 : 210}
         />

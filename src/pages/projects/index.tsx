@@ -8,7 +8,7 @@ import { cn } from "@/styles/helpers/cn";
 import { DesktopExpandableMenu } from "@/components/desktopExpandableMenu/DesktopExpandableMenu";
 import { Topbar } from "@/components/topbar/Topbar";
 import { GetStaticProps } from "next";
-import { getProjects } from "@/services/content/getProjects";
+import { ProjectsContentResponse, getProjects } from "@/services/content/getProjects";
 import { useScrollDownCheck } from "@/hooks/useScrollDownCheck";
 import { useButtonsDisableCheck } from "@/hooks/useButtonsDisableCheck";
 import { useProjectsOnArrowsClickScroll } from "@/hooks/useProjectsOnArrowsClickScroll";
@@ -18,15 +18,15 @@ type ProjectsPageProps = {
   projects: Projects;
 };
 
-export const getStaticProps: GetStaticProps<ProjectsPageProps> = async () => {
-  const projects = await getProjects();
+export const getStaticProps: GetStaticProps<ProjectsContentResponse> = async () => {
+  const { allProjectContents } = await getProjects();
 
   return {
-    props: { projects },
+    props: { allProjectContents },
   };
 };
 
-export default function ProjectsPage({ projects }: ProjectsPageProps) {
+export default function ProjectsPage({ allProjectContents }: ProjectsContentResponse) {
   const isScrolledDown = useScrollDownCheck();
   const projectsContainerRef = useRef<HTMLDivElement>(null);
   const { isLeftDisabled, isRightDisabled } = useButtonsDisableCheck(projectsContainerRef);
@@ -79,15 +79,15 @@ export default function ProjectsPage({ projects }: ProjectsPageProps) {
         onScroll={handleScroll}
         ref={projectsContainerRef}
       >
-        {projects.map(({ name, description, iconName, TechnologyIcon, slug }, index) => (
+        {allProjectContents.map(({ name, descriptionShort, iconName, technologyIconName, slug }, index) => (
           <ProjectColumn
             slug={slug}
             name={name}
-            description={description}
+            description={descriptionShort}
             iconName={iconName}
             index={index + 1}
             key={name}
-            Icon={TechnologyIcon}
+            Icon={technologyIconName}
           />
         ))}
       </div>
