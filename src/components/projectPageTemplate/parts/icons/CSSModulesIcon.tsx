@@ -12,7 +12,7 @@ export const CSSModulesIcon = ({ width, height }: CSSModulesIconProps) => {
       src="/icons/css-modules-logo.png"
       width={width}
       height={height}
-      className="scale-125 invert"
+      className="shrink-0 scale-125 invert"
     />
   );
 };

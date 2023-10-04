@@ -1,4 +1,4 @@
-import { TechIconProps } from "./icons.constants";
+import { TechIconProps } from "../ProjectTechIcon";
 
 export const TailwindIcon = ({ className }: TechIconProps) => {
   return (

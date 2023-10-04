@@ -1,4 +1,4 @@
-import { TechIconProps } from "./icons.constants";
+import { TechIconProps } from "../ProjectTechIcon";
 
 export const Css3Icon = ({ className }: TechIconProps) => {
   return (

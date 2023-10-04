@@ -53,7 +53,7 @@ export const ProjectIconContainer = ({ additionalDelay, technologyName, descript
         onMouseLeave={() => setIsIconHovered(false)}
         className="cursor-pointer"
       >
-        <ProjectTechIcon technologyName={technologyName} />
+        <ProjectTechIcon technologyName={technologyName} variant="small" />
       </div>
     </motion.div>
   );

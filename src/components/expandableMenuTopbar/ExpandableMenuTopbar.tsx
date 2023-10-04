@@ -2,10 +2,13 @@ import Link from "next/link";
 import { DesktopExpandableMenu } from "../desktopExpandableMenu/DesktopExpandableMenu";
 import { Text } from "../text/Text";
 import { motion } from "framer-motion";
+import { useRouter } from "next/router";
 
 const TOPBAR_SLIDE_OFFSET = 50;
 
-export const ProjectTopbar = () => {
+export const ExpandableMenuTopbar = () => {
+  const router = useRouter();
+
   return (
     <div className="z-60 h-14 w-full items-center overflow-hidden bg-transparent shadow-large-down-invisible transition-shadow duration-200 ease-in">
       <motion.div

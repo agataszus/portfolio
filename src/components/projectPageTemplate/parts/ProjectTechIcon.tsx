@@ -14,7 +14,6 @@ import { GraphqlIcon } from "./icons/GraphqlIcon";
 import { DatocmsIcon } from "./icons/DatocmsIcon";
 import { JavascriptIcon } from "./icons/JavascriptIcon";
 import { Css3Icon } from "./icons/Css3Icon";
-import { commonIconClassName, commonIconProps, iconSize } from "./icons/icons.constants";
 import { TypescriptIcon } from "./icons/TypescriptIcon";
 import { cn } from "@/styles/helpers/cn";
 
@@ -39,9 +38,22 @@ export type TechnologyName =
 
 type ProjectTechIconProps = {
   technologyName: TechnologyName;
+  variant: "small" | "large";
 };
 
-export const ProjectTechIcon = ({ technologyName }: ProjectTechIconProps) => {
+export type TechIconProps = {
+  className: string;
+};
+
+export const ProjectTechIcon = ({ technologyName, variant }: ProjectTechIconProps) => {
+  const commonIconClassName = cn("shrink-0", variant === "small" && "h-10 w-10", variant === "large" && "h-20 w-20");
+
+  const iconSize = variant === "small" ? 40 : 80;
+
+  const commonIconProps = {
+    className: commonIconClassName,
+  };
+
   switch (technologyName) {
     case "react": {
       return <ReactjsLineIcon className={cn(commonIconClassName, "fill-white")} />;

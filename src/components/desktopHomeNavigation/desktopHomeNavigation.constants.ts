@@ -8,7 +8,7 @@ export const NAVIGATION_ELEMENTS = [
     label: "About",
   },
   {
-    linkTo: "/",
+    linkTo: "/skills",
     label: "Skills",
   },
   {

@@ -1,5 +1,5 @@
 import { cn } from "@/styles/helpers/cn";
-import { TechIconProps } from "./icons.constants";
+import { TechIconProps } from "../ProjectTechIcon";
 
 export const DatocmsIcon = ({ className }: TechIconProps) => {
   return (

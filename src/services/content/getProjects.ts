@@ -8,6 +8,8 @@ type ProjectContent = {
   descriptionShort: string;
   iconName: IconNames;
   technologyIconName: TechnologyIcons;
+  demoLink: string;
+  sourceCodeLink: string;
 };
 
 export type ProjectsContentResponse = {
@@ -22,6 +24,8 @@ query ProjectsContent {
     descriptionShort
     iconName
     technologyIconName
+    demoLink
+    sourceCodeLink
   }
 }
 `;

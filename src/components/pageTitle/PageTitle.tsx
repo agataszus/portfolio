@@ -12,7 +12,7 @@ type PageTitleProps = {
 export const PageTitle = ({ subtitle, title }: PageTitleProps) => {
   return (
     <>
-      <div className="flex w-[250px] overflow-hidden mobile:justify-center">
+      <div className="flex w-auto overflow-hidden mobile:justify-center">
         <motion.div
           initial={{ x: SUBHEADING_SLIDE_OFFSET }}
           animate={{ x: [SUBHEADING_SLIDE_OFFSET, 0] }}

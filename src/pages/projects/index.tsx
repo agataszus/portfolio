@@ -74,17 +74,21 @@ export default function ProjectsPage({ allProjectContents }: ProjectsContentResp
         onScroll={handleScroll}
         ref={projectsContainerRef}
       >
-        {allProjectContents.map(({ name, descriptionShort, iconName, technologyIconName, slug }, index) => (
-          <ProjectColumn
-            slug={slug}
-            name={name}
-            description={descriptionShort}
-            iconName={iconName}
-            index={index + 1}
-            key={name}
-            Icon={technologyIconName}
-          />
-        ))}
+        {allProjectContents.map(
+          ({ name, descriptionShort, iconName, technologyIconName, slug, demoLink, sourceCodeLink }, index) => (
+            <ProjectColumn
+              slug={slug}
+              name={name}
+              description={descriptionShort}
+              iconName={iconName}
+              index={index + 1}
+              Icon={technologyIconName}
+              demoLink={demoLink}
+              sourceCodeLink={sourceCodeLink}
+              key={name}
+            />
+          )
+        )}
       </div>
     </div>
   );
