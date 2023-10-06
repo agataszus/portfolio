@@ -33,7 +33,7 @@ export const ProjectIconContainer = ({ additionalDelay, technologyName, descript
           <>
             <motion.div
               className={
-                "absolute -top-1/3 left-1/2 w-[172px] -translate-x-1/2 -translate-y-full bg-background-color-dark px-3 py-2 shadow-md desktop-small:w-[144px]"
+                "absolute -top-1/3 left-1/2 w-[172px] -translate-x-1/2 -translate-y-full bg-background-color-dark px-3 py-2 shadow-md desktop-small:w-[144px] mobile:w-24"
               }
               {...COMMON_TOOLTIP_PROPS}
             >
