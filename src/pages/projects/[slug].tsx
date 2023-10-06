@@ -1,18 +1,14 @@
 import { ProjectTopbar } from "@/components/projectTopbar/ProjectTopbar";
 import { getProjects } from "@/services/content/getProjects";
-import { Project } from "@/services/content/types";
 import { GetStaticPaths, GetStaticProps } from "next";
 import { motion } from "framer-motion";
 import { ProjectPageTemplate } from "@/components/projectPageTemplate/ProjectPageTemplate";
 import { MOBILE, TABLET, useMediaQueries } from "@/hooks/useMediaQueries";
 import { Topbar } from "@/components/topbar/Topbar";
-
-type ProjectPageProps = {
-  project: Project;
-};
+import { ProjectContentResponse, getProject } from "@/services/content/getProject";
 
 export const getStaticPaths: GetStaticPaths = async () => {
-  const projects = await getProjects();
+  const { allProjectContents: projects } = await getProjects();
 
   return {
     paths: projects.map(({ slug }) => {
@@ -22,19 +18,25 @@ export const getStaticPaths: GetStaticPaths = async () => {
   };
 };
 
-export const getStaticProps: GetStaticProps<ProjectPageProps> = async (context) => {
+export const getStaticProps: GetStaticProps<ProjectContentResponse> = async (context) => {
   const currentSlug = context.params?.slug;
-  const projects = await getProjects();
-  const project = projects.find(({ slug }) => slug === currentSlug);
 
-  if (!project) return { notFound: true };
+  try {
+    if (!currentSlug) throw new Error("Page not found");
 
-  return {
-    props: { project },
-  };
+    const { projectContent } = await getProject(currentSlug as string);
+
+    if (!projectContent) throw new Error("Page not found");
+
+    return {
+      props: { projectContent },
+    };
+  } catch {
+    return { notFound: true };
+  }
 };
 
-export default function ProjectPage({ project }: ProjectPageProps) {
+export default function ProjectPage({ projectContent }: ProjectContentResponse) {
   const mediaQuery = useMediaQueries();
 
   const SVG_SIZE = [TABLET, MOBILE].includes(mediaQuery) ? "1300px" : "max(70vw, 100vh)";
@@ -44,7 +46,7 @@ export default function ProjectPage({ project }: ProjectPageProps) {
   return (
     <div className="relative mx-auto flex min-h-full max-w-8xl flex-col px-9 py-6 desktop-mid:max-w-7xl tablet:pb-24 mobile:px-8">
       {[TABLET, MOBILE].includes(mediaQuery) ? <Topbar /> : <ProjectTopbar />}
-      <ProjectPageTemplate project={project} />
+      <ProjectPageTemplate project={projectContent} />
       <motion.svg
         className="absolute right-0 top-0 z-0 m-auto translate-x-[60%] translate-y-[-23%] rotate-90 desktop-mid:translate-x-[50%] desktop-small:translate-x-[30%] desktop-small:translate-y-[-13%] tablet:left-1/2 tablet:top-[-700px] tablet:-translate-x-1/2 tablet:translate-y-0 mobile:top-[-760px]"
         width={SVG_SIZE}
