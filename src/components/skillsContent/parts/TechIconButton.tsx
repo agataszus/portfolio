@@ -13,13 +13,9 @@ type TechIconButtonProps = {
 export const TechIconButton = ({ onClick, technologyName, additionalDelay, isActive }: TechIconButtonProps) => {
   const commonTransition = { delay: 0.5 + additionalDelay, duration: 0.4 };
 
-  const handleClick = () => {
-    onClick();
-  };
-
   return (
     <motion.button
-      onClick={handleClick}
+      onClick={onClick}
       initial={{ rotate: ICON_ROTATION, opacity: 0 }}
       animate={{ rotate: [ICON_ROTATION, 0], opacity: [0, 1] }}
       transition={{

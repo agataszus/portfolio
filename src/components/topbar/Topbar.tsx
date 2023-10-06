@@ -19,6 +19,7 @@ export const Topbar = ({ className }: TopbarProps) => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const router = useRouter();
   const contactPathname = getContactPath();
+  const isContactPathname = router.pathname === contactPathname;
 
   return (
     <>
@@ -68,8 +69,8 @@ export const Topbar = ({ className }: TopbarProps) => {
               variant="small"
               text="contact"
               additionalDelay={0.4}
-              linkTo={router.pathname === contactPathname ? "mailto:agataszus@gmail.com" : contactPathname}
-              isExternal={router.pathname === contactPathname ? true : false}
+              linkTo={isContactPathname ? "mailto:agataszus@gmail.com" : contactPathname}
+              isExternal={isContactPathname}
             />
           </motion.div>
         </motion.div>

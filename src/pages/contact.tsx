@@ -15,6 +15,7 @@ export const getStaticProps: GetStaticProps<ContactContentResponse> = async () =
 
 export default function ContactPage({ contactContent }: ContactContentResponse) {
   useScrollToTopOnRender();
+
   const { subtitle, title, description, email } = contactContent;
 
   return (

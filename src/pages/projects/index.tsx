@@ -88,7 +88,7 @@ export default function ProjectsPage({ allProjectContents }: ProjectsContentResp
               Icon={technologyIconName}
               demoLink={demoLink}
               sourceCodeLink={sourceCodeLink}
-              key={name}
+              key={`project-column-${name}`}
             />
           )
         )}
