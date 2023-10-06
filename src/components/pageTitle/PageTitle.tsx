@@ -4,7 +4,12 @@ import { motion } from "framer-motion";
 const SUBHEADING_SLIDE_OFFSET = 250;
 const HEADING_SLIDE_OFFSET = 52;
 
-export const ContactTitle = () => {
+type PageTitleProps = {
+  subtitle: string;
+  title: string;
+};
+
+export const PageTitle = ({ subtitle, title }: PageTitleProps) => {
   return (
     <>
       <div className="flex w-[250px] overflow-hidden mobile:justify-center">
@@ -14,7 +19,7 @@ export const ContactTitle = () => {
           transition={{ duration: 0.6, ease: "easeOut" }}
         >
           <Text tag="p" variant="subtitle-2">
-            Contact
+            {subtitle}
           </Text>
         </motion.div>
       </div>
@@ -25,7 +30,7 @@ export const ContactTitle = () => {
           transition={{ delay: 0.3, duration: 0.3, ease: "easeOut" }}
         >
           <Text tag="h1" variant="heading-2">
-            Get in touch
+            {title}
           </Text>
         </motion.div>
       </div>

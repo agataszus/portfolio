@@ -3,14 +3,19 @@ import { DesktopExpandableMenuLink } from "./parts/DesktopExpandableMenuLink";
 import { AnimatePresence, motion } from "framer-motion";
 import { Hamburger } from "../hamburger/Hamburger";
 import { NAVIGATION_ELEMENTS } from "../desktopHomeNavigation/desktopHomeNavigation.constants";
+import { cn } from "@/styles/helpers/cn";
 
 const NAV_ELEMENT_SLIDE_OFFSET = -50;
 
-export const DesktopExpandableMenu = () => {
+type DesktopExpandableMenuProps = {
+  className?: string;
+};
+
+export const DesktopExpandableMenu = ({ className }: DesktopExpandableMenuProps) => {
   const [isOpen, setIsOpen] = useState(false);
 
   return (
-    <div className="relative z-50 ml-8 self-start">
+    <div className={cn("relative z-50 ml-8 self-start", className)}>
       <Hamburger isCloseVisible={isOpen} handleClick={() => setIsOpen(!isOpen)} />
       <AnimatePresence mode="wait">
         {isOpen && (
