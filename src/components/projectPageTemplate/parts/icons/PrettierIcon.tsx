@@ -1,5 +1,5 @@
 import { cn } from "@/styles/helpers/cn";
-import { TechIconProps } from "../ProjectTechIcon";
+import { TechIconProps } from "./icons.constants";
 
 export const PrettierIcon = ({ className }: TechIconProps) => {
   return (

@@ -3,6 +3,7 @@ import { datoCMSRequest } from "./datoCMSRequest";
 
 export type Technology = {
   name: TechnologyName;
+  label: string;
   description: string;
 };
 
@@ -23,6 +24,7 @@ query SkillsContent {
     title
     technologies {
       name
+      label
       description
     }
   }

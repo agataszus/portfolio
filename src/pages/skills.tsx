@@ -6,7 +6,7 @@ import { SkillsContentResponse, getSkillsContent } from "@/services/content/getS
 import { motion } from "framer-motion";
 import { GetStaticProps } from "next";
 
-const SVG_SIZE = "100vw";
+const SVG_SIZE = "max(100vw, 100vh)";
 const CIRCLE_SIZE = `calc(${SVG_SIZE}/2)`;
 const CIRCLE_R = `calc(${SVG_SIZE}/2 - 2px)`;
 
@@ -21,11 +21,11 @@ export default function SkillsPage({ skillsContent }: SkillsContentResponse) {
   const { subtitle, title, technologies } = skillsContent;
 
   return (
-    <div className="relative mx-auto flex min-h-full max-w-8xl flex-col px-9 py-6 desktop-mid:max-w-7xl tablet:pb-24 mobile:px-8">
+    <div className="relative mx-auto flex min-h-full max-w-8xl flex-col px-9 py-6 desktop-mid:max-w-7xl tablet:min-h-screen tablet:pb-24 tablet:pt-[112px] mobile:px-8">
       {[TABLET, MOBILE].includes(mediaQuery) ? <Topbar /> : <ExpandableMenuTopbar />}
       <SkillsContent subtitle={subtitle} title={title} technologies={technologies} />
       <motion.svg
-        className="absolute left-1/2 z-0 -translate-x-1/2 translate-y-[-70%]"
+        className="absolute bottom-[47%] left-1/2 z-0 -translate-x-1/2 mobile:-top-80"
         width={SVG_SIZE}
         height={SVG_SIZE}
         viewBox={`0 0 ${SVG_SIZE} ${SVG_SIZE}`}

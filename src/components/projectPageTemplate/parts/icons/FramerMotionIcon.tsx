@@ -1,4 +1,4 @@
-import { TechIconProps } from "../ProjectTechIcon";
+import { TechIconProps } from "./icons.constants";
 
 export const FramerMotionIcon = ({ className }: TechIconProps) => {
   return (

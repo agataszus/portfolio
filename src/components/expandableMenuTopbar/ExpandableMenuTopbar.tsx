@@ -1,4 +1,3 @@
-import Link from "next/link";
 import { DesktopExpandableMenu } from "../desktopExpandableMenu/DesktopExpandableMenu";
 import { Text } from "../text/Text";
 import { motion } from "framer-motion";
@@ -21,11 +20,11 @@ export const ExpandableMenuTopbar = () => {
         }}
       >
         <DesktopExpandableMenu className="ml-0 self-center" />
-        <Link href="/projects">
+        <button onClick={() => router.back()}>
           <Text tag="p" variant="action-4" className="text-primary/80 duration-150 hover:text-primary">
             &#8592; Go back
           </Text>
-        </Link>
+        </button>
       </motion.div>
     </div>
   );
