@@ -27,7 +27,7 @@ export default function SkillsPage({ skillsContent }: SkillsContentResponse) {
       {[TABLET, MOBILE].includes(mediaQuery) ? <Topbar /> : <ExpandableMenuTopbar />}
       <SkillsContent subtitle={subtitle} title={title} technologies={technologies} />
       <motion.svg
-        className="absolute bottom-[47%] left-1/2 z-0 -translate-x-1/2 tablet:-top-1/2 mobile:-top-80"
+        className="absolute bottom-[47%] left-1/2 z-0 -translate-x-1/2 tablet:bottom-1/2 mobile:-top-80"
         width={SVG_SIZE}
         height={SVG_SIZE}
         viewBox={`0 0 ${SVG_SIZE} ${SVG_SIZE}`}
