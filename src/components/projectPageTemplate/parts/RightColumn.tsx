@@ -21,7 +21,7 @@ export const RightColumn = ({ image, technologies }: RightColumnProps) => {
   return (
     <div className="z-10 flex flex-col items-end gap-16 [--hover-opacity:0] desktop-small:mr-5 tablet:absolute tablet:left-1/2 tablet:top-24 tablet:-translate-x-1/2 tablet:items-center">
       <motion.button
-        className="relative h-[210] w-[400] bg-black shadow-xl"
+        className="relative h-[220px] w-[400px] bg-black shadow-xl mobile:h-[150px] mobile:w-[280px]"
         initial={{ opacity: 0, scale: IMAGE_SCALE }}
         animate={{ opacity: [0, 1], scale: [IMAGE_SCALE, 1] }}
         transition={{ delay: 0.2, duration: 0.5, type: "spring", stiffness: 80 }}
@@ -30,7 +30,7 @@ export const RightColumn = ({ image, technologies }: RightColumnProps) => {
           alt={image.alt}
           src={image.url}
           width={mediaQuery === MOBILE ? 280 : 400}
-          height={mediaQuery === MOBILE ? 150 : 210}
+          height={mediaQuery === MOBILE ? 150 : 220}
         />
         <PlayLineIcon className="absolute left-1/2 top-1/2 h-20 w-20 -translate-x-1/2 -translate-y-1/2 fill-gray-100/30" />
       </motion.button>
