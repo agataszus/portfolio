@@ -12,6 +12,7 @@ import { ProjectsContentResponse, getProjects } from "@/services/content/getProj
 import { useScrollDownCheck } from "@/hooks/useScrollDownCheck";
 import { useButtonsDisableCheck } from "@/hooks/useButtonsDisableCheck";
 import { useProjectsOnArrowsClickScroll } from "@/hooks/useProjectsOnArrowsClickScroll";
+import { useScrollToTopOnRender } from "@/hooks/useScrollToTopOnRender";
 
 export const getStaticProps: GetStaticProps<ProjectsContentResponse> = async () => {
   const { allProjectContents } = await getProjects();
@@ -22,6 +23,7 @@ export const getStaticProps: GetStaticProps<ProjectsContentResponse> = async () 
 };
 
 export default function ProjectsPage({ allProjectContents }: ProjectsContentResponse) {
+  useScrollToTopOnRender();
   const isScrolledDown = useScrollDownCheck();
   const projectsContainerRef = useRef<HTMLDivElement>(null);
   const { isLeftDisabled, isRightDisabled } = useButtonsDisableCheck(projectsContainerRef);

@@ -66,7 +66,8 @@ export const Topbar = ({ className }: TopbarProps) => {
               variant="small"
               text="contact"
               additionalDelay={0.4}
-              onClick={() => router.push(router.pathname === "/contact" ? "mailto:agataszus@gmail.com" : "/contact")}
+              linkTo={router.pathname === "/contact" ? "mailto:agataszus@gmail.com" : "/contact"}
+              isExternal={router.pathname === "/contact" ? true : false}
             />
           </motion.div>
         </motion.div>

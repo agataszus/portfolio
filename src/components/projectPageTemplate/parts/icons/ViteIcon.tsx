@@ -1,9 +1,6 @@
-import { cn } from "@/styles/helpers/cn";
 import {
-  COLOR_GRAY_LIGHT,
   COLOR_GRAY_MID,
   COLOR_PRIMARY,
-  COLOR_PRIMARY_DARKER,
   COLOR_PRIMARY_DARKEST,
   COLOR_WHITE,
   TechIconWithActiveProps,

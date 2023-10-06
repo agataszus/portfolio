@@ -1,6 +1,7 @@
 import { ContactContent } from "@/components/contactContent/ContactContent";
 import { ContactForm } from "@/components/contactForm/ContactForm";
 import { Topbar } from "@/components/topbar/Topbar";
+import { useScrollToTopOnRender } from "@/hooks/useScrollToTopOnRender";
 import { ContactContentResponse, getContactContent } from "@/services/content/getContactContent";
 import { GetStaticProps } from "next";
 
@@ -13,6 +14,7 @@ export const getStaticProps: GetStaticProps<ContactContentResponse> = async () =
 };
 
 export default function ContactPage({ contactContent }: ContactContentResponse) {
+  useScrollToTopOnRender();
   const { subtitle, title, description, email } = contactContent;
 
   return (

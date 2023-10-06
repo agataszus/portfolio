@@ -2,6 +2,7 @@ import { ExpandableMenuTopbar } from "@/components/expandableMenuTopbar/Expandab
 import { SkillsContent } from "@/components/skillsContent/SkillsContent";
 import { Topbar } from "@/components/topbar/Topbar";
 import { MOBILE, TABLET, useMediaQueries } from "@/hooks/useMediaQueries";
+import { useScrollToTopOnRender } from "@/hooks/useScrollToTopOnRender";
 import { SkillsContentResponse, getSkillsContent } from "@/services/content/getSkillsContent";
 import { motion } from "framer-motion";
 import { GetStaticProps } from "next";
@@ -19,6 +20,7 @@ export const getStaticProps: GetStaticProps<SkillsContentResponse> = async () =>
 export default function SkillsPage({ skillsContent }: SkillsContentResponse) {
   const mediaQuery = useMediaQueries();
   const { subtitle, title, technologies } = skillsContent;
+  useScrollToTopOnRender();
 
   return (
     <div className="relative mx-auto flex min-h-full max-w-8xl flex-col px-9 py-6 desktop-mid:max-w-7xl tablet:min-h-screen tablet:pb-24 tablet:pt-[112px] mobile:px-8">

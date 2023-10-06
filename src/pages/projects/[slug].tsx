@@ -6,6 +6,7 @@ import { ProjectPageTemplate } from "@/components/projectPageTemplate/ProjectPag
 import { MOBILE, TABLET, useMediaQueries } from "@/hooks/useMediaQueries";
 import { Topbar } from "@/components/topbar/Topbar";
 import { ProjectContentResponse, getProject } from "@/services/content/getProject";
+import { useScrollToTopOnRender } from "@/hooks/useScrollToTopOnRender";
 
 export const getStaticPaths: GetStaticPaths = async () => {
   const { allProjectContents: projects } = await getProjects();
@@ -21,7 +22,6 @@ export const getStaticPaths: GetStaticPaths = async () => {
 export const getStaticProps: GetStaticProps<ProjectContentResponse> = async (context) => {
   const currentSlug = context.params?.slug;
   const { projectContent } = await getProject(currentSlug as string);
-  // const project = projects.find(({ slug }) => slug === currentSlug);
 
   if (!projectContent) return { notFound: true };
 
@@ -31,6 +31,7 @@ export const getStaticProps: GetStaticProps<ProjectContentResponse> = async (con
 };
 
 export default function ProjectPage({ projectContent }: ProjectContentResponse) {
+  useScrollToTopOnRender();
   const mediaQuery = useMediaQueries();
 
   const SVG_SIZE = [TABLET, MOBILE].includes(mediaQuery) ? "1300px" : "max(70vw, 100vh)";
