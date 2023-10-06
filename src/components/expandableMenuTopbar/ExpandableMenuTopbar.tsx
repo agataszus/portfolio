@@ -1,11 +1,13 @@
-import Link from "next/link";
 import { DesktopExpandableMenu } from "../desktopExpandableMenu/DesktopExpandableMenu";
 import { Text } from "../text/Text";
 import { motion } from "framer-motion";
+import { useRouter } from "next/router";
 
 const TOPBAR_SLIDE_OFFSET = 50;
 
-export const ProjectTopbar = () => {
+export const ExpandableMenuTopbar = () => {
+  const router = useRouter();
+
   return (
     <div className="z-60 h-14 w-full items-center overflow-hidden bg-transparent shadow-large-down-invisible transition-shadow duration-200 ease-in">
       <motion.div
@@ -18,11 +20,11 @@ export const ProjectTopbar = () => {
         }}
       >
         <DesktopExpandableMenu className="ml-0 self-center" />
-        <Link href="/projects">
+        <button onClick={() => router.back()}>
           <Text tag="p" variant="action-4" className="text-primary/80 duration-150 hover:text-primary">
             &#8592; Go back
           </Text>
-        </Link>
+        </button>
       </motion.div>
     </div>
   );

@@ -2,8 +2,15 @@ export type TechIconProps = {
   className: string;
 };
 
-export const commonIconClassName = "h-10 w-10";
+export type TechIconWithActiveProps = {
+  className: string;
+  isActive: boolean;
+};
 
-export const iconSize = 40;
+export const COLOR_PRIMARY = "#95FAFE";
+export const COLOR_PRIMARY_DARKER = "#77c8cb";
+export const COLOR_PRIMARY_DARKEST = "#599698";
 
-export const commonIconProps = { className: commonIconClassName };
+export const COLOR_WHITE = "#ffffff";
+export const COLOR_GRAY_LIGHT = "#c3c3c3";
+export const COLOR_GRAY_MID = "#a3a3a3";

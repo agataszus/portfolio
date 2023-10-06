@@ -1,14 +1,17 @@
 import { Text } from "@/components/text/Text";
 import { motion } from "framer-motion";
+import Link from "next/link";
 
 const LINK_SLIDE_OFFSET = 20;
 
 type ProjectLinksProps = {
   extraDelay: number;
   description: string;
+  demoLink: string;
+  sourceCodeLink: string;
 };
 
-export const ProjectLinks = ({ extraDelay, description }: ProjectLinksProps) => {
+export const ProjectLinks = ({ extraDelay, description, demoLink, sourceCodeLink }: ProjectLinksProps) => {
   return (
     <div className="relative w-full tablet:h-8 mobile:h-auto">
       <div className="overflow-hidden tablet:absolute tablet:left-[--tablet-left-to-left] tablet:top-60 tablet:translate-x-[--tablet-translate-x] mobile:relative mobile:left-0 mobile:top-0">
@@ -29,12 +32,16 @@ export const ProjectLinks = ({ extraDelay, description }: ProjectLinksProps) => 
           {description}
         </Text>
         <div className="flex flex-col gap-3">
-          <Text tag="p" variant="action-4" className="text-primary">
-            Live demo &#8594;
-          </Text>
-          <Text tag="p" variant="action-4" className="text-primary">
-            Code on github &#8594;
-          </Text>
+          <Link href={demoLink} rel="noreferrer" target="_blank">
+            <Text tag="p" variant="action-4" className="cursor-pointer text-primary">
+              Live demo &#8594;
+            </Text>
+          </Link>
+          <Link href={sourceCodeLink} rel="noreferrer" target="_blank">
+            <Text tag="p" variant="action-4" className="cursor-pointer text-primary">
+              Code on github &#8594;
+            </Text>
+          </Link>
         </div>
       </div>
     </div>

@@ -12,6 +12,8 @@ import { ProjectsContentResponse, getProjects } from "@/services/content/getProj
 import { useScrollDownCheck } from "@/hooks/useScrollDownCheck";
 import { useButtonsDisableCheck } from "@/hooks/useButtonsDisableCheck";
 import { useProjectsOnArrowsClickScroll } from "@/hooks/useProjectsOnArrowsClickScroll";
+import { useScrollToTopOnRender } from "@/hooks/useScrollToTopOnRender";
+import { getHomePath } from "@/components/desktopHomeNavigation/desktopHomeNavigation.constants";
 
 export const getStaticProps: GetStaticProps<ProjectsContentResponse> = async () => {
   const { allProjectContents } = await getProjects();
@@ -22,6 +24,7 @@ export const getStaticProps: GetStaticProps<ProjectsContentResponse> = async () 
 };
 
 export default function ProjectsPage({ allProjectContents }: ProjectsContentResponse) {
+  useScrollToTopOnRender();
   const isScrolledDown = useScrollDownCheck();
   const projectsContainerRef = useRef<HTMLDivElement>(null);
   const { isLeftDisabled, isRightDisabled } = useButtonsDisableCheck(projectsContainerRef);
@@ -62,7 +65,7 @@ export default function ProjectsPage({ allProjectContents }: ProjectsContentResp
           transition={{ delay: 0.4, duration: 0.5 }}
           className="mb-10 ml-8 mt-auto self-start"
         >
-          <Link href="/">
+          <Link href={getHomePath()}>
             <Text tag="p" variant="action-4" className="text-primary/80 duration-150 hover:text-primary">
               &#8592; Go back
             </Text>
@@ -74,17 +77,21 @@ export default function ProjectsPage({ allProjectContents }: ProjectsContentResp
         onScroll={handleScroll}
         ref={projectsContainerRef}
       >
-        {allProjectContents.map(({ name, descriptionShort, iconName, technologyIconName, slug }, index) => (
-          <ProjectColumn
-            slug={slug}
-            name={name}
-            description={descriptionShort}
-            iconName={iconName}
-            index={index + 1}
-            key={name}
-            Icon={technologyIconName}
-          />
-        ))}
+        {allProjectContents.map(
+          ({ name, descriptionShort, iconName, technologyIconName, slug, demoLink, sourceCodeLink }, index) => (
+            <ProjectColumn
+              slug={slug}
+              name={name}
+              description={descriptionShort}
+              iconName={iconName}
+              index={index + 1}
+              Icon={technologyIconName}
+              demoLink={demoLink}
+              sourceCodeLink={sourceCodeLink}
+              key={`project-column-${name}`}
+            />
+          )
+        )}
       </div>
     </div>
   );

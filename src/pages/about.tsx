@@ -1,5 +1,6 @@
 import { AboutMeContent } from "@/components/aboutMeContent/AboutMeContent";
 import { Topbar } from "@/components/topbar/Topbar";
+import { useScrollToTopOnRender } from "@/hooks/useScrollToTopOnRender";
 import { AboutContentResponse, getAboutContent } from "@/services/content/getAboutContent";
 import { motion } from "framer-motion";
 import { GetStaticProps } from "next";
@@ -14,6 +15,7 @@ export const getStaticProps: GetStaticProps<AboutContentResponse> = async () => 
 };
 
 export default function AboutPage({ aboutContent }: AboutContentResponse) {
+  useScrollToTopOnRender();
   const { description, title, subtitle } = aboutContent;
 
   return (

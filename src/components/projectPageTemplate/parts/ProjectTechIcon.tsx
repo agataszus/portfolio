@@ -1,5 +1,6 @@
-import ReactjsLineIcon from "remixicon-react/ReactjsLineIcon";
+import ReactjsFillIcon from "remixicon-react/ReactjsFillIcon";
 import Html5FillIcon from "remixicon-react/Html5FillIcon";
+import GithubFillIcon from "remixicon-react/GithubFillIcon";
 import { ViteIcon } from "./icons/ViteIcon";
 import { CSSModulesIcon } from "./icons/CSSModulesIcon";
 import { SassIcon } from "./icons/SassIcon";
@@ -14,9 +15,9 @@ import { GraphqlIcon } from "./icons/GraphqlIcon";
 import { DatocmsIcon } from "./icons/DatocmsIcon";
 import { JavascriptIcon } from "./icons/JavascriptIcon";
 import { Css3Icon } from "./icons/Css3Icon";
-import { commonIconClassName, commonIconProps, iconSize } from "./icons/icons.constants";
 import { TypescriptIcon } from "./icons/TypescriptIcon";
 import { cn } from "@/styles/helpers/cn";
+import { GitIcon } from "./icons/GitIcon";
 
 export type TechnologyName =
   | "react"
@@ -35,46 +36,68 @@ export type TechnologyName =
   | "datocms"
   | "javascript"
   | "css3"
-  | "html5";
+  | "html5"
+  | "github"
+  | "git";
 
 type ProjectTechIconProps = {
   technologyName: TechnologyName;
+  variant: "small" | "large";
+  isActive?: boolean;
 };
 
-export const ProjectTechIcon = ({ technologyName }: ProjectTechIconProps) => {
+export const ProjectTechIcon = ({ technologyName, variant, isActive = false }: ProjectTechIconProps) => {
+  const commonIconClassName = cn(
+    "shrink-0",
+    variant === "small" && "h-10 w-10",
+    variant === "large" && "h-20 w-20",
+    isActive && "fill-primary"
+  );
+
+  const iconSize = variant === "small" ? 40 : 80;
+
+  const commonIconProps = {
+    className: commonIconClassName,
+  };
+
+  const commonIconWithActiveProps = {
+    className: commonIconClassName,
+    isActive: isActive,
+  };
+
   switch (technologyName) {
     case "react": {
-      return <ReactjsLineIcon className={cn(commonIconClassName, "fill-white")} />;
+      return <ReactjsFillIcon className={cn("fill-white", commonIconClassName)} />;
     }
     case "vite": {
-      return <ViteIcon {...commonIconProps} />;
+      return <ViteIcon {...commonIconWithActiveProps} />;
     }
     case "typescript": {
-      return <TypescriptIcon {...commonIconProps} />;
+      return <TypescriptIcon {...commonIconWithActiveProps} />;
     }
     case "css-modules": {
-      return <CSSModulesIcon width={iconSize} height={iconSize} />;
+      return <CSSModulesIcon width={iconSize} height={iconSize} isActive={isActive} />;
     }
     case "sass": {
       return <SassIcon {...commonIconProps} />;
     }
     case "tanstack-query": {
-      return <ReactQueryIcon {...commonIconProps} />;
+      return <ReactQueryIcon {...commonIconWithActiveProps} />;
     }
     case "vercel": {
-      return <VercelIcon {...commonIconProps} />;
+      return <VercelIcon {...commonIconWithActiveProps} />;
     }
     case "eslint": {
-      return <EslintIcon {...commonIconProps} />;
+      return <EslintIcon {...commonIconWithActiveProps} />;
     }
     case "prettier": {
       return <PrettierIcon {...commonIconProps} />;
     }
     case "next": {
-      return <NextIcon {...commonIconProps} />;
+      return <NextIcon {...commonIconWithActiveProps} />;
     }
     case "tailwind": {
-      return <TailwindIcon {...commonIconProps} />;
+      return <TailwindIcon {...commonIconWithActiveProps} />;
     }
     case "framer-motion": {
       return <FramerMotionIcon {...commonIconProps} />;
@@ -89,10 +112,16 @@ export const ProjectTechIcon = ({ technologyName }: ProjectTechIconProps) => {
       return <JavascriptIcon {...commonIconProps} />;
     }
     case "css3": {
-      return <Css3Icon {...commonIconProps} />;
+      return <Css3Icon {...commonIconWithActiveProps} />;
     }
     case "html5": {
-      return <Html5FillIcon className={cn(commonIconClassName, "fill-white")} />;
+      return <Html5FillIcon className={cn("fill-white", commonIconClassName)} />;
+    }
+    case "github": {
+      return <GithubFillIcon className={cn("fill-white", commonIconClassName)} />;
+    }
+    case "git": {
+      return <GitIcon {...commonIconProps} />;
     }
   }
 };

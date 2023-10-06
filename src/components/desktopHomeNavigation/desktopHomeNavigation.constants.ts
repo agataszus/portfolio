@@ -1,22 +1,29 @@
+export const getHomePath = () => "/";
+export const getAboutPath = () => "/about";
+export const getSkillsPath = () => "/skills";
+export const getProjectsPath = () => "/projects";
+export const getProjectPath = (slug: string) => `${getProjectsPath()}/${slug}`;
+export const getContactPath = () => "/contact";
+
 export const NAVIGATION_ELEMENTS = [
   {
-    linkTo: "/",
+    linkTo: getHomePath(),
     label: "Home",
   },
   {
-    linkTo: "/about",
+    linkTo: getAboutPath(),
     label: "About",
   },
   {
-    linkTo: "/",
+    linkTo: getSkillsPath(),
     label: "Skills",
   },
   {
-    linkTo: "/projects",
+    linkTo: getProjectsPath(),
     label: "Projects",
   },
   {
-    linkTo: "/contact",
+    linkTo: getContactPath(),
     label: "Contact",
   },
 ];

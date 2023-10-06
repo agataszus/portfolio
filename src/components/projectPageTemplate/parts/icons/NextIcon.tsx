@@ -1,7 +1,16 @@
 import { cn } from "@/styles/helpers/cn";
-import { TechIconProps } from "./icons.constants";
+import {
+  COLOR_GRAY_MID,
+  COLOR_PRIMARY,
+  COLOR_PRIMARY_DARKER,
+  COLOR_WHITE,
+  TechIconWithActiveProps,
+} from "./icons.constants";
 
-export const NextIcon = ({ className }: TechIconProps) => {
+export const NextIcon = ({ className, isActive }: TechIconWithActiveProps) => {
+  const mainColor = isActive ? COLOR_PRIMARY : COLOR_WHITE;
+  const secondaryColor = isActive ? COLOR_PRIMARY_DARKER : COLOR_GRAY_MID;
+
   return (
     <svg
       aria-label="Next.js logomark"
@@ -20,10 +29,10 @@ export const NextIcon = ({ className }: TechIconProps) => {
         x="0"
         y="0"
       >
-        <circle cx="90" cy="90" fill="#a3a3a3" r="90"></circle>
+        <circle cx="90" cy="90" fill={secondaryColor} r="90"></circle>
       </mask>
       <g mask="url(#:R0:mask0_408_134)">
-        <circle cx="90" cy="90" data-circle="true" fill="#a3a3a3" r="90"></circle>
+        <circle cx="90" cy="90" data-circle="true" fill={secondaryColor} r="90"></circle>
         <path
           d="M149.508 157.52L69.142 54H54V125.97H66.1136V69.3836L139.999 164.845C143.333 162.614 146.509 160.165 149.508 157.52Z"
           fill="url(#:R0:paint0_linear_408_134)"
@@ -39,8 +48,8 @@ export const NextIcon = ({ className }: TechIconProps) => {
           y1="116.5"
           y2="160.5"
         >
-          <stop stop-color="white"></stop>
-          <stop offset="1" stop-color="white" stop-opacity="0"></stop>
+          <stop stop-color={mainColor}></stop>
+          <stop offset="1" stop-color={mainColor} stop-opacity="0"></stop>
         </linearGradient>
         <linearGradient
           gradientUnits="userSpaceOnUse"
@@ -50,8 +59,8 @@ export const NextIcon = ({ className }: TechIconProps) => {
           y1="54"
           y2="106.875"
         >
-          <stop stop-color="white"></stop>
-          <stop offset="1" stop-color="white" stop-opacity="0"></stop>
+          <stop stop-color={mainColor}></stop>
+          <stop offset="1" stop-color={mainColor} stop-opacity="0"></stop>
         </linearGradient>
       </defs>
     </svg>

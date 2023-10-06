@@ -18,9 +18,20 @@ type ProjectColumnProps = {
   description: string;
   Icon: TechnologyIcons;
   slug: string;
+  demoLink: string;
+  sourceCodeLink: string;
 };
 
-export const ProjectColumn = ({ iconName, name, description, index, Icon, slug }: ProjectColumnProps) => {
+export const ProjectColumn = ({
+  iconName,
+  name,
+  description,
+  index,
+  Icon,
+  slug,
+  demoLink,
+  sourceCodeLink,
+}: ProjectColumnProps) => {
   const mediaQuery = useMediaQueries();
   const columnRef = useRef<HTMLDivElement>(null);
 
@@ -93,7 +104,12 @@ export const ProjectColumn = ({ iconName, name, description, index, Icon, slug }
       <div className="relative flex h-full w-full flex-col gap-10 desktop-mid:gap-8 tablet:gap-3 mobile:gap-4">
         <ProjectIconContainer iconName={iconName} extraDelay={extraDelay} />
         <ProjectName name={name} extraDelay={extraDelay} />
-        <ProjectLinks extraDelay={extraDelay} description={description} />
+        <ProjectLinks
+          extraDelay={extraDelay}
+          description={description}
+          demoLink={demoLink}
+          sourceCodeLink={sourceCodeLink}
+        />
         <ArrowToButton index={index} slug={slug} />
       </div>
     </motion.div>

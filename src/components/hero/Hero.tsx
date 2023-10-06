@@ -1,14 +1,12 @@
 import { Button } from "../button/Button";
+import { getProjectsPath } from "../desktopHomeNavigation/desktopHomeNavigation.constants";
 import { Text } from "../text/Text";
-import { useRouter } from "next/router";
 import { motion } from "framer-motion";
 
 const SUBHEADING_SLIDE_OFFSET = 250;
 const HEADING_SLIDE_OFFSET = 170;
 
 export const Hero = () => {
-  const router = useRouter();
-
   return (
     <div className="flex w-[510px] flex-col pb-[52px]">
       <div className="mb-10 w-[250px] overflow-hidden">
@@ -39,7 +37,13 @@ export const Hero = () => {
         initial={["buttonHidden", "textHidden", "arrowHidden", "arrowContainerHidden"]}
         animate={["buttonVisible", "textVisible", "arrowVisible", "arrowContainerVisible"]}
       >
-        <Button variant="large" text="My projects" onClick={() => router.push("/projects")} additionalDelay={0.5} />
+        <Button
+          variant="large"
+          text="My projects"
+          linkTo={getProjectsPath()}
+          additionalDelay={0.5}
+          isExternal={false}
+        />
       </motion.div>
     </div>
   );

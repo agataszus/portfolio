@@ -17,6 +17,7 @@ const config: Config = {
       colors: {
         primary: "#95FAFE",
         "background-color-dark": "#0D0E38",
+        "background-color-mid": "#161A42",
         "background-color-light": "#293868",
         "button-color-light": "rgba(47, 64, 107, 0.6)",
       },
