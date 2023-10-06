@@ -21,13 +21,20 @@ export const getStaticPaths: GetStaticPaths = async () => {
 
 export const getStaticProps: GetStaticProps<ProjectContentResponse> = async (context) => {
   const currentSlug = context.params?.slug;
-  const { projectContent } = await getProject(currentSlug as string);
 
-  if (!projectContent) return { notFound: true };
+  try {
+    if (!currentSlug) throw new Error("Page not found");
 
-  return {
-    props: { projectContent },
-  };
+    const { projectContent } = await getProject(currentSlug as string);
+
+    if (!projectContent) throw new Error("Page not found");
+
+    return {
+      props: { projectContent },
+    };
+  } catch {
+    return { notFound: true };
+  }
 };
 
 export default function ProjectPage({ projectContent }: ProjectContentResponse) {
