@@ -7,6 +7,7 @@ import { useState } from "react";
 import { cn } from "@/styles/helpers/cn";
 import { Hamburger } from "../hamburger/Hamburger";
 import { useRouter } from "next/router";
+import { getContactPath } from "../desktopHomeNavigation/desktopHomeNavigation.constants";
 
 const TOPBAR_SLIDE_OFFSET = 50;
 
@@ -17,6 +18,7 @@ type TopbarProps = {
 export const Topbar = ({ className }: TopbarProps) => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const router = useRouter();
+  const contactPathname = getContactPath();
 
   return (
     <>
@@ -66,8 +68,8 @@ export const Topbar = ({ className }: TopbarProps) => {
               variant="small"
               text="contact"
               additionalDelay={0.4}
-              linkTo={router.pathname === "/contact" ? "mailto:agataszus@gmail.com" : "/contact"}
-              isExternal={router.pathname === "/contact" ? true : false}
+              linkTo={router.pathname === contactPathname ? "mailto:agataszus@gmail.com" : contactPathname}
+              isExternal={router.pathname === contactPathname ? true : false}
             />
           </motion.div>
         </motion.div>

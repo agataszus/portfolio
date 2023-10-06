@@ -13,6 +13,7 @@ import { useScrollDownCheck } from "@/hooks/useScrollDownCheck";
 import { useButtonsDisableCheck } from "@/hooks/useButtonsDisableCheck";
 import { useProjectsOnArrowsClickScroll } from "@/hooks/useProjectsOnArrowsClickScroll";
 import { useScrollToTopOnRender } from "@/hooks/useScrollToTopOnRender";
+import { getHomePath } from "@/components/desktopHomeNavigation/desktopHomeNavigation.constants";
 
 export const getStaticProps: GetStaticProps<ProjectsContentResponse> = async () => {
   const { allProjectContents } = await getProjects();
@@ -64,7 +65,7 @@ export default function ProjectsPage({ allProjectContents }: ProjectsContentResp
           transition={{ delay: 0.4, duration: 0.5 }}
           className="mb-10 ml-8 mt-auto self-start"
         >
-          <Link href="/">
+          <Link href={getHomePath()}>
             <Text tag="p" variant="action-4" className="text-primary/80 duration-150 hover:text-primary">
               &#8592; Go back
             </Text>

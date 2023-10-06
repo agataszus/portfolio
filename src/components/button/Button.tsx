@@ -8,7 +8,6 @@ import { AnimatedBackground } from "./parts/AnimatedBackground";
 import { Arrow } from "./parts/Arrow";
 import { ButtonVariant } from "./button.constants";
 import { useTimeout } from "@mantine/hooks";
-import Link from "next/link";
 import { ButtonWrapper } from "./parts/ButtonWrapper";
 
 type ButtonProps = {

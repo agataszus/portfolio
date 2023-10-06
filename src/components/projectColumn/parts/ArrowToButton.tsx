@@ -1,4 +1,5 @@
 import { Button } from "@/components/button/Button";
+import { getProjectPath } from "@/components/desktopHomeNavigation/desktopHomeNavigation.constants";
 import { motion } from "framer-motion";
 import ArrowRightSFillIcon from "remixicon-react/ArrowRightSFillIcon";
 
@@ -24,7 +25,7 @@ export const ArrowToButton = ({ index, slug }: ArrowToButtonProps) => {
           variant="large"
           text="learn more"
           className=" absolute bottom-8 left-0"
-          linkTo={`/projects/${slug}`}
+          linkTo={getProjectPath(slug)}
           isExternal={false}
         />
       </motion.div>

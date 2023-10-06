@@ -1,4 +1,5 @@
 import { Button } from "../button/Button";
+import { getProjectsPath } from "../desktopHomeNavigation/desktopHomeNavigation.constants";
 import { Text } from "../text/Text";
 import { motion } from "framer-motion";
 
@@ -36,7 +37,13 @@ export const Hero = () => {
         initial={["buttonHidden", "textHidden", "arrowHidden", "arrowContainerHidden"]}
         animate={["buttonVisible", "textVisible", "arrowVisible", "arrowContainerVisible"]}
       >
-        <Button variant="large" text="My projects" linkTo="/projects" additionalDelay={0.5} isExternal={false} />
+        <Button
+          variant="large"
+          text="My projects"
+          linkTo={getProjectsPath()}
+          additionalDelay={0.5}
+          isExternal={false}
+        />
       </motion.div>
     </div>
   );
