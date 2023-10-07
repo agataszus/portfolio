@@ -70,7 +70,7 @@ export const Topbar = ({ className }: TopbarProps) => {
               text="contact"
               additionalDelay={0.4}
               linkTo={isContactPathname ? "mailto:agataszus@gmail.com" : contactPathname}
-              isExternal={isContactPathname}
+              isExternal={false}
             />
           </motion.div>
         </motion.div>

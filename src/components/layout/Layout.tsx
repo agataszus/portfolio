@@ -18,6 +18,16 @@ export const Layout = ({ children, className }: LayoutProps) => {
   const { pathname } = useRouter();
   const previousPathname = usePrevious(pathname);
   const [wasPathnameChanged, setWasPathnameChanged] = useState(false);
+  const [isClientMounted, setIsClientMounted] = useState(false);
+
+  /**
+   * It is used to prevent render of children content on server side,
+   * so the children are rendered only on client side
+   * ensuring proper initial animations presence
+   */
+  useEffect(() => {
+    setIsClientMounted(true);
+  }, []);
 
   useEffect(() => {
     if (previousPathname && pathname !== previousPathname) setWasPathnameChanged(true);
@@ -25,18 +35,22 @@ export const Layout = ({ children, className }: LayoutProps) => {
 
   return (
     <div className={layoutClassName}>
-      {wasPathnameChanged && <SlidingOverlay pathname={pathname} />}
-      <AnimatePresence mode="wait" initial={false}>
-        <motion.div
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1, transition: { duration: 0.4 } }}
-          exit={{ opacity: 0, transition: { delay: 0.5, duration: 0.4 } }}
-          className="h-full w-full"
-          key={`content-animation-${pathname}`}
-        >
-          {children}
-        </motion.div>
-      </AnimatePresence>
+      {isClientMounted && (
+        <>
+          {wasPathnameChanged && <SlidingOverlay pathname={pathname} />}
+          <AnimatePresence mode="wait" initial={false}>
+            <motion.div
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1, transition: { duration: 0.4 } }}
+              exit={{ opacity: 0, transition: { delay: 0.5, duration: 0.4 } }}
+              className="h-full w-full"
+              key={`content-animation-${pathname}`}
+            >
+              {children}
+            </motion.div>
+          </AnimatePresence>
+        </>
+      )}
     </div>
   );
 };

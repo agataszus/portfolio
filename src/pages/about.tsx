@@ -5,6 +5,7 @@ import { AboutContentResponse, getAboutContent } from "@/services/content/getAbo
 import { motion } from "framer-motion";
 import { GetStaticProps } from "next";
 import Image from "next/image";
+import myPicture from "../../public/my-picture.png";
 
 export const getStaticProps: GetStaticProps<AboutContentResponse> = async () => {
   const { aboutContent } = await getAboutContent();
@@ -28,7 +29,7 @@ export default function AboutPage({ aboutContent }: AboutContentResponse) {
           transition={{ delay: 0.2, duration: 0.5, type: "spring", stiffness: 80 }}
           className="flex h-[540px] w-[420px] shrink-0 desktop-small:h-[440px] desktop-small:w-[340px] tablet:absolute tablet:left-1/2 tablet:top-24"
         >
-          <Image width={420} height={540} alt="My picture" src="/my-picture.png" />
+          <Image width={420} height={540} alt="My picture" src={myPicture} priority />
         </motion.div>
         <AboutMeContent description={description} title={title} subtitle={subtitle} />
       </div>

@@ -20,7 +20,7 @@ export const AboutMeContent = ({ description, title, subtitle }: AboutMeContentP
     <div className="flex w-full flex-col gap-8 desktop-small:gap-4 tablet:mt-[510px] mobile:items-center mobile:gap-7">
       <PageTitle subtitle={subtitle} title={title} />
       <PageDescription description={description} />
-      <div className="mt-auto flex gap-8 desktop-small:gap-5 tablet:mt-10 tablet:justify-between tablet:gap-8 mobile:flex-col mobile:items-center">
+      <div className="mt-auto flex gap-8 pt-4 desktop-small:gap-5 tablet:mt-10 tablet:gap-8 tablet:pt-0 mobile:flex-col mobile:items-center">
         <motion.div {...MOTION_BUTTON_COMMON_PROPS}>
           <Button
             variant="large"
