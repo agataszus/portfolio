@@ -3,7 +3,7 @@ import { datoCMSRequest } from "./datoCMSRequest";
 
 type Technology = {
   name: TechnologyName;
-  description: string;
+  label: string;
 };
 
 export type WebsiteScreen = {
@@ -39,7 +39,7 @@ query ProjectContent {
     }
     technologies {
       name
-      description
+      label
     }
   }
 }

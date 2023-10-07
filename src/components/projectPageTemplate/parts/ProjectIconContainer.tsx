@@ -6,7 +6,7 @@ import { useState } from "react";
 type ProjectIconContainerProps = {
   additionalDelay: number;
   technologyName: TechnologyName;
-  description: string;
+  label: string;
 };
 
 const ICON_ROTATION = "-110deg";
@@ -18,7 +18,7 @@ const COMMON_TOOLTIP_PROPS = {
   transition: { duration: 0.3 },
 };
 
-export const ProjectIconContainer = ({ additionalDelay, technologyName, description }: ProjectIconContainerProps) => {
+export const ProjectIconContainer = ({ additionalDelay, technologyName, label }: ProjectIconContainerProps) => {
   const [isIconHovered, setIsIconHovered] = useState(false);
 
   return (
@@ -33,12 +33,12 @@ export const ProjectIconContainer = ({ additionalDelay, technologyName, descript
           <>
             <motion.div
               className={
-                "absolute -top-1/3 left-1/2 w-[172px] -translate-x-1/2 -translate-y-full bg-background-color-dark px-3 py-2 shadow-md desktop-small:w-[144px] mobile:w-24"
+                "absolute -top-1/3 left-1/2 w-auto -translate-x-1/2 -translate-y-full bg-background-color-dark px-3 py-2 shadow-md mobile:max-w-[96px]"
               }
               {...COMMON_TOOLTIP_PROPS}
             >
-              <Text tag="p" variant="action-5">
-                {description}
+              <Text tag="p" variant="action-2">
+                {label}
               </Text>
             </motion.div>
             <motion.div
