@@ -25,7 +25,13 @@ export default function SkillsPage({ skillsContent }: SkillsContentResponse) {
 
   return (
     <div className="relative mx-auto flex min-h-full max-w-8xl flex-col px-9 py-6 desktop-mid:max-w-7xl tablet:min-h-screen tablet:pb-24 tablet:pt-[112px] mobile:px-8">
-      {[TABLET, MOBILE].includes(mediaQuery) ? <Topbar /> : <ExpandableMenuTopbar />}
+      {[TABLET, MOBILE].includes(mediaQuery) ? (
+        <div className="hidden tablet:block">
+          <Topbar />
+        </div>
+      ) : (
+        <ExpandableMenuTopbar />
+      )}
       <SkillsContent subtitle={subtitle} title={title} technologies={technologies} />
       <motion.svg
         className="absolute bottom-[47%] left-1/2 z-0 -translate-x-1/2 tablet:bottom-1/2 mobile:-top-80"

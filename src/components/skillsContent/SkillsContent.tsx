@@ -31,7 +31,7 @@ export const SkillsContent = ({ subtitle, title, technologies }: SkillsContentPr
         <PageTitle subtitle={subtitle} title={title} />
       </div>
       <motion.div
-        className="flex h-48 w-full shrink-0 items-center gap-4 bg-background-color-mid px-6 py-9 shadow-lg tablet:scroll-mt-[88px] mobile:h-auto mobile:flex-col mobile:gap-6"
+        className="flex h-48 w-full shrink-0 items-center gap-5 bg-background-color-mid px-6 py-9 shadow-lg tablet:scroll-mt-[88px] mobile:h-auto mobile:flex-col mobile:gap-6"
         initial={{ opacity: 0, scale: 0.8 }}
         animate={{ opacity: [0, 1], scale: [0.8, 1] }}
         transition={{ delay: 0.4, duration: 0.5, type: "spring", stiffness: 80 }}
@@ -43,7 +43,7 @@ export const SkillsContent = ({ subtitle, title, technologies }: SkillsContentPr
             {activeLabel}
           </Text>
           <Text tag="p" variant="caption-1" className="leading-normal mobile:text-center">
-            {activeDescription}
+            <span dangerouslySetInnerHTML={{ __html: activeDescription }} />
           </Text>
         </div>
       </motion.div>
