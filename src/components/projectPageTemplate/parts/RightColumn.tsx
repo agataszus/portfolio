@@ -12,7 +12,7 @@ const SUBHEADING_OFFSET = 150;
 
 type RightColumnProps = {
   image: WebsiteScreen;
-  technologies: readonly { name: TechnologyName; description: string }[];
+  technologies: readonly { name: TechnologyName; label: string }[];
 };
 
 export const RightColumn = ({ image, technologies }: RightColumnProps) => {
@@ -49,13 +49,8 @@ export const RightColumn = ({ image, technologies }: RightColumnProps) => {
         <div className="flex w-[300px] flex-wrap justify-end gap-4 tablet:justify-center">
           {technologies.length === 0
             ? null
-            : technologies.map(({ name, description }, index) => (
-                <ProjectIconContainer
-                  technologyName={name}
-                  description={description}
-                  additionalDelay={index / 10}
-                  key={name}
-                />
+            : technologies.map(({ name, label }, index) => (
+                <ProjectIconContainer technologyName={name} label={label} additionalDelay={index / 10} key={name} />
               ))}
         </div>
       </div>

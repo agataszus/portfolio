@@ -28,8 +28,8 @@ export const Hero = () => {
         >
           <Text tag="h1" variant="heading-1">
             Hi! I&apos;m Agata.
-            <br /> Frontend Developer
-            <br />& blah blah
+            <br /> Aspiring Frontend
+            <br /> Developer.
           </Text>
         </motion.div>
       </div>
