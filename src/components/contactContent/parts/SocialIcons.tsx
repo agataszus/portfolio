@@ -7,7 +7,7 @@ export const SocialIcons = () => {
   return (
     <div className="mt-auto flex gap-4">
       {[
-        { Icon: LinkedinBoxFillIcon, linkTo: "https://www.linkedin.com/" },
+        { Icon: LinkedinBoxFillIcon, linkTo: "www.linkedin.com/in/agata-szustkiewicz-051256293" },
         { Icon: GithubFillIcon, linkTo: "https://github.com/agataszus" },
         { Icon: MailFillIcon, linkTo: "mailto:agataszus@gmail.com" },
       ].map(({ Icon, linkTo }, index) => (
