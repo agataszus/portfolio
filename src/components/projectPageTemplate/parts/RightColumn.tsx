@@ -19,7 +19,7 @@ export const RightColumn = ({ image, technologies }: RightColumnProps) => {
   const mediaQuery = useMediaQueries();
 
   return (
-    <div className="z-10 flex flex-col items-end gap-16 [--hover-opacity:0] desktop-small:mr-5 tablet:absolute tablet:left-1/2 tablet:top-24 tablet:-translate-x-1/2 tablet:items-center">
+    <div className="z-10 flex flex-col items-end gap-16 [--hover-opacity:0] desktop-small:mr-5 tablet:absolute tablet:left-1/2 tablet:top-24 tablet:-translate-x-1/2 tablet:items-center mobile:gap-12">
       <motion.button
         className="relative h-[220px] w-[400px] bg-black shadow-xl mobile:h-[150px] mobile:w-[280px]"
         initial={{ opacity: 0, scale: IMAGE_SCALE }}

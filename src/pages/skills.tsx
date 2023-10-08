@@ -4,8 +4,11 @@ import { Topbar } from "@/components/topbar/Topbar";
 import { DESKTOP_SMALL, MOBILE, TABLET, useMediaQueries } from "@/hooks/useMediaQueries";
 import { useScrollToTopOnRender } from "@/hooks/useScrollToTopOnRender";
 import { SkillsContentResponse, getSkillsContent } from "@/services/content/getSkillsContent";
+import { usePrevious } from "@mantine/hooks";
 import { motion } from "framer-motion";
 import { GetStaticProps } from "next";
+import { useRouter } from "next/router";
+import { useEffect } from "react";
 
 export const getStaticProps: GetStaticProps<SkillsContentResponse> = async () => {
   const { skillsContent } = await getSkillsContent();
@@ -14,8 +17,17 @@ export const getStaticProps: GetStaticProps<SkillsContentResponse> = async () =>
 };
 
 export default function SkillsPage({ skillsContent }: SkillsContentResponse) {
-  useScrollToTopOnRender();
+  const scrollToTop = useScrollToTopOnRender();
   const mediaQuery = useMediaQueries();
+
+  const { pathname } = useRouter();
+  const previousPathname = usePrevious(pathname);
+
+  useEffect(() => {
+    if (pathname !== previousPathname) {
+      scrollToTop();
+    }
+  }, [pathname, previousPathname, scrollToTop]);
 
   const { subtitle, title, technologies } = skillsContent;
 

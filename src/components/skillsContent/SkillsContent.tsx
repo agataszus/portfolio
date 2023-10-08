@@ -31,7 +31,7 @@ export const SkillsContent = ({ subtitle, title, technologies }: SkillsContentPr
   }, [router.replace, asPath]);
 
   const handleClick = (name: TechnologyName) => {
-    router.replace({ pathname: getSkillsPath(), query: { technology: name } });
+    router.replace({ pathname: getSkillsPath(), query: { technology: name } }, undefined, { scroll: false });
     descriptionContainerRef.current?.scrollIntoView({ behavior: "smooth" });
   };
 
