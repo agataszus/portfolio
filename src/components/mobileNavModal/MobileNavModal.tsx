@@ -1,6 +1,7 @@
 import { MobileNavModalLink } from "./parts/MobileNavModalLink";
 import { AnimatePresence, TargetAndTransition, motion } from "framer-motion";
 import { NAVIGATION_ELEMENTS } from "../desktopHomeNavigation/desktopHomeNavigation.constants";
+import { useScrollLock } from "@mantine/hooks";
 
 const NAV_ELEMENT_SLIDE_OFFSET = 40;
 
@@ -9,6 +10,8 @@ type MobileNavModalProps = {
 };
 
 export const MobileNavModal = ({ handleLinkClick }: MobileNavModalProps) => {
+  useScrollLock(true);
+
   return (
     <AnimatePresence mode="wait" initial={false}>
       <motion.div
