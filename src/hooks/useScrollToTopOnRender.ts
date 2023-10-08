@@ -7,4 +7,6 @@ export const useScrollToTopOnRender = () => {
   const scrollToTop = useCallback(() => scrollTo({ y: 0 }), [scrollTo]);
 
   useEffect(() => scrollToTop(), [scrollToTop]);
+
+  return scrollToTop;
 };

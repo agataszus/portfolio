@@ -9,9 +9,16 @@ type ProjectLinksProps = {
   description: string;
   demoLink: string;
   sourceCodeLink: string;
+  areLinksActive: boolean;
 };
 
-export const ProjectLinks = ({ extraDelay, description, demoLink, sourceCodeLink }: ProjectLinksProps) => {
+export const ProjectLinks = ({
+  extraDelay,
+  description,
+  demoLink,
+  sourceCodeLink,
+  areLinksActive,
+}: ProjectLinksProps) => {
   return (
     <div className="relative w-full tablet:h-8 mobile:h-auto">
       <div className="overflow-hidden tablet:absolute tablet:left-[--tablet-left-to-left] tablet:top-60 tablet:translate-x-[--tablet-translate-x] mobile:relative mobile:left-0 mobile:top-0">
@@ -32,16 +39,29 @@ export const ProjectLinks = ({ extraDelay, description, demoLink, sourceCodeLink
           {description}
         </Text>
         <div className="flex flex-col gap-3">
-          <Link href={demoLink} rel="noreferrer" target="_blank">
-            <Text tag="p" variant="action-4" className="cursor-pointer text-primary">
-              Live demo &#8594;
-            </Text>
-          </Link>
-          <Link href={sourceCodeLink} rel="noreferrer" target="_blank">
-            <Text tag="p" variant="action-4" className="cursor-pointer text-primary">
-              Code on github &#8594;
-            </Text>
-          </Link>
+          {areLinksActive ? (
+            <>
+              <Link href={demoLink} rel="noreferrer" target="_blank">
+                <Text tag="p" variant="action-4" className="cursor-pointer text-primary">
+                  Live demo &#8594;
+                </Text>
+              </Link>
+              <Link href={sourceCodeLink} rel="noreferrer" target="_blank">
+                <Text tag="p" variant="action-4" className="cursor-pointer text-primary">
+                  Code on github &#8594;
+                </Text>
+              </Link>
+            </>
+          ) : (
+            <>
+              <Text tag="p" variant="action-4" className="cursor-not-allowed text-primary/40">
+                Live demo &#8594;
+              </Text>
+              <Text tag="p" variant="action-4" className="cursor-not-allowed text-primary/40">
+                Code on github &#8594;
+              </Text>
+            </>
+          )}
         </div>
       </div>
     </div>

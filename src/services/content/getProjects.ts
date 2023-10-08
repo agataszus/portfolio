@@ -10,6 +10,7 @@ type ProjectContent = {
   technologyIconName: TechnologyIcons;
   demoLink: string;
   sourceCodeLink: string;
+  isComingSoon: boolean;
 };
 
 export type ProjectsContentResponse = {
@@ -26,6 +27,7 @@ query ProjectsContent {
     technologyIconName
     demoLink
     sourceCodeLink
+    isComingSoon
   }
 }
 `;

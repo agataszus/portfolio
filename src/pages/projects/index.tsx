@@ -78,7 +78,10 @@ export default function ProjectsPage({ allProjectContents }: ProjectsContentResp
         ref={projectsContainerRef}
       >
         {allProjectContents.map(
-          ({ name, descriptionShort, iconName, technologyIconName, slug, demoLink, sourceCodeLink }, index) => (
+          (
+            { name, descriptionShort, iconName, technologyIconName, slug, demoLink, sourceCodeLink, isComingSoon },
+            index
+          ) => (
             <ProjectColumn
               slug={slug}
               name={name}
@@ -88,6 +91,7 @@ export default function ProjectsPage({ allProjectContents }: ProjectsContentResp
               Icon={technologyIconName}
               demoLink={demoLink}
               sourceCodeLink={sourceCodeLink}
+              isComingSoon={isComingSoon}
               key={`project-column-${name}`}
             />
           )

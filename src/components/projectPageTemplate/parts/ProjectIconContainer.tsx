@@ -2,6 +2,8 @@ import { Text } from "@/components/text/Text";
 import { ProjectTechIcon, TechnologyName } from "./ProjectTechIcon";
 import { AnimatePresence, motion } from "framer-motion";
 import { useState } from "react";
+import Link from "next/link";
+import { getSkillsPath } from "@/components/desktopHomeNavigation/desktopHomeNavigation.constants";
 
 type ProjectIconContainerProps = {
   additionalDelay: number;
@@ -20,6 +22,7 @@ const COMMON_TOOLTIP_PROPS = {
 
 export const ProjectIconContainer = ({ additionalDelay, technologyName, label }: ProjectIconContainerProps) => {
   const [isIconHovered, setIsIconHovered] = useState(false);
+  const [isClicked, setIsClicked] = useState(false);
 
   return (
     <motion.div
@@ -48,13 +51,18 @@ export const ProjectIconContainer = ({ additionalDelay, technologyName, label }:
           </>
         )}
       </AnimatePresence>
-      <div
-        onMouseOver={() => setIsIconHovered(true)}
-        onMouseLeave={() => setIsIconHovered(false)}
-        className="cursor-pointer"
+      <Link
+        href={{ pathname: getSkillsPath(), query: { technology: technologyName } }}
+        onClick={() => setIsClicked(true)}
       >
-        <ProjectTechIcon technologyName={technologyName} variant="small" />
-      </div>
+        <div
+          onMouseOver={() => setIsIconHovered(true)}
+          onMouseLeave={() => setIsIconHovered(false)}
+          className="cursor-pointer transition-transform hover:scale-125"
+        >
+          <ProjectTechIcon technologyName={technologyName} variant="small" isActive={isClicked} />
+        </div>
+      </Link>
     </motion.div>
   );
 };

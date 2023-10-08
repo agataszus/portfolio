@@ -3,11 +3,12 @@ import { DesktopHomeNavigation } from "../desktopHomeNavigation/DesktopHomeNavig
 import { Text } from "../text/Text";
 import { motion } from "framer-motion";
 import { MobileNavModal } from "../mobileNavModal/MobileNavModal";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { cn } from "@/styles/helpers/cn";
 import { Hamburger } from "../hamburger/Hamburger";
 import { useRouter } from "next/router";
 import { getContactPath } from "../desktopHomeNavigation/desktopHomeNavigation.constants";
+import { DESKTOP, DESKTOP_MID, DESKTOP_SMALL, useMediaQueries } from "@/hooks/useMediaQueries";
 
 const TOPBAR_SLIDE_OFFSET = 50;
 
@@ -20,6 +21,11 @@ export const Topbar = ({ className }: TopbarProps) => {
   const router = useRouter();
   const contactPathname = getContactPath();
   const isContactPathname = router.pathname === contactPathname;
+  const mediaQuery = useMediaQueries();
+
+  useEffect(() => {
+    if ([DESKTOP, DESKTOP_MID, DESKTOP_SMALL].includes(mediaQuery)) setIsMenuOpen(false);
+  }, [mediaQuery]);
 
   return (
     <>

@@ -50,7 +50,7 @@ export default function ProjectPage({ projectContent }: ProjectContentResponse) 
       {[TABLET, MOBILE].includes(mediaQuery) ? <Topbar /> : <ExpandableMenuTopbar />}
       <ProjectPageTemplate project={projectContent} />
       <motion.svg
-        className="absolute right-0 top-0 z-0 m-auto translate-x-[60%] translate-y-[-23%] rotate-90 desktop-mid:translate-x-[50%] desktop-small:translate-x-[30%] desktop-small:translate-y-[-13%] tablet:left-1/2 tablet:top-[-700px] tablet:-translate-x-1/2 tablet:translate-y-0 mobile:top-[-760px]"
+        className="absolute right-0 top-0 z-0 m-auto translate-x-[60%] translate-y-[-23%] rotate-90 desktop-mid:translate-x-[50%] desktop-small:translate-x-[30%] desktop-small:translate-y-[-13%] tablet:left-1/2 tablet:top-[-700px] tablet:-translate-x-1/2 tablet:translate-y-0 mobile:top-[-776px]"
         width={SVG_SIZE}
         height={SVG_SIZE}
         viewBox={`0 0 ${SVG_SIZE} ${SVG_SIZE}`}

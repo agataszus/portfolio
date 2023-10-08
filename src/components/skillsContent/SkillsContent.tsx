@@ -1,10 +1,13 @@
 import { Technology } from "@/services/content/getSkillsContent";
 import { PageTitle } from "../pageTitle/PageTitle";
 import { ProjectTechIcon, TechnologyName } from "../projectPageTemplate/parts/ProjectTechIcon";
-import { useRef, useState } from "react";
+import { useEffect, useRef } from "react";
 import { Text } from "../text/Text";
 import { motion } from "framer-motion";
 import { TechIconButton } from "./parts/TechIconButton";
+import { useRouter } from "next/router";
+import { getSkillsPath } from "../desktopHomeNavigation/desktopHomeNavigation.constants";
+import { usePrevious } from "@mantine/hooks";
 
 type SkillsContentProps = {
   subtitle: string;
@@ -13,15 +16,22 @@ type SkillsContentProps = {
 };
 
 export const SkillsContent = ({ subtitle, title, technologies }: SkillsContentProps) => {
-  const [activeTechnologyName, setActiveTechnologyName] = useState<TechnologyName>(technologies[0].name);
-  const [activeLabel, setActiveLabel] = useState(technologies[0].label);
-  const [activeDescription, setActiveDescription] = useState(technologies[0].description);
+  const router = useRouter();
+  const { query, asPath } = router;
+  const activeTechnology = technologies.find(({ name }) => query.technology === name);
+  const { name } = activeTechnology || {};
   const descriptionContainerRef = useRef<HTMLDivElement>(null);
+  const previousTechnologyValue = usePrevious(activeTechnology);
+  const displayTechnology = activeTechnology || previousTechnologyValue;
 
-  const handleClick = (description: string, name: TechnologyName, label: string) => {
-    setActiveDescription(description);
-    setActiveTechnologyName(name);
-    setActiveLabel(label);
+  useEffect(() => {
+    if (asPath === getSkillsPath())
+      router.replace({ pathname: getSkillsPath(), query: { technology: technologies[0].name } });
+    // eslint-disable-next-line react-hooks/exhaustive-deps, unicorn/consistent-destructuring
+  }, [router.replace, asPath]);
+
+  const handleClick = (name: TechnologyName) => {
+    router.replace({ pathname: getSkillsPath(), query: { technology: name } }, undefined, { scroll: false });
     descriptionContainerRef.current?.scrollIntoView({ behavior: "smooth" });
   };
 
@@ -37,24 +47,28 @@ export const SkillsContent = ({ subtitle, title, technologies }: SkillsContentPr
         transition={{ delay: 0.4, duration: 0.5, type: "spring", stiffness: 80 }}
         ref={descriptionContainerRef}
       >
-        <ProjectTechIcon technologyName={activeTechnologyName} variant="large" />
-        <div className="flex flex-col gap-3 mobile:items-center">
-          <Text tag="h5" variant="action-3">
-            {activeLabel}
-          </Text>
-          <Text tag="p" variant="caption-1" className="leading-normal mobile:text-center">
-            <span dangerouslySetInnerHTML={{ __html: activeDescription }} />
-          </Text>
-        </div>
+        {displayTechnology && (
+          <>
+            <ProjectTechIcon technologyName={displayTechnology.name} variant="large" />
+            <div className="flex flex-col gap-3 mobile:items-center">
+              <Text tag="h5" variant="action-3">
+                {displayTechnology.label}
+              </Text>
+              <Text tag="p" variant="caption-1" className="leading-normal mobile:text-center">
+                <span dangerouslySetInnerHTML={{ __html: displayTechnology.description }} />
+              </Text>
+            </div>
+          </>
+        )}
       </motion.div>
       <div className="flex w-[80%] flex-wrap justify-center gap-5 mobile:w-[90%]">
-        {technologies.map(({ name, label, description }, index) => (
+        {technologies.map(({ name: technologyName }, index) => (
           <TechIconButton
-            isActive={name === activeTechnologyName}
-            onClick={() => handleClick(description, name, label)}
-            technologyName={name}
+            isActive={technologyName === name}
+            onClick={() => handleClick(technologyName)}
+            technologyName={technologyName}
             additionalDelay={index / 10}
-            key={name}
+            key={technologyName}
           />
         ))}
       </div>
