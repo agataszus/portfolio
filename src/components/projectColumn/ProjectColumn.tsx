@@ -20,6 +20,7 @@ type ProjectColumnProps = {
   slug: string;
   demoLink: string;
   sourceCodeLink: string;
+  isComingSoon: boolean;
 };
 
 export const ProjectColumn = ({
@@ -31,6 +32,7 @@ export const ProjectColumn = ({
   slug,
   demoLink,
   sourceCodeLink,
+  isComingSoon,
 }: ProjectColumnProps) => {
   const mediaQuery = useMediaQueries();
   const columnRef = useRef<HTMLDivElement>(null);
@@ -109,8 +111,9 @@ export const ProjectColumn = ({
           description={description}
           demoLink={demoLink}
           sourceCodeLink={sourceCodeLink}
+          areLinksActive={!isComingSoon}
         />
-        <ArrowToButton index={index} slug={slug} />
+        <ArrowToButton index={index} slug={slug} isButtonVisible={!isComingSoon} />
       </div>
     </motion.div>
   );
