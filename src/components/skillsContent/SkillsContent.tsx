@@ -1,7 +1,7 @@
 import { Technology } from "@/services/content/getSkillsContent";
 import { PageTitle } from "../pageTitle/PageTitle";
 import { ProjectTechIcon, TechnologyName } from "../projectPageTemplate/parts/ProjectTechIcon";
-import { useEffect, useRef, useState } from "react";
+import { useRef } from "react";
 import { Text } from "../text/Text";
 import { motion } from "framer-motion";
 import { TechIconButton } from "./parts/TechIconButton";
