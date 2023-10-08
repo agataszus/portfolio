@@ -27,7 +27,7 @@ export default function AboutPage({ aboutContent }: AboutContentResponse) {
           initial={{ opacity: 0, scale: 0.8, translateX: "var(--translate-x)" }}
           animate={{ opacity: [0, 1], scale: [0.8, 1], translateX: ["var(--translate-x)", "var(--translate-x)"] }}
           transition={{ delay: 0.2, duration: 0.5, type: "spring", stiffness: 80 }}
-          className="flex h-[540px] w-[420px] shrink-0 desktop-small:h-[440px] desktop-small:w-[340px] tablet:absolute tablet:left-1/2 tablet:top-24"
+          className="flex h-[540px] w-[420px] shrink-0 desktop-small:h-[440px] desktop-small:w-[340px] tablet:absolute tablet:left-1/2 tablet:top-24 mobile:top-16 mobile:h-[380px] mobile:w-[290px]"
         >
           <Image width={420} height={540} alt="My picture" src={myPicture} priority />
         </motion.div>

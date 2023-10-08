@@ -1,12 +1,13 @@
 import { Technology } from "@/services/content/getSkillsContent";
 import { PageTitle } from "../pageTitle/PageTitle";
 import { ProjectTechIcon, TechnologyName } from "../projectPageTemplate/parts/ProjectTechIcon";
-import { useRef } from "react";
+import { useEffect, useRef } from "react";
 import { Text } from "../text/Text";
 import { motion } from "framer-motion";
 import { TechIconButton } from "./parts/TechIconButton";
 import { useRouter } from "next/router";
 import { getSkillsPath } from "../desktopHomeNavigation/desktopHomeNavigation.constants";
+import { usePrevious } from "@mantine/hooks";
 
 type SkillsContentProps = {
   subtitle: string;
@@ -15,13 +16,22 @@ type SkillsContentProps = {
 };
 
 export const SkillsContent = ({ subtitle, title, technologies }: SkillsContentProps) => {
-  const { query, push } = useRouter();
+  const router = useRouter();
+  const { query, asPath } = router;
   const activeTechnology = technologies.find(({ name }) => query.technology === name);
-  const { name, label, description } = activeTechnology ?? technologies[0];
+  const { name } = activeTechnology || {};
   const descriptionContainerRef = useRef<HTMLDivElement>(null);
+  const previousTechnologyValue = usePrevious(activeTechnology);
+  const displayTechnology = activeTechnology || previousTechnologyValue;
+
+  useEffect(() => {
+    if (asPath === getSkillsPath())
+      router.replace({ pathname: getSkillsPath(), query: { technology: technologies[0].name } });
+    // eslint-disable-next-line react-hooks/exhaustive-deps, unicorn/consistent-destructuring
+  }, [router.replace, asPath]);
 
   const handleClick = (name: TechnologyName) => {
-    push({ pathname: getSkillsPath(), query: { technology: name } });
+    router.replace({ pathname: getSkillsPath(), query: { technology: name } });
     descriptionContainerRef.current?.scrollIntoView({ behavior: "smooth" });
   };
 
@@ -37,15 +47,15 @@ export const SkillsContent = ({ subtitle, title, technologies }: SkillsContentPr
         transition={{ delay: 0.4, duration: 0.5, type: "spring", stiffness: 80 }}
         ref={descriptionContainerRef}
       >
-        {activeTechnology && (
+        {displayTechnology && (
           <>
-            <ProjectTechIcon technologyName={name} variant="large" />
+            <ProjectTechIcon technologyName={displayTechnology.name} variant="large" />
             <div className="flex flex-col gap-3 mobile:items-center">
               <Text tag="h5" variant="action-3">
-                {label}
+                {displayTechnology.label}
               </Text>
               <Text tag="p" variant="caption-1" className="leading-normal mobile:text-center">
-                <span dangerouslySetInnerHTML={{ __html: description }} />
+                <span dangerouslySetInnerHTML={{ __html: displayTechnology.description }} />
               </Text>
             </div>
           </>

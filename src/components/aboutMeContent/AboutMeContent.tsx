@@ -17,7 +17,7 @@ type AboutMeContentProps = {
 
 export const AboutMeContent = ({ description, title, subtitle }: AboutMeContentProps) => {
   return (
-    <div className="flex w-full flex-col gap-8 desktop-small:gap-4 tablet:mt-[510px] mobile:items-center mobile:gap-7">
+    <div className="flex w-full flex-col gap-8 desktop-small:gap-4 tablet:mt-[510px] mobile:mt-[410px] mobile:items-center mobile:gap-7">
       <PageTitle subtitle={subtitle} title={title} />
       <PageDescription description={description} />
       <div className="mt-auto flex gap-8 pt-4 desktop-small:gap-5 tablet:mt-10 tablet:gap-8 tablet:pt-0 mobile:flex-col mobile:items-center">

@@ -39,7 +39,7 @@ export const ProjectColumn = ({
 
   const columnClassName = cn(
     "flex h-full desktop-mid:w-[368px] tablet:h-[450px] tablet:w-full mobile:h-[720px] w-[450px] shrink-0 flex-col tablet:gap-3 desktop-mid:gap-8 gap-10 tablet:border-t-2 tablet:border-l-0 border-l-2 border-primary/40 desktop-mid:px-11 px-14 mobile:px-8 py-8 relative overflow-y-hidden",
-    "[--hover-opacity:0%] [--default-opacity:100%] [--translate-x:0] [--hover-path-length:0] [--hover-border-overflow: hidden] [--hover-translate-y:10px] [--underline-width:22px] [--underline-color:rgb(149,250,254,0.6)] [--translate-x-text:70px] [--hover-rotate:-180deg] [--tablet-left-to-left:50%] tablet:[--tablet-translate-x:-50%] [--tablet-translate-x:0] mobile:[--tablet-translate-x:0]"
+    "[--hover-opacity:0%] [--default-opacity:100%] [--translate-x:0] [--hover-path-length:0] [--hover-border-overflow:hidden] [--hover-translate-y:10px] [--underline-width:22px] [--underline-color:rgb(149,250,254,0.6)] [--translate-x-text:70px] [--hover-rotate:-180deg] [--tablet-left-to-left:50%] tablet:[--tablet-translate-x:-50%] [--tablet-translate-x:0] mobile:[--tablet-translate-x:0]"
   );
 
   const extraDelay = (index - 1) * 0.1;
@@ -61,7 +61,7 @@ export const ProjectColumn = ({
           visible: {
             "--hover-translate-y": "0",
             "--hover-border-overflow": "visible",
-            "--hover-path-length": "1",
+            "--hover-path-length": 1,
             "--default-opacity": "0%",
             "--hover-opacity": "100%",
             "--translate-x": "203px",

@@ -12,7 +12,7 @@ export const ButtonWrapper = ({ isExternal, linkTo, children }: ButtonWrapperPro
       {children}
     </a>
   ) : (
-    <Link href={linkTo} prefetch={true} scroll={false}>
+    <Link href={linkTo} scroll={false}>
       {children}
     </Link>
   );

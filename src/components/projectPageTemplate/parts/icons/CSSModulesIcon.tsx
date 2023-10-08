@@ -10,6 +10,7 @@ type CSSModulesIconProps = {
 export const CSSModulesIcon = ({ width, height, isActive }: CSSModulesIconProps) => {
   return (
     <Image
+      priority
       alt="CSS modules icon"
       src="/icons/css-modules-logo.png"
       width={width}

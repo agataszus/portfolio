@@ -48,8 +48,8 @@ export const NextIcon = ({ className, isActive }: TechIconWithActiveProps) => {
           y1="116.5"
           y2="160.5"
         >
-          <stop stop-color={mainColor}></stop>
-          <stop offset="1" stop-color={mainColor} stop-opacity="0"></stop>
+          <stop stopColor={mainColor}></stop>
+          <stop offset="1" stopColor={mainColor} stopOpacity="0"></stop>
         </linearGradient>
         <linearGradient
           gradientUnits="userSpaceOnUse"
@@ -59,8 +59,8 @@ export const NextIcon = ({ className, isActive }: TechIconWithActiveProps) => {
           y1="54"
           y2="106.875"
         >
-          <stop stop-color={mainColor}></stop>
-          <stop offset="1" stop-color={mainColor} stop-opacity="0"></stop>
+          <stop stopColor={mainColor}></stop>
+          <stop offset="1" stopColor={mainColor} stopOpacity="0"></stop>
         </linearGradient>
       </defs>
     </svg>
