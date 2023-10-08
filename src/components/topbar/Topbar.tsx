@@ -41,7 +41,7 @@ export const Topbar = ({ className }: TopbarProps) => {
           initial={{ y: TOPBAR_SLIDE_OFFSET, opacity: 0 }}
           animate={{ y: [TOPBAR_SLIDE_OFFSET, 0], opacity: [0, 1] }}
           transition={{
-            y: { duration: 0.5, ease: "easeOut" },
+            y: { delay: 0.2, duration: 0.5, ease: "easeOut" },
             opacity: { duration: 0.7, ease: "easeOut" },
           }}
         >

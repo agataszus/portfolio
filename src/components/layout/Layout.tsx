@@ -35,22 +35,27 @@ export const Layout = ({ children, className }: LayoutProps) => {
 
   return (
     <div className={layoutClassName}>
-      {isClientMounted && (
-        <>
-          {wasPathnameChanged && <SlidingOverlay pathname={pathname} />}
-          <AnimatePresence mode="wait" initial={false}>
-            <motion.div
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1, transition: { duration: 0.4 } }}
-              exit={{ opacity: 0, transition: { delay: 0.5, duration: 0.4 } }}
-              className="h-full w-full"
-              key={`content-animation-${pathname}`}
-            >
-              {children}
-            </motion.div>
-          </AnimatePresence>
-        </>
-      )}
+      {/* div added to prevent flash of page content on load before initial animations */}
+      <div
+        className={cn("h-full w-full opacity-0 transition-opacity duration-[10ms]", isClientMounted && "opacity-100")}
+      >
+        {isClientMounted && (
+          <>
+            {wasPathnameChanged && <SlidingOverlay pathname={pathname} />}
+            <AnimatePresence mode="wait" initial={false}>
+              <motion.div
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1, transition: { duration: 0.4 } }}
+                exit={{ opacity: 0, transition: { delay: 0.5, duration: 0.4 } }}
+                className={cn("h-full w-full")}
+                key={`content-animation-${pathname}`}
+              >
+                {children}
+              </motion.div>
+            </AnimatePresence>
+          </>
+        )}
+      </div>
     </div>
   );
 };
