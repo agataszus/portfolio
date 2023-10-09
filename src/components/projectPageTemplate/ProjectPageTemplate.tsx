@@ -2,13 +2,16 @@ import { ProjectContent as ProjectContentType } from "@/services/content/getProj
 import { ProjectButtons } from "./parts/ProjectButtons";
 import { ProjectContent } from "./parts/ProjectContent";
 import { RightColumn } from "./parts/RightColumn";
+import { useState } from "react";
+import { ProjectVideo } from "./parts/ProjectVideo";
 
 type ProjectPageTemplateProps = {
   project: ProjectContentType;
 };
 
 export const ProjectPageTemplate = ({ project }: ProjectPageTemplateProps) => {
-  const { subtitle, name, description, sourceCodeLink, demoLink, websiteScreen, technologies } = project;
+  const { subtitle, name, description, sourceCodeLink, demoLink, websiteScreen, technologies, videoLink } = project;
+  const [isVideoVisible, setIsVideoVisible] = useState(false);
 
   return (
     <div className="relative my-auto flex w-full justify-between tablet:flex-col">
@@ -16,7 +19,12 @@ export const ProjectPageTemplate = ({ project }: ProjectPageTemplateProps) => {
         <ProjectContent subtitle={subtitle} name={name} description={description} />
         <ProjectButtons sourceCodeLink={sourceCodeLink} demoLink={demoLink} />
       </div>
-      <RightColumn image={websiteScreen} technologies={technologies} />
+      <RightColumn
+        image={websiteScreen}
+        technologies={technologies}
+        handleButtonClick={() => setIsVideoVisible(true)}
+      />
+      {isVideoVisible && <ProjectVideo src={videoLink} onClose={() => setIsVideoVisible(false)} />}
     </div>
   );
 };

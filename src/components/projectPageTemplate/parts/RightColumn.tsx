@@ -13,9 +13,10 @@ const SUBHEADING_OFFSET = 150;
 type RightColumnProps = {
   image: WebsiteScreen;
   technologies: readonly { name: TechnologyName; label: string }[];
+  handleButtonClick: () => void;
 };
 
-export const RightColumn = ({ image, technologies }: RightColumnProps) => {
+export const RightColumn = ({ image, technologies, handleButtonClick }: RightColumnProps) => {
   const mediaQuery = useMediaQueries();
 
   return (
@@ -25,6 +26,7 @@ export const RightColumn = ({ image, technologies }: RightColumnProps) => {
         initial={{ opacity: 0, scale: IMAGE_SCALE }}
         animate={{ opacity: [0, 1], scale: [IMAGE_SCALE, 1] }}
         transition={{ delay: 0.2, duration: 0.5, type: "spring", stiffness: 80 }}
+        onClick={handleButtonClick}
       >
         <Image
           alt={image.alt}
