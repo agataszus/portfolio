@@ -3,7 +3,7 @@ import { DESKTOP, DESKTOP_MID, DESKTOP_SMALL, MOBILE, useMediaQueries } from "@/
 import { WebsiteScreen } from "@/services/content/getProject";
 import { cn } from "@/styles/helpers/cn";
 import { useMouse } from "@mantine/hooks";
-import { AnimatePresence, motion } from "framer-motion";
+import { motion } from "framer-motion";
 import Image from "next/image";
 import { useEffect, useState } from "react";
 import PlayLineIcon from "remixicon-react/PlayLineIcon";
