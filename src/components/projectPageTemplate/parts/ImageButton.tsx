@@ -1,13 +1,16 @@
 import { Text } from "@/components/text/Text";
 import { DESKTOP, DESKTOP_MID, DESKTOP_SMALL, MOBILE, useMediaQueries } from "@/hooks/useMediaQueries";
 import { WebsiteScreen } from "@/services/content/getProject";
+import { cn } from "@/styles/helpers/cn";
 import { useMouse } from "@mantine/hooks";
-import { motion } from "framer-motion";
+import { AnimatePresence, motion } from "framer-motion";
 import Image from "next/image";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import PlayLineIcon from "remixicon-react/PlayLineIcon";
 
 const IMAGE_SCALE = 0.8;
+const TOOLTIP_WIDTH = 220;
+const IMAGE_BUTTON_WIDTH = 400;
 
 type ImageButtonProps = {
   image: WebsiteScreen;
@@ -18,6 +21,16 @@ export const ImageButton = ({ image, handleClick }: ImageButtonProps) => {
   const mediaQuery = useMediaQueries();
   const [isTooltip, setIsTooltip] = useState(false);
   const { ref, x, y } = useMouse();
+  const [isTooltipOnRight, setIsTooltipOnRight] = useState(true);
+
+  useEffect(() => {
+    const pageContentWidth = innerWidth > 1280 ? 1208 : innerWidth - 72;
+    const extraPadding = mediaQuery === DESKTOP_SMALL ? 20 : 0;
+    const buttonOffset = (window.innerWidth - pageContentWidth) / 2 + extraPadding + (IMAGE_BUTTON_WIDTH - x) - 20;
+    console.log(window.innerWidth);
+
+    if (buttonOffset > TOOLTIP_WIDTH !== isTooltipOnRight) setIsTooltipOnRight(buttonOffset > TOOLTIP_WIDTH);
+  }, [isTooltipOnRight, x, mediaQuery]);
 
   return (
     <motion.button
@@ -37,11 +50,17 @@ export const ImageButton = ({ image, handleClick }: ImageButtonProps) => {
         height={mediaQuery === MOBILE ? 150 : 220}
         priority
       />
-      <PlayLineIcon className="absolute left-1/2 top-1/2 h-32 w-32 -translate-x-1/2 -translate-y-1/2 fill-gray-100/40 mobile:h-20 mobile:w-20" />
+      <PlayLineIcon className="absolute left-1/2 top-1/2 h-32 w-32 -translate-x-1/2 -translate-y-1/2 fill-gray-100/50 mobile:h-20 mobile:w-20" />
       {isTooltip && [DESKTOP, DESKTOP_MID, DESKTOP_SMALL].includes(mediaQuery) && (
         <div
-          className="absolute flex min-w-[220px] justify-center bg-background-color-dark p-2"
-          style={{ left: x + 20, top: y + 20 }}
+          className={cn(
+            "absolute z-40 flex min-w-[220px] justify-center bg-background-color-dark p-2",
+            !isTooltipOnRight && "-translate-x-full"
+          )}
+          style={{
+            left: isTooltipOnRight ? x + 20 : x - 20,
+            top: y + 20,
+          }}
         >
           <Text tag="span" variant="action-2">
             Click to watch demo video
