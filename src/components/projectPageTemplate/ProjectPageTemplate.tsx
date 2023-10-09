@@ -24,7 +24,7 @@ export const ProjectPageTemplate = ({ project }: ProjectPageTemplateProps) => {
         technologies={technologies}
         handleButtonClick={() => setIsVideoVisible(true)}
       />
-      {isVideoVisible && <ProjectVideo src={videoLink} onClose={() => setIsVideoVisible(false)} />}
+      <ProjectVideo src={videoLink} onClose={() => setIsVideoVisible(false)} isVisible={isVideoVisible} />
     </div>
   );
 };
