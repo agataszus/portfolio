@@ -19,6 +19,7 @@ export type ProjectContent = {
   demoLink: string;
   websiteScreen: WebsiteScreen;
   technologies: Technology[];
+  videoLink: string;
 };
 
 export type ProjectContentResponse = {
@@ -41,6 +42,7 @@ query ProjectContent {
       name
       label
     }
+    videoLink
   }
 }
 `;

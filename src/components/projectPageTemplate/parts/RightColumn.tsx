@@ -1,39 +1,22 @@
 import { Text } from "@/components/text/Text";
-import Image from "next/image";
-import PlayLineIcon from "remixicon-react/PlayLineIcon";
 import { TechnologyName } from "./ProjectTechIcon";
 import { motion } from "framer-motion";
 import { ProjectIconContainer } from "./ProjectIconContainer";
-import { MOBILE, useMediaQueries } from "@/hooks/useMediaQueries";
 import { WebsiteScreen } from "@/services/content/getProject";
+import { ImageButton } from "./ImageButton";
 
-const IMAGE_SCALE = 0.8;
 const SUBHEADING_OFFSET = 150;
 
 type RightColumnProps = {
   image: WebsiteScreen;
   technologies: readonly { name: TechnologyName; label: string }[];
+  handleButtonClick: () => void;
 };
 
-export const RightColumn = ({ image, technologies }: RightColumnProps) => {
-  const mediaQuery = useMediaQueries();
-
+export const RightColumn = ({ image, technologies, handleButtonClick }: RightColumnProps) => {
   return (
     <div className="z-10 flex flex-col items-end gap-16 [--hover-opacity:0] desktop-small:mr-5 tablet:absolute tablet:left-1/2 tablet:top-24 tablet:-translate-x-1/2 tablet:items-center mobile:gap-12">
-      <motion.button
-        className="relative h-[220px] w-[400px] bg-black shadow-xl mobile:h-[150px] mobile:w-[280px]"
-        initial={{ opacity: 0, scale: IMAGE_SCALE }}
-        animate={{ opacity: [0, 1], scale: [IMAGE_SCALE, 1] }}
-        transition={{ delay: 0.2, duration: 0.5, type: "spring", stiffness: 80 }}
-      >
-        <Image
-          alt={image.alt}
-          src={image.url}
-          width={mediaQuery === MOBILE ? 280 : 400}
-          height={mediaQuery === MOBILE ? 150 : 220}
-        />
-        <PlayLineIcon className="absolute left-1/2 top-1/2 h-20 w-20 -translate-x-1/2 -translate-y-1/2 fill-gray-100/30" />
-      </motion.button>
+      <ImageButton image={image} handleClick={handleButtonClick} />
       <div className="flex flex-col items-end gap-8 tablet:items-center">
         <div className="overflow-hidden">
           <motion.div
