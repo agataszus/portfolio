@@ -1,13 +1,12 @@
 import { Technology } from "@/services/content/getSkillsContent";
 import { PageTitle } from "../pageTitle/PageTitle";
 import { ProjectTechIcon, TechnologyName } from "../projectPageTemplate/parts/ProjectTechIcon";
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 import { Text } from "../text/Text";
 import { motion } from "framer-motion";
 import { TechIconButton } from "./parts/TechIconButton";
 import { useRouter } from "next/router";
 import { getSkillsPath } from "../desktopHomeNavigation/desktopHomeNavigation.constants";
-import { usePrevious } from "@mantine/hooks";
 
 type SkillsContentProps = {
   subtitle: string;
@@ -21,8 +20,12 @@ export const SkillsContent = ({ subtitle, title, technologies }: SkillsContentPr
   const activeTechnology = technologies.find(({ name }) => query.technology === name);
   const { name } = activeTechnology || {};
   const descriptionContainerRef = useRef<HTMLDivElement>(null);
-  const previousTechnologyValue = usePrevious(activeTechnology);
+  const [previousTechnologyValue, setPreviousTechnologyValue] = useState<Technology>();
   const displayTechnology = activeTechnology || previousTechnologyValue;
+
+  useEffect(() => {
+    if (activeTechnology) setPreviousTechnologyValue(activeTechnology);
+  }, [activeTechnology]);
 
   useEffect(() => {
     if (asPath === getSkillsPath())
