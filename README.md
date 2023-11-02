@@ -24,7 +24,7 @@ $ npm install
 
 ### Usage
 
-To run the application use 
+To run the application use
 
 ```
 $ npm start
@@ -34,11 +34,11 @@ Or go to [Portfolio website](https://agata.dev/)
 
 ## Technologies
 
-* Next.js
-* Typescript
-* Tailwind CSS
-* Framer Motion
-* ESLint
-* Prettier
-* GraphQL
-* DatoCMS
+- Next.js
+- Typescript
+- Tailwind CSS
+- Framer Motion
+- ESLint
+- Prettier
+- GraphQL
+- DatoCMS
