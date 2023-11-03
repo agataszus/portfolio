@@ -4,12 +4,20 @@ import { OrbitControls } from "@react-three/drei";
 import { Vector3 } from "three";
 import { ReactMesh } from "./parts/ReactMesh";
 
-export const Model3D = () => {
+type Model3DProps = {
+  onLoad: () => void;
+};
+
+export const Model3D = ({ onLoad }: Model3DProps) => {
   const vector0 = new Vector3(0, 0, 0);
 
   return (
     <div className="absolute inset-0 h-[200%] w-[200%] -translate-x-1/4 translate-y-[-35%] desktop-small:h-[150%] desktop-small:w-[150%] desktop-small:translate-x-[-20%] desktop-small:translate-y-[-25%]">
-      <Canvas>
+      <Canvas
+        onCreated={() => {
+          onLoad();
+        }}
+      >
         <ambientLight intensity={Math.PI / 13} color={"#95FAFE"} />
         <spotLight intensity={Math.PI / 600} color={"#ffffff"} position={[0, 0, 0.4]} />
         <spotLight
