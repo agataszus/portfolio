@@ -1,18 +1,22 @@
-import { useFrame } from "@react-three/fiber";
+import { useFrame, useLoader } from "@react-three/fiber";
 import { useRef } from "react";
-import { Mesh as MeshType } from "three";
+import { MeshStandardMaterial, Mesh as MeshType } from "three";
+import { OBJLoader } from "three/examples/jsm/Addons.js";
 
 type MeshProps = {
   angle: number;
   radius: number;
   speed: number;
+  src: string;
 };
 
-export const Mesh = ({ angle, radius, speed }: MeshProps) => {
+export const Mesh = ({ angle, radius, speed, src }: MeshProps) => {
   const ref = useRef<MeshType>(null);
 
+  const icon3D = useLoader(OBJLoader, src);
+  const material = new MeshStandardMaterial({ color: "#000000" });
+
   let angleRadians = (angle * Math.PI) / 180;
-  console.log(angleRadians);
   const positionX = radius * Math.cos(angleRadians);
   const positionZ = radius * Math.sin(angleRadians);
 
@@ -26,13 +30,18 @@ export const Mesh = ({ angle, radius, speed }: MeshProps) => {
 
   return (
     <group>
-      <mesh position={[positionX, 0, positionZ]} ref={ref} rotation={[0, angleRadians + Math.PI / 2, 0, "YXZ"]}>
-        <boxGeometry args={[0.5, 1, 0.1]} />
+      <mesh
+        position={[positionX, 0, positionZ]}
+        ref={ref}
+        rotation={[Math.PI / 2, angleRadians - Math.PI / 2, 0, "YXZ"]}
+        scale={0.18}
+      >
+        <primitive object={icon3D} material={material} />
         <meshStandardMaterial color="#95FAFE" />
       </mesh>
       <mesh position={[0, 0, 0]} rotation={[Math.PI / 2, 0, 0, "XYZ"]}>
         <torusGeometry args={[radius, 0.005, 30, 100]} />
-        <meshStandardMaterial color="#95FAFE" />
+        <meshStandardMaterial color="#C08FFE" />
       </mesh>
     </group>
   );
