@@ -20,11 +20,11 @@ export const Mesh = ({ angle, radius, speed, src }: MeshProps) => {
   const positionX = radius * Math.cos(angleRadians);
   const positionZ = radius * Math.sin(angleRadians);
 
-  useFrame(() => {
+  useFrame((_, delta) => {
     if (ref.current) {
-      ref.current.rotation.y += speed * 2;
-      ref.current.position.x = radius * Math.cos(Math.PI - (angleRadians += speed));
-      ref.current.position.z = radius * Math.sin(Math.PI - (angleRadians += speed));
+      ref.current.rotation.y += (delta + speed) / 2;
+      ref.current.position.x = radius * Math.cos(Math.PI - (angleRadians += (delta + speed) / 4));
+      ref.current.position.z = radius * Math.sin(Math.PI - (angleRadians += (delta + speed) / 4));
     }
   });
 
@@ -41,7 +41,7 @@ export const Mesh = ({ angle, radius, speed, src }: MeshProps) => {
       </mesh>
       <mesh position={[0, 0, 0]} rotation={[Math.PI / 2, 0, 0, "XYZ"]}>
         <torusGeometry args={[radius, 0.005, 30, 100]} />
-        <meshStandardMaterial color="#C08FFE" />
+        <meshStandardMaterial color="#C08FFE" opacity={0.6} transparent />
       </mesh>
     </group>
   );

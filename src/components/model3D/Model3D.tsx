@@ -10,10 +10,10 @@ export const Model3D = () => {
   return (
     <div className="absolute inset-0 h-[200%] w-[200%] -translate-x-1/4 translate-y-[-35%] desktop-small:h-[150%] desktop-small:w-[150%] desktop-small:translate-x-[-20%] desktop-small:translate-y-[-25%]">
       <Canvas>
-        <ambientLight intensity={Math.PI / 10} color={"#95FAFE"} />
+        <ambientLight intensity={Math.PI / 13} color={"#95FAFE"} />
         <spotLight intensity={Math.PI / 600} color={"#ffffff"} position={[0, 0, 0.4]} />
         <spotLight
-          position={[3, -5, 15]}
+          position={[2, -5, 25]}
           angle={0.15}
           penumbra={1}
           decay={0}
