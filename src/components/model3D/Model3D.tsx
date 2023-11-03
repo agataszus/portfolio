@@ -1,11 +1,10 @@
-import { Canvas, useLoader } from "@react-three/fiber";
+import { Canvas } from "@react-three/fiber";
 import { Mesh } from "./parts/Mesh";
 import { OrbitControls } from "@react-three/drei";
-import { OBJLoader } from "three/examples/jsm/Addons.js";
 import { Vector3 } from "three";
+import { ReactMesh } from "./parts/ReactMesh";
 
 export const Model3D = () => {
-  const react3D = useLoader(OBJLoader, "/icons3D/react.obj");
   const vector0 = new Vector3(0, 0, 0);
 
   return (
@@ -25,9 +24,7 @@ export const Model3D = () => {
         <pointLight position={[0, 0, 0]} decay={0} intensity={Math.PI / 200} color={"#ffffff"} />
 
         <group>
-          <mesh position={[0, 0, 0]} scale={0.4} rotation={[Math.PI / 2 + 0.26, 0.1, 0.1, "XYZ"]}>
-            <primitive object={react3D} />
-          </mesh>
+          <ReactMesh />
         </group>
         <group rotation={[0.26, -0.1, 0.1, "XYZ"]}>
           <Mesh angle={80} radius={1.9} speed={0.007} src="/icons3D/next.obj" />
