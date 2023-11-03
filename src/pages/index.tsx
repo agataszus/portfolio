@@ -1,4 +1,4 @@
-import { Model3D } from "@/components/model3D/Model3D";
+import { Model3D } from "@/components/temp/Model3D";
 import { Hero } from "@/components/hero/Hero";
 import { Topbar } from "@/components/topbar/Topbar";
 import { useScrollToTopOnRender } from "@/hooks/useScrollToTopOnRender";

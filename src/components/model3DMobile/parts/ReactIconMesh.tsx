@@ -4,7 +4,7 @@ import { OBJLoader } from "three/examples/jsm/Addons.js";
 import { Mesh as MeshType } from "three";
 
 export const ReactIconMesh = () => {
-  const react3D = useLoader(OBJLoader, "/icons3D/react3.obj");
+  const react3D = useLoader(OBJLoader, "/icons3D/react.obj");
   const iconRef = useRef<MeshType>(null);
 
   useFrame((_, delta) => {
