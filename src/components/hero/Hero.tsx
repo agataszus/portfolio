@@ -1,14 +1,18 @@
 import { Button } from "../button/Button";
-import { getProjectsPath } from "../desktopHomeNavigation/desktopHomeNavigation.constants";
+import { getAboutPath, getProjectsPath } from "../desktopHomeNavigation/desktopHomeNavigation.constants";
 import { Text } from "../text/Text";
 import { motion } from "framer-motion";
 
 const SUBHEADING_SLIDE_OFFSET = 250;
 const HEADING_SLIDE_OFFSET = 170;
+const MOTION_BUTTON_COMMON_PROPS = {
+  initial: ["buttonHidden", "textHidden", "arrowHidden", "arrowContainerHidden"],
+  animate: ["buttonVisible", "textVisible", "arrowVisible", "arrowContainerVisible"],
+};
 
 export const Hero = () => {
   return (
-    <div className="flex w-[510px] flex-col pb-[52px]">
+    <div className="flex w-[510px] flex-col pb-[52px] mobile:w-full">
       <div className="mb-10 w-[250px] overflow-hidden">
         <motion.div
           initial={{ x: SUBHEADING_SLIDE_OFFSET }}
@@ -33,18 +37,20 @@ export const Hero = () => {
           </Text>
         </motion.div>
       </div>
-      <motion.div
-        initial={["buttonHidden", "textHidden", "arrowHidden", "arrowContainerHidden"]}
-        animate={["buttonVisible", "textVisible", "arrowVisible", "arrowContainerVisible"]}
-      >
-        <Button
-          variant="large"
-          text="My projects"
-          linkTo={getProjectsPath()}
-          additionalDelay={0.5}
-          isExternal={false}
-        />
-      </motion.div>
+      <div className="mt-auto flex gap-8 mobile:flex-col">
+        <motion.div {...MOTION_BUTTON_COMMON_PROPS}>
+          <Button variant="medium" text="About me" linkTo={getAboutPath()} additionalDelay={0.5} isExternal={false} />
+        </motion.div>
+        <motion.div {...MOTION_BUTTON_COMMON_PROPS}>
+          <Button
+            variant="large"
+            text="My projects"
+            linkTo={getProjectsPath()}
+            additionalDelay={0.7}
+            isExternal={false}
+          />
+        </motion.div>
+      </div>
     </div>
   );
 };
