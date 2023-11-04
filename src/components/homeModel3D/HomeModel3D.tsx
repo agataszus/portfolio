@@ -1,4 +1,4 @@
-import { DESKTOP, DESKTOP_MID, DESKTOP_SMALL, MOBILE, TABLET, useMediaQueries } from "@/hooks/useMediaQueries";
+import { MOBILE, TABLET, useMediaQueries } from "@/hooks/useMediaQueries";
 import { AnimatePresence, motion } from "framer-motion";
 import dynamic from "next/dynamic";
 import { useEffect, useState } from "react";
