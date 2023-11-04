@@ -43,7 +43,7 @@ export const HomeModel3D = () => {
               <motion.div
                 key="model-3d"
                 initial={{ opacity: 0 }}
-                animate={{ opacity: [0, 1], transition: { delay: 1, duration: 1 } }}
+                animate={{ opacity: [0, 1], transition: { delay: 0.5, duration: 1 } }}
               >
                 {[DESKTOP, DESKTOP_MID, DESKTOP_SMALL].includes(mediaQuery) && (
                   <Model3D onLoad={() => setIsLoaded(true)} />

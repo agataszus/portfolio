@@ -18,15 +18,14 @@ export const Model3D = ({ onLoad }: Model3DProps) => {
           onLoad();
         }}
       >
-        <ambientLight intensity={Math.PI / 13} color={"#95FAFE"} />
-        <spotLight intensity={Math.PI / 600} color={"#ffffff"} position={[0, 0, 0.4]} />
+        <ambientLight intensity={Math.PI / 10} color={"#95FAFE"} />
+        <spotLight intensity={Math.PI / 600} color={"#ffffff"} position={[0, 0, 0.6]} />
         <spotLight
           position={[2, -5, 25]}
           angle={0.15}
           penumbra={1}
           decay={0}
-          intensity={Math.PI / 2.6}
-          // color={"#95FAFE"}
+          intensity={Math.PI / 2}
           color={"#8ffafe"}
         />
         <pointLight position={[-10, 10, -10]} decay={0} intensity={Math.PI / 10} color={"#95FAFE"} />
@@ -36,11 +35,11 @@ export const Model3D = ({ onLoad }: Model3DProps) => {
           <ReactMesh />
         </group>
         <group rotation={[0.26, -0.1, 0.1, "XYZ"]}>
-          <Mesh angle={80} radius={1.9} speed={0.007} src="/icons3D/next.obj" />
-          <Mesh angle={170} radius={2.2} speed={0.008} src="/icons3D/html.obj" />
-          <Mesh angle={290} radius={1.5} speed={0.011} src="/icons3D/javascript.obj" />
-          <Mesh angle={120} radius={2.4} speed={0.007} src="/icons3D/css.obj" />
-          <Mesh angle={310} radius={2.9} speed={0.007} src="/icons3D/typescript.obj" />
+          <Mesh angle={80} radius={1.9} speed={0.007} src="/icons3D/next.glb" />
+          <Mesh angle={170} radius={2.2} speed={0.008} src="/icons3D/html.glb" />
+          <Mesh angle={290} radius={1.5} speed={0.011} src="/icons3D/javascript.glb" />
+          <Mesh angle={120} radius={2.4} speed={0.007} src="/icons3D/css.glb" />
+          <Mesh angle={310} radius={2.9} speed={0.007} src="/icons3D/typescript.glb" />
         </group>
         <OrbitControls
           minDistance={4.5}
