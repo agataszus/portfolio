@@ -37,16 +37,16 @@ export const Hero = () => {
           </Text>
         </motion.div>
       </div>
-      <div className="mt-auto flex gap-8 desktop-small:gap-5 tablet:gap-8 mobile:flex-col">
+      <div className="mt-auto flex gap-8 mobile:flex-col">
         <motion.div {...MOTION_BUTTON_COMMON_PROPS}>
-          <Button variant="medium" text="About me" linkTo={getAboutPath()} additionalDelay={0.7} isExternal={false} />
+          <Button variant="medium" text="About me" linkTo={getAboutPath()} additionalDelay={0.5} isExternal={false} />
         </motion.div>
         <motion.div {...MOTION_BUTTON_COMMON_PROPS}>
           <Button
             variant="large"
             text="My projects"
             linkTo={getProjectsPath()}
-            additionalDelay={0.5}
+            additionalDelay={0.7}
             isExternal={false}
           />
         </motion.div>

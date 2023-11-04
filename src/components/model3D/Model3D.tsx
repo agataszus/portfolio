@@ -19,7 +19,7 @@ export const Model3D = ({ onLoad }: Model3DProps) => {
         }}
       >
         <ambientLight intensity={Math.PI / 10} color={"#95FAFE"} />
-        <spotLight intensity={Math.PI / 600} color={"#ffffff"} position={[0, 0, 0.6]} />
+        <spotLight intensity={Math.PI / 60} color={"#ffffff"} position={[-0.3, -0.3, 0.7]} />
         <spotLight
           position={[2, -5, 25]}
           angle={0.15}

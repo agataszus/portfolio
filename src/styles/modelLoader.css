@@ -1,9 +1,10 @@
 .loader {
+  --model-loader-size: 64px;
   transform: rotateZ(45deg);
   perspective: 1000px;
   border-radius: 50%;
-  width: 64px;
-  height: 64px;
+  width: var(--model-loader-size);
+  height: var(--model-loader-size);
   color: #fff;
 }
 .loader:before,
