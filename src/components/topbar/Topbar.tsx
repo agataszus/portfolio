@@ -7,8 +7,9 @@ import { useEffect, useState } from "react";
 import { cn } from "@/styles/helpers/cn";
 import { Hamburger } from "../hamburger/Hamburger";
 import { useRouter } from "next/router";
-import { getContactPath } from "../desktopHomeNavigation/desktopHomeNavigation.constants";
+import { getContactPath, getHomePath } from "../desktopHomeNavigation/desktopHomeNavigation.constants";
 import { DESKTOP, DESKTOP_MID, DESKTOP_SMALL, useMediaQueries } from "@/hooks/useMediaQueries";
+import Link from "next/link";
 
 const TOPBAR_SLIDE_OFFSET = 50;
 
@@ -45,7 +46,7 @@ export const Topbar = ({ className }: TopbarProps) => {
             opacity: { duration: 0.7, ease: "easeOut" },
           }}
         >
-          <div className="z-60 flex flex-col">
+          <Link className="z-60 flex flex-col" href={getHomePath()} scroll={false}>
             <Text
               tag="div"
               variant="subtitle-1"
@@ -60,7 +61,7 @@ export const Topbar = ({ className }: TopbarProps) => {
             >
               Szustkiewicz
             </Text>
-          </div>
+          </Link>
 
           <div className="hidden cursor-pointer tablet:block">
             <Hamburger isCloseVisible={isMenuOpen} handleClick={() => setIsMenuOpen(!isMenuOpen)} />
