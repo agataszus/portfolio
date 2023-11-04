@@ -41,7 +41,7 @@ export const Mesh = ({ angle, radius, speed, src }: MeshProps) => {
       </mesh>
       <mesh position={[0, 0, 0]} rotation={[Math.PI / 2, 0, 0, "XYZ"]}>
         <torusGeometry args={[radius, 0.005, 30, 100]} />
-        <meshStandardMaterial color="#C08FFE" opacity={1} transparent />
+        <meshStandardMaterial color="#C08FFE" opacity={0.7} transparent />
       </mesh>
     </group>
   );
