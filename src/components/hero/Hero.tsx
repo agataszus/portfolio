@@ -12,8 +12,8 @@ const MOTION_BUTTON_COMMON_PROPS = {
 
 export const Hero = () => {
   return (
-    <div className="flex w-[510px] flex-col pb-[52px] mobile:w-full">
-      <div className="mb-10 w-[250px] overflow-hidden">
+    <div className="flex w-[510px] flex-col pb-[52px] mobile:w-full mobile:pt-32">
+      <div className="mb-10 w-[250px] overflow-hidden mobile:mb-7">
         <motion.div
           initial={{ x: SUBHEADING_SLIDE_OFFSET }}
           animate={{ x: [SUBHEADING_SLIDE_OFFSET, 0] }}
@@ -24,7 +24,7 @@ export const Hero = () => {
           </Text>
         </motion.div>
       </div>
-      <div className="mb-14 overflow-hidden">
+      <div className="mb-14 overflow-hidden mobile:mb-11">
         <motion.div
           initial={{ y: HEADING_SLIDE_OFFSET }}
           animate={{ y: [HEADING_SLIDE_OFFSET, 0] }}
