@@ -12,7 +12,7 @@ const MOTION_BUTTON_COMMON_PROPS = {
 
 export const Hero = () => {
   return (
-    <div className="flex w-[510px] flex-col pb-[52px] mobile:w-full mobile:pt-32">
+    <div className="flex w-[510px] flex-col pb-[52px] tablet:pt-24 mobile:w-full mobile:pt-16">
       <div className="mb-10 w-[250px] overflow-hidden mobile:mb-7">
         <motion.div
           initial={{ x: SUBHEADING_SLIDE_OFFSET }}
