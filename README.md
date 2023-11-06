@@ -6,9 +6,9 @@ Furthermore, it uses Framer Motion in combination with Tailwind CSS to create ad
 
 ## Demo
 
-https://github.com/agataszus/portfolio/assets/122212953/f7b44fa1-8fa0-4eee-a717-1da65a48ebeb
+https://github.com/agataszus/portfolio/assets/122212953/0e67d6ac-b4e5-409c-b446-3f4158af64f5
 
-[Watch Full Demo here](https://www.youtube.com/watch?v=CKursckNt3Y)
+[Watch Full Demo here](https://www.youtube.com/watch?v=d51g6eVOdNI)
 
 ## Setup
 
