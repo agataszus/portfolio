@@ -18,6 +18,7 @@ import { Css3Icon } from "./icons/Css3Icon";
 import { TypescriptIcon } from "./icons/TypescriptIcon";
 import { cn } from "@/styles/helpers/cn";
 import { GitIcon } from "./icons/GitIcon";
+import { ThreeJs } from "./icons/ThreeJs";
 
 export type TechnologyName =
   | "react"
@@ -38,7 +39,8 @@ export type TechnologyName =
   | "css3"
   | "html5"
   | "github"
-  | "git";
+  | "git"
+  | "threejs";
 
 type ProjectTechIconProps = {
   technologyName: TechnologyName;
@@ -122,6 +124,9 @@ export const ProjectTechIcon = ({ technologyName, variant, isActive = false }: P
     }
     case "git": {
       return <GitIcon {...commonIconProps} />;
+    }
+    case "threejs": {
+      return <ThreeJs {...commonIconWithActiveProps} />;
     }
   }
 };

@@ -9,7 +9,7 @@ export default function HomePage() {
   return (
     <div className="mx-auto flex h-full max-w-8xl flex-col px-9 py-6 desktop-mid:max-w-7xl">
       <Topbar />
-      <div className="my-auto flex tablet:h-screen tablet:items-center">
+      <div className="my-auto flex tablet:min-h-screen tablet:items-center">
         <div className="w-1/2 mobile:w-full">
           <Hero />
         </div>
